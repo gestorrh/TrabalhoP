@@ -1,0 +1,154 @@
+variables:
+  MAVEN_OPTS: "-Dhttps.protocols=TLSv1.2 -Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=WARN -Dorg.slf4j.simpleLogger.showDateTime=true -Djava.awt.headless=true"
+  MAVEN_CLI_OPTS: "--batch-mode --errors --fail-at-end --show-version -DinstallAtEnd=true -DdeployAtEnd=true"
+  SONAR_OPTS: "-Dsonar.host.url=$SONAR_URL -Dsonar.login=$SONAR_LOGIN -Dsonar.gitlab.project_id=$CI_PROJECT_PATH -Dsonar.gitlab.commit_sha=$CI_COMMIT_SHA -Dsonar.gitlab.ref_name=$CI_COMMIT_REF_NAME -Dsonar.gitlab.json_mode=CODECLIMATE -Dsonar.gitlab.failure_notification_mode=commit-status -Dsonar.branch.name=$CI_COMMIT_REF_NAME"
+  SONAR_OPTS_MASTER: "-Dsonar.host.url=$SONAR_URL -Dsonar.login=$SONAR_LOGIN -Dsonar.gitlab.project_id=$CI_PROJECT_PATH -Dsonar.gitlab.commit_sha=$CI_COMMIT_SHA -Dsonar.gitlab.ref_name=$CI_COMMIT_REF_NAME -Dsonar.gitlab.json_mode=CODECLIMATE -Dsonar.gitlab.failure_notification_mode=commit-status"
+
+
+stages:
+  - build
+  - static-analysis
+  - quality
+  - deploy
+
+
+build-backend:
+  stage: build
+  image: maven:3.3.9-jdk-8
+  except:
+    - release
+  cache:
+    paths:
+      - .m2/repository
+  script:
+    - 'cd proficiencia/back-end'
+    - 'mvn $MAVEN_CLI_OPTS package'
+  artifacts:
+    expire_in: 1 day
+    paths:
+      - proficiencia/back-end/target/classes/
+
+build-backend:release:
+  stage: build
+  image: maven:3.3.9-jdk-8
+  only:
+    - release
+  cache:
+    paths:
+      - .m2/repository
+  script:
+    - 'cd proficiencia/back-end'
+    - 'mvn $MAVEN_CLI_OPTS package -P prod'
+  artifacts:
+    expire_in: 1 day
+    paths:
+      - proficiencia/back-end/target/classes/
+      - proficiencia/back-end/target/ROOT.war
+      - proficiencia/back-end/target/ROOT/
+
+build-frontend:release:
+  stage: build
+  image: node:8.16-alpine
+  only:
+    - release
+  cache:
+    paths:
+    - node_modules/
+  before_script:
+    - 'apk add --no-cache --virtual .gyp python make g++'
+  script:
+    - 'cd proficiencia/front-end'
+    - 'npm install'
+    - 'npm run build'
+  after_script:
+    - 'apk del .gyp'
+  artifacts:
+    expire_in: 1 day
+    paths:
+      - proficiencia/front-end/dist
+
+sonar-runner:principal:
+  stage: static-analysis
+  image: bleniciosilva/gitlab-sonar-runner
+  only:
+    - master
+    - release
+  script:
+    - 'cd proficiencia'
+    - '${SONAR_RUNNER_HOME}/bin/sonar-runner $SONAR_OPTS_MASTER'
+  artifacts:
+    expire_in: 1 day
+    paths:
+      - codeclimate.json
+
+
+sonar-runner:branch:
+  stage: static-analysis
+  image: bleniciosilva/gitlab-sonar-runner
+  except:
+    - master
+    - release
+  script:
+    - 'cd proficiencia'
+    - '${SONAR_RUNNER_HOME}/bin/sonar-runner $SONAR_OPTS'
+  artifacts:
+    expire_in: 1 day
+    paths:
+      - codeclimate.json
+
+code_quality:
+  stage: quality
+  image: docker:stable
+  variables:
+    GIT_STRATEGY: none
+    DOCKER_DRIVER: overlay2
+  script:
+    - 'echo ok'
+  artifacts:
+    reports:
+      codequality: codeclimate.json
+    expire_in: 1 day
+
+deploy:
+  stage: deploy
+  when: manual
+  tags:
+    - deploy
+  dependencies:
+    - build-backend:release
+    - build-frontend:release
+  only:
+    - release
+  environment:
+    name: prod
+    url: https://sigaep.quixada.ufc.br
+    on_stop: undeploy
+  before_script:
+    - 'export PROFICIENCIA_USER=$PROFICIENCIA_USER'
+    - 'export PROFICIENCIA_PASSWORD=$PROFICIENCIA_PASSWORD'
+    - 'export PROFICIENCIA_DB=$PROFICIENCIA_DB'
+    - 'export PROFICIENCIA_URL=$PROFICIENCIA_URL'
+  script:
+    - 'docker-compose down'
+    - 'docker-compose up -d'
+  after_script:
+    - 'unset PROFICIENCIA_USER'
+    - 'unset PROFICIENCIA_PASSWORD'
+    - 'unset PROFICIENCIA_DB'
+    - 'unset PROFICIENCIA_URL'
+
+undeploy:
+  stage: deploy
+  when: manual
+  dependencies:
+    - build-backend:release
+    - build-frontend:release
+  only:
+    - release
+  tags:
+    - deploy
+  script:
+    - 'docker-compose down'
+  environment:
+    name: prod
+    action: stop

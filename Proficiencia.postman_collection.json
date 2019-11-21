@@ -1,0 +1,589 @@
+{
+	"info": {
+		"_postman_id": "763cb9c7-98be-4fe1-9319-10869be2dbb1",
+		"name": "Proficiencia",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "test_candidato",
+			"item": [
+				{
+					"name": "test_cpf_invalido",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "50bc428c-2435-4872-a8c8-69f356bf2c91",
+								"exec": [
+									"pm.test(\"Teste com cpf inválido\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"/*Tá permitindo cadastrar a mesma pessoa mais de uma vez;",
+									"Não está fazendo a validação do cpf;",
+									"A senha pode ter menos de 6 caracteres;",
+									"*/"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqYW9AamFvLmNvbSIsInJvbGUiOiJDQU5ESURBVE8iLCJ1c2VyX2lkIjozMDIsImV4cCI6MTU0MjgxOTQ5MH0.pIxZOr1j_EQsAQioeQcI5EXd0kC9za95FAukXtIcVeFe1hs8FEjij1E5eqgVY8CsHO7de6PIcGCC4YSU46dEvQ",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"cpf\": \"603423090\",\n\t\"nome\": \"Patríciâ\",\n\t\"email\": \"eueu.com\",\n\t\"telefone\": \"\",\n\t\"senha\": \"123456\",\n\t\"necessidadeEspecial\": \"NENHUMA\",\n\t\"observacaoNecessidade\": \"\",\n\t\"papel\": \"CANDIDATO\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8090/api/candidato",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"candidato"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "candidato",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "da43f5d6-f334-42ce-a2b4-25dd148512fd",
+								"exec": [
+									"pm.test(\"Criado\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"cpf\": \"60342875370\",\n\t\"nome\": \"Alguém\",\n\t\"email\": \"ira@ira.com\",\n\t\"telefone\": \"3333333333\",\n\t\"senha\": \"123456\",\n\t\"necessidadeEspecial\": \"FISICA\",\n\t\"observacaoNecessidade\": \"NÃO ANDA\",\n\t\"papel\": \"CANDIDATO\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8090/api/candidato",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"candidato"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_candidato",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0e8ba147-f518-4d53-b263-f1997e504cf0",
+								"exec": [
+									"pm.test(\"Buscando com sucesso\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjb29yZGVuYWRvckBkb28uY29tIiwicm9sZSI6IkNPT1JERU5BRE9SIiwidXNlcl9pZCI6MSwiZXhwIjoxNTQzOTQ1MTk5fQ.LSghrAs731oF3SUtTG6jEJcwDYT0yZPL6iQukZWePbMIqA4nhu-L93Ya_hlStU5PxCt3RunlJcCfIZfQGJr83g",
+								"type": "text"
+							},
+							{
+								"key": "id",
+								"value": "10",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8090/api/candidato/15",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"candidato",
+								"15"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "ca9f2b59-cd78-4a76-88d8-0269814c5536",
+						"type": "text/javascript",
+						"exec": [
+							"pm.sendRequest({",
+							"    url: pm.environment.get(\"local\") + '/auth',",
+							"    method: 'POST',",
+							"    header: {",
+							"        'content-type': 'application/json'",
+							"    },",
+							"    body: {",
+							"        mode: 'raw',",
+							"        raw: JSON.stringify({ ",
+							"            email: pm.environment.get(\"email\"), ",
+							"            password: pm.environment.get(\"senha\") })",
+							"    }",
+							"}, function (err, res) {",
+							"    pm.environment.set(\"auth\", \"JWT \" + res.json().token);",
+							"});"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "bd80f6f1-fe25-4568-bacd-5039b4b34b5a",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "test_login",
+			"item": [
+				{
+					"name": "teste_login_incorreto",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "65649c16-e2eb-40f0-b1d7-74384b5654e8",
+								"exec": [
+									"pm.test(\"Teste login incorreto\", function () {",
+									"        pm.response.to.have.status(403);",
+									"        /*A senha padrão é 123456*/",
+									"});",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"jao@jao.com\",\n\t\"senha\": \"12346\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8090/api/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "test_login_sucesso",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4f216d21-93d1-46f4-8a09-1e45ffb9e15c",
+								"exec": [
+									"pm.test(\"Teste login com sucesso\", function () {",
+									"    pm.response.to.have.status(200);",
+									"    ",
+									"    });"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "9cb21054-204c-4454-b688-2e99484ebf88",
+								"exec": [
+									"pm.sendRequest({",
+									"    url: pm.environment.get(\"local\") + '/auth',",
+									"    method: 'POST',",
+									"    header: {",
+									"        'content-type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify({ ",
+									"            email: pm.environment.get(\"email\"), ",
+									"            senha: pm.environment.get(\"senha\") })",
+									"    }",
+									"}, function (err, res) {",
+									"    pm.environment.set(\"auth\", \"JWT \" + res.json().token);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Auth",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"ira@ira.com\",\n\t\"senha\": \"123456\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8090/api/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "test_exame",
+			"item": [
+				{
+					"name": "cadastrar_exame",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4c25469d-9c3c-488e-99a7-27392ed4e496",
+								"exec": [
+									"pm.test(\"Exame criado com sucesso\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "20c7be13-c91b-4002-9cc6-d23ad7631d82",
+								"exec": [
+									"pm.sendRequest({",
+									"    url: pm.environment.get(\"local\") + '/auth',",
+									"    method: 'POST',",
+									"    header: {",
+									"        'content-type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify({ ",
+									"            email: pm.environment.get(\"email\"), ",
+									"            senha: pm.environment.get(\"senha\") })",
+									"    }",
+									"}, function (err, res) {",
+									"    pm.environment.set(\"auth\", \"JWT \" + res.json().token);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Typ",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjb29yZGVuYWRvckBkb28uY29tIiwicm9sZSI6IkNPT1JERU5BRE9SIiwidXNlcl9pZCI6MSwiZXhwIjoxNTQ0MDMxMDM5fQ.2qwOfqe5F14VrVgdTiTKIWKm-QCCS3J9Ho3UqI3QH0gOc9WhaU9IQf_Wjv60JequFFfSqeb9_BQ1OpQ9q4QB4w",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"dataHoraProva\": \"2020-02-21 13:30\",\n\t\"descrição\": \"Vamos fazer uma prova!!\",\n\t\"fase\":\"1\",\n\t\"inicioInscricoes\": \"2019-03-10\",\n\t\"localProva\": \"ufc\",\n\t\"descricao\": \"Bora lá meu filho!\",\n\t\"terminoInscricoes\": \"2019-05-28\",\n\t\"titulo\": \"Agora foi!\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8090/api/exame",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"exame"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "exame_candidato",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b0a1c8eb-2e16-43ea-9a94-96f4b3f914fb",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\n\t\"programaPos\": \"aaaaaa\",\n\t\"areaConcentacao\":\"ddddd\",\n\t\"linhaPesquisa\":\"aaaaaa\",\n\t\"instituicao\":\"ddddddd\"\n\t\n\t\n}"
+						},
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_exame",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0a2bf022-7146-4ba3-ac29-56de1cf758b9",
+								"exec": [
+									"pm.test(\"Busca realizada\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "userid",
+								"value": "1",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjb29yZGVuYWRvckBkb28uY29tIiwicm9sZSI6IkNPT1JERU5BRE9SIiwidXNlcl9pZCI6MSwiZXhwIjoxNTQzODYzMzc0fQ.RU4yxYwrwk2zJF8FQ1WyU8XJ_qN7dolMFFjfpOleAOIlngY6VHtEOsk_lLl7xSZtGDqkjOzQFya0v7qAczC8GA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8090/1/exames",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"1",
+								"exames"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_all",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4b662c24-c704-4fbc-ba8f-72ff89c950fc",
+								"exec": [
+									"pm.test(\"Buscando todos os exames\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"/*Precisa de autenticação para busca. Ver isso dia 28/11*/",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjb29yZGVuYWRvckBkb28uY29tIiwicm9sZSI6IkNPT1JERU5BRE9SIiwidXNlcl9pZCI6MSwiZXhwIjoxNTQzOTUzMTkyfQ.lTY1jms_ZreRtiHuuPt1weJdNJrQZqA6gnuPD8EpR92dYEiZEPWQRauElEbKGBZx1tJCxVtHfwzc82kG01QTbQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8090/api/exame/todos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"exame",
+								"todos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "d1683695-d908-4657-bc5e-33c2714151ce",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "bf3d7c69-50d8-4e3f-a3bf-bddda224f110",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
