@@ -72,7 +72,7 @@ const getters = {
     isCoordenador(state) {
         return state.user.roles.includes('GESTOR');
     },
-    isCandidato(state) {
+    isColaborador(state) {
         return state.user.roles.includes('COLABORADOR');
     }
 };

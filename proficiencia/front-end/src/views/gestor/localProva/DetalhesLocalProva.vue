@@ -1,3 +1,4 @@
+<!--
 <template xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
   <v-container fluid grid-list-xl>
     <app-breadcrumbs
@@ -263,7 +264,7 @@ export default {
           listCandidatos: [],
           text: "Exames",
           disabled: false,
-          href: "/coordenador/exames"
+          href: "/gestor/exames"
         }
       ],
       snackbar: false,
@@ -303,7 +304,7 @@ export default {
           position: 2,
           text: this.exame[0].titulo,
           disabled: false,
-          href: "/coordenador/exames/" + this.exame[0].idExame
+          href: "/gestor/exames/" + this.exame[0].idExame
         });
         this.breadcrumbItems.push({
           position: 3,
@@ -469,3 +470,4 @@ export default {
   font-weight: 500;
 }
 </style>
+-->

@@ -278,7 +278,7 @@ export default {
           position: 1,
           text: "Exames",
           disabled: false,
-          href: "/coordenador/exames"
+          href: "/gestor/exames"
         }
       ],
       listaDeArquivos: [],
@@ -348,13 +348,13 @@ export default {
     },
     initialize() {
       axios
-        .get("/inscricoes/" + this.inscricaoId + "/coordenador")
+        .get("/inscricoes/" + this.inscricaoId + "/gestor")
         .then(res => {
           this.inscricao = res.data;
           this.breadcrumbItems.push({
             position: 2,
             text: this.inscricao.titulo,
-            href: "/coordenador/exames/" + this.inscricao.exameId
+            href: "/gestor/exames/" + this.inscricao.exameId
           });
           this.breadcrumbItems.push({
             position: 3,

@@ -4,10 +4,10 @@
         <v-spacer></v-spacer>
 
         <v-toolbar-items class="ml-3" v-if="isCoordenador">
-            <v-btn flat to="/coordenador/exames">Exames</v-btn>
-            <v-btn flat to="/coordenador/usuarios">Usuários</v-btn>
+            <v-btn flat to="/gestor/dashboard">Dashboard</v-btn>
+            <v-btn flat to="/gestor/usuarios">Usuários</v-btn>
         </v-toolbar-items>
-        <v-toolbar-items class="ml-3" v-if="isCandidato">
+        <v-toolbar-items class="ml-3" v-if="isColaborador">
             <v-btn flat to="/candidato/inscricoes">Minhas Inscrições</v-btn>
             <v-btn flat to="/candidato/exames-abertos">Seleções Abertas</v-btn>
         </v-toolbar-items>
@@ -50,7 +50,7 @@
         computed: {
             ...mapGetters({
                 'isCoordenador': "auth/isCoordenador",
-                'isCandidato': "auth/isCandidato"
+                'isColaborador': "auth/isColaborador"
             }),
         },
 

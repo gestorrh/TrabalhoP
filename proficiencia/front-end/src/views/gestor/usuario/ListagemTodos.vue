@@ -7,7 +7,7 @@
           <div slot="widget-content">
             <v-tooltip top>
               <template v-slot:activator="{ on }">
-                <v-btn absolute color="blue" dark fab right to="/coordenador/usuarios/adicionar" top v-on="on">
+                <v-btn absolute color="blue" dark fab right to="/gestor/usuarios/adicionar" top v-on="on">
                   <v-icon>person_add</v-icon>
                 </v-btn>
               </template>
@@ -37,7 +37,7 @@
                 <td class="body-1">{{usuario.item.papeis}}</td>
 
                 <td>
-                  <v-btn :to="'/coordenador/usuarios/'+usuario.item.id" color="cyan" outline round>
+                  <v-btn :to="'/gestor/usuarios/'+usuario.item.id" color="cyan" outline round>
                     <v-icon dark small>search</v-icon>Detalhes
                   </v-btn>
                   <v-tooltip top>

@@ -251,7 +251,7 @@ export default {
     },
     initialize() {
       axios
-        .get("/inscricoes/" + this.Inscricao.idInscricao + "/coordenador")
+        .get("/inscricoes/" + this.Inscricao.idInscricao + "/gestor")
         .then(res => {
           this.inscricao = res.data;
           this.Inscricao.idInscricao = res.data.id;

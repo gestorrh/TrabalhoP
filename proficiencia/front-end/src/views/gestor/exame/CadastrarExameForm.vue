@@ -218,7 +218,7 @@ export default {
       },
 
       breadcrumbItems: [
-        { position: 1, text: "Exames", disabled: false, href: "/coordenador/exames" },
+        { position: 1, text: "Exames", disabled: false, href: "/gestor/exames" },
         { position: 2, text: "Cadastrar Exame", disabled: true }
       ],
 
@@ -248,7 +248,7 @@ export default {
               terminoReavaliacao: this.terminoReavaliacao
             })
             .then(res => {
-              this.$router.push("/coordenador/exames/" + res.data);
+              this.$router.push("/gestor/exames/" + res.data);
             })
             .catch(err => {
               this.mensagem = err;

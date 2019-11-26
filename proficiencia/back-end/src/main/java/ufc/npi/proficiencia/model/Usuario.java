@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import ufc.npi.proficiencia.model.enums.EstadoCivil;
-import ufc.npi.proficiencia.model.enums.NecessidadeEspecial;
 import ufc.npi.proficiencia.model.enums.Papel;
 import ufc.npi.proficiencia.model.enums.Sexo;
 
@@ -40,7 +39,7 @@ public class Usuario implements UserDetails {
 
     private String telefone;
 
-    private String observacaoNecessidade;
+    private String cargo;
 
     private String pais;
 
@@ -53,8 +52,6 @@ public class Usuario implements UserDetails {
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate dataNascimento;
 
-    @Enumerated(EnumType.STRING)
-    private NecessidadeEspecial necessidadeEspecial;
 
     @Enumerated(EnumType.STRING)
     private EstadoCivil estadoCivil;
@@ -62,8 +59,6 @@ public class Usuario implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Sexo sexo;
 
-    @OneToMany(mappedBy = "usuario")
-    private List<Inscricao> inscricoes;
 
     public Integer getId() {
         return id;
@@ -138,12 +133,12 @@ public class Usuario implements UserDetails {
         this.telefone = telefone;
     }
 
-    public String getObservacaoNecessidade() {
-        return observacaoNecessidade;
+    public String getCargo() {
+        return cargo;
     }
 
-    public void setObservacaoNecessidade(String observacaoNecessidade) {
-        this.observacaoNecessidade = observacaoNecessidade;
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
     }
 
     public String getPais() {
@@ -186,14 +181,6 @@ public class Usuario implements UserDetails {
         this.dataNascimento = dataNascimento;
     }
 
-    public NecessidadeEspecial getNecessidadeEspecial() {
-        return necessidadeEspecial;
-    }
-
-    public void setNecessidadeEspecial(NecessidadeEspecial necessidadeEspecial) {
-        this.necessidadeEspecial = necessidadeEspecial;
-    }
-
     public EstadoCivil getEstadoCivil() {
         return estadoCivil;
     }
@@ -208,14 +195,6 @@ public class Usuario implements UserDetails {
 
     public void setSexo(Sexo sexo) {
         this.sexo = sexo;
-    }
-
-    public List<Inscricao> getInscricoes() {
-        return inscricoes;
-    }
-
-    public void setInscricoes(List<Inscricao> inscricoes) {
-        this.inscricoes = inscricoes;
     }
 
     @Override
