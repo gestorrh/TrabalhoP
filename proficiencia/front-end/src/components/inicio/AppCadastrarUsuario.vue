@@ -112,6 +112,19 @@
                                  v-validate="'required'">
                     </date-picker>
 
+                    <v-flex md6>
+                        <v-select
+                                :items="papeisList"
+                                item-text="label"
+                                item-value="value"
+                                label="Papel*"
+                                v-model="papel"
+                                data-vv-name="papel"
+                                v-validate="'required'"
+                                :error-messages="errors.collect('papel')"
+                        ></v-select>
+                    </v-flex>
+
                     <v-select
                             :items="estadoCivilList"
                             item-text="label"
@@ -238,6 +251,7 @@
                 telefone: null,
                 necessidadeEspecial: null,
                 observacaoNecessidade: null,
+                papel: null,
 
                 stepper: 1,
                 valid: true,
@@ -289,6 +303,9 @@
                         estadoCivil: {
                             required: () => "Campo obrigatório"
                         },
+                        papel: {
+                            required: () => "Campo obrigatório"
+                        },
                     }
                 }
             };
@@ -296,17 +313,25 @@
 
         computed: {
             papeisList() {
-                return store.getters["enums/papeis"]
+                return store.getters["enums/papeis"];
             },
             estadoCivilList() {
-                return store.getters["enums/estados"]
+                return store.getters["enums/estados"];
             },
             necessidadeEspecialList() {
-                return store.getters["enums/necessidades"]
+                return store.getters["enums/necessidades"];
+            },
+            papeis() {
+                let aux = [];
+                this.papel && aux.push(this.papel);
+                return aux;
             }
         },
 
         methods: {
+            label(nome) {
+                return this.papel === "GESTOR" ? nome + "*" : nome;
+            },
             toLogin() {
                 this.$emit('to-login');
             },
@@ -315,6 +340,7 @@
                 this.email= null;
                 this.cpf= null;
                 this.senha= null;
+                this.papel= null;
                 this.confirmacaoSenha= null;
                 this.endereco= null;
                 this.cidade= null;
@@ -339,7 +365,7 @@
                             email: this.email,
                             cpf: this.cpf,
                             senha: this.senha,
-                            papeis: ["CANDIDATO"],
+                            papeis: this.papeis,
                             endereco: this.endereco,
                             cidade: this.cidade,
                             uf: this.uf,

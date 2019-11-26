@@ -134,7 +134,7 @@ export default [
             requiresAuth: true,
             permissions: [
                 {
-                    role: "COORDENADOR",
+                    role: "GESTOR",
                     access: false,
                     redirect: 'CoordenadorExames'
                 },
@@ -172,7 +172,7 @@ export default [
                     access: true
                 },
                 {
-                    role: "COORDENADOR",
+                    role: "GESTOR",
                     access: true
                 }
             ]
@@ -209,30 +209,30 @@ export default [
         children: [
             {
                 path: '', name: 'CoordenadorExames',props: true, component: ListagemExamesPage,
-                meta: { permissions: [{ role: "COORDENADOR", access: true }] }
+                meta: { permissions: [{ role: "GESTOR", access: true }] }
             },
 
             {
                 path: 'adicionar', props: true, component: CadastrarExamePage,
-                meta: { permissions: [{ role: "COORDENADOR", access: true }] }
+                meta: { permissions: [{ role: "GESTOR", access: true }] }
             },
 
             {
                 path: ':id', name: 'CoordenadorLocalProva', props: true, component: DetalhesExameCoordenadorPage,
-                meta: { permissions: [{ role: "COORDENADOR", access: true }] }
+                meta: { permissions: [{ role: "GESTOR", access: true }] }
             },
 
             {
                 path: ':exameId/candidato-inscrito/:id', name: "CoordenadorInscricaoCandidato", props: true, component: DetalhesInscricaoPage,
-                meta: { permissions: [{ role: "COORDENADOR", access: true }] }
+                meta: { permissions: [{ role: "GESTOR", access: true }] }
             },
 
             {
                 path: ':id/editar', name: 'EditarExame', props: true, component: EditarExamePage,
-                meta: { permissions: [{ role: "COORDENADOR", access: true }] }
+                meta: { permissions: [{ role: "GESTOR", access: true }] }
             },
 
-            
+
 
         ]
     },
@@ -242,11 +242,11 @@ export default [
         children: [
             {
                 path: '', props: true,  component: DetalhesLocalProvaCoordenadorPage,
-                meta: { permissions: [{ role: "COORDENADOR", access: true }]}
+                meta: { permissions: [{ role: "GESTOR", access: true }]}
             },
             {
                 path: ':id',props: true, component: DetalhesLocalProvaCoordenadorPage,
-                meta: { permissions: [{ role: "COORDENADOR", access: true }] }
+                meta: { permissions: [{ role: "GESTOR", access: true }] }
             },
             {
                 path: ':id', props: true,  component: DetalhesLocalProvaCoordenadorPage,
@@ -255,7 +255,7 @@ export default [
             },
             {
                 path: ':idExame/candidato-inscrito/:id', props: true, component: DetalhesInscricaoPage,
-                meta: { permissions: [{ role: "COORDENADOR", access: true }] }
+                meta: { permissions: [{ role: "GESTOR", access: true }] }
             },
             {
                 path: ':idExame/candidato-inscrito/:id', props: true,  component: DetalhesInscricaoPage,
@@ -263,7 +263,7 @@ export default [
             },
         ]
     },
-    
+
 
     {
         path: '/coordenador/usuarios', component: HomePage, redirect: { name: 'NotFound' },
@@ -271,22 +271,22 @@ export default [
         children: [
             {
                 path: '', name: 'CoordenadorUsuarios', component: ListagemUsuariosPage,
-                meta: { permissions: [{ role: "COORDENADOR", access: true }] }
+                meta: { permissions: [{ role: "GESTOR", access: true }] }
             },
 
             {
                 path: 'adicionar', component: CadastrarUsuarioPage,
-                meta: { permissions: [{ role: "COORDENADOR", access: true }] }
+                meta: { permissions: [{ role: "GESTOR", access: true }] }
             },
 
             {
                 path: ':id', component: DetalhesUsuarioPage, props: true,
-                meta: { permissions: [{ role: "COORDENADOR", access: true }] }
+                meta: { permissions: [{ role: "GESTOR", access: true }] }
             },
 
             {
                 path: ':id/editar', name: 'EditarUsuario', component: AtualizarUsuarioPage, props: true,
-                meta: { permissions: [{ role: "COORDENADOR", access: true }] }
+                meta: { permissions: [{ role: "GESTOR", access: true }] }
             }
 
         ]
@@ -306,7 +306,7 @@ export default [
             requiresAuth: true,
             permissions: [
                 {
-                    role: "COORDENADOR",
+                    role: "GESTOR",
                     access: true
                 },
                 {

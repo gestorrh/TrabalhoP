@@ -103,12 +103,16 @@ const state = {
     ],
     papeis: [
         {
-            value: "COORDENADOR",
-            label: "Coordenador"
+            value: "GESTOR",
+            label: "gestor"
         },
         {
-            value: "CANDIDATO",
-            label: "Candidato"
+            value: "COLABORADOR",
+            label: "colaborador"
+        },
+        {
+            value: "MEDICO",
+            label: "medico"
         }
     ],
     formacoes: [

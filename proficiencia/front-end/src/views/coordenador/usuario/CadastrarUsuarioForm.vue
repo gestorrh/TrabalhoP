@@ -61,7 +61,7 @@
                   :error-messages="errors.collect('endereco')"
                   :label="label('Endereço')"
                   v-model="endereco"
-                  v-validate="{required: papel === 'CANDIDATO'}"
+                  v-validate="{required: papel === 'GESTOR'}"
                   data-vv-name="endereco"
                 ></v-text-field>
               </v-flex>
@@ -71,7 +71,7 @@
                   :error-messages="errors.collect('cidade')"
                   :label="label('Cidade')"
                   v-model="cidade"
-                  v-validate="{required: papel === 'CANDIDATO'}"
+                  v-validate="{required: papel === 'GESTOR'}"
                   data-vv-name="cidade"
                 ></v-text-field>
               </v-flex>
@@ -82,7 +82,7 @@
                   :label="label('UF')"
                   mask="AA"
                   v-model="uf"
-                  v-validate="{required: papel === 'CANDIDATO'}"
+                  v-validate="{required: papel === 'GESTOR'}"
                   data-vv-name="uf"
                 ></v-text-field>
               </v-flex>
@@ -92,7 +92,7 @@
                   :error-messages="errors.collect('pais')"
                   :label="label('País')"
                   v-model="pais"
-                  v-validate="{required: papel === 'CANDIDATO'}"
+                  v-validate="{required: papel === 'GESTOR'}"
                   data-vv-name="pais"
                 ></v-text-field>
               </v-flex>
@@ -104,7 +104,7 @@
                   row
                   v-model="sexo"
                   :error-messages="errors.collect('sexo')"
-                  v-validate="{required: papel === 'CANDIDATO'}"
+                  v-validate="{required: papel === 'GESTOR'}"
                   data-vv-name="sexo"
                 >
                   <v-radio label="Masculino" value="MASCULINO"></v-radio>
@@ -119,7 +119,7 @@
                   birthday
                   :error-messages="errors.collect('dataNascimento')"
                   data-vv-name="dataNascimento"
-                  v-validate="{required: papel === 'CANDIDATO'}"
+                  v-validate="{required: papel === 'GESTOR'}"
                 ></date-picker>
               </v-flex>
 
@@ -131,7 +131,7 @@
                   :label="label('Estado Civil')"
                   v-model="estadoCivil"
                   :error-messages="errors.collect('estadoCivil')"
-                  v-validate="{required: papel === 'CANDIDATO'}"
+                  v-validate="{required: papel === 'GESTOR'}"
                   data-vv-name="estadoCivil"
                 ></v-select>
               </v-flex>
@@ -142,7 +142,7 @@
                   :label="label('Telefone')"
                   :error-messages="errors.collect('telefone')"
                   data-vv-name="telefone"
-                  v-validate="{required: papel === 'CANDIDATO', min: 10}"
+                  v-validate="{required: papel === 'GESTOR', min: 10}"
                 ></telefone>
               </v-flex>
             </v-layout>
@@ -343,7 +343,7 @@ export default {
 
   methods: {
     label(nome) {
-      return this.papel === "CANDIDATO" ? nome + "*" : nome;
+      return this.papel === "GESTOR" ? nome + "*" : nome;
     },
     submit() {
       this.$validator.validateAll().then(result => {
