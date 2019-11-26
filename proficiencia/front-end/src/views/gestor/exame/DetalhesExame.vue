@@ -58,7 +58,7 @@
           <div slot="widget-actions">
             <v-layout row>
               <v-flex xs12>
-                <v-btn :to="'/coordenador/exames/' + exameId + '/editar'" color="indigo" flat>
+                <v-btn :to="'/gestor/exames/' + exameId + '/editar'" color="indigo" flat>
                   <v-icon small>edit</v-icon>Editar
                 </v-btn>
                 <v-btn
@@ -216,7 +216,7 @@
                   color="cyan"
                   outline
                   round
-                  v-bind:to="'/coordenador/localprova/'+ locais.item.id"
+                  v-bind:to="'/gestor/localprova/'+ locais.item.id"
                 >
                   <v-icon small>search</v-icon>Detalhes
                 </v-btn>
@@ -567,7 +567,7 @@ export default {
           position: 1,
           text: "Exames",
           disabled: false,
-          href: "/coordenador/exames"
+          href: "/gestor/exames"
         }
       ],
 

@@ -16,23 +16,23 @@ import NovaSenhaPage from '../views/inicio/NovaSenha'
 import MsgAlteracaoSenhaPage from '../views/inicio/MsgAlteracaoSenha'
 import TelaInicialPage from '../views/inicio/TelaInicial'
 
-import EditarExamePage from '../views/coordenador/exame/EditarExameForm'
+import EditarExamePage from '../views/gestor/exame/EditarExameForm'
 import DetalhesExameCandidatoPage from '../views/candidato/exame/DetalhesExame'
-import DetalhesExameCoordenadorPage from '../views/coordenador/exame/DetalhesExame'
-import DetalhesLocalProvaCoordenadorPage from '../views/coordenador/localProva/DetalhesLocalProva'
+import DetalhesExameCoordenadorPage from '../views/gestor/exame/DetalhesExame'
+import DetalhesLocalProvaCoordenadorPage from '../views/gestor/localProva/DetalhesLocalProva'
 
 import SelecoesAbertasPage from '../views/candidato/exame/ListagemAbertos'
-import ListagemExamesPage from '../views/coordenador/exame/ListagemTodos'
+import ListagemExamesPage from '../views/gestor/exame/ListagemTodos'
 
-import CadastrarExamePage from '../views/coordenador/exame/CadastrarExameForm'
+import CadastrarExamePage from '../views/gestor/exame/CadastrarExameForm'
 
-import CadastrarUsuarioPage from '../views/coordenador/usuario/CadastrarUsuarioForm'
-import DetalhesInscricaoPage from '../views/coordenador/inscricao/DetalhesInscricao'
-import ListagemUsuariosPage from '../views/coordenador/usuario/ListagemTodos'
+import CadastrarUsuarioPage from '../views/gestor/usuario/CadastrarUsuarioForm'
+import DetalhesInscricaoPage from '../views/gestor/inscricao/DetalhesInscricao'
+import ListagemUsuariosPage from '../views/gestor/usuario/ListagemTodos'
 
-import DetalhesUsuarioPage from '../views/coordenador/usuario/DetalhesUsuario'
+import DetalhesUsuarioPage from '../views/gestor/usuario/DetalhesUsuario'
 import DetalhesInscricaoCandidatoPage from '../views/candidato/inscricao/DetalhesInscricao'
-import AtualizarUsuarioPage from '../views/coordenador/usuario/EditarUsuarioForm'
+import AtualizarUsuarioPage from '../views/gestor/usuario/EditarUsuarioForm'
 
 import DadosPessoaisPage from '../views/usuario/Perfil'
 
@@ -204,7 +204,7 @@ export default [
     },
 
     {
-        path: '/coordenador/exames', props: true, component: HomePage, redirect: { name: 'NotFound' },
+        path: '/gestor/dashboard', props: true, component: HomePage, redirect: { name: 'NotFound' },
         meta: { requiresAuth: true },
         children: [
             {
@@ -237,7 +237,7 @@ export default [
         ]
     },
     {
-        path: '/coordenador/localprova', name: "LocalProva", component: HomePage, redirect: { name: 'NotFound' },
+        path: '/gestor/localprova', name: "LocalProva", component: HomePage, redirect: { name: 'NotFound' },
         meta: { requiresAuth: true },
         children: [
             {
@@ -266,7 +266,7 @@ export default [
 
 
     {
-        path: '/coordenador/usuarios', component: HomePage, redirect: { name: 'NotFound' },
+        path: '/gestor/usuarios', component: HomePage, redirect: { name: 'NotFound' },
         meta: { requiresAuth: true },
         children: [
             {

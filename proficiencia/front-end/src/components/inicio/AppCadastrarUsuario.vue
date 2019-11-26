@@ -146,21 +146,11 @@
                         >
                     </telefone>
 
-                    <v-select
-                            :items="necessidadeEspecialList"
-                            item-text="label"
-                            item-value="value"
-                            label="Necessidade Especial"
-                            v-model="necessidadeEspecial"
-                            data-vv-name="necessidadeEspecial"
-                            clearable
-                    ></v-select>
 
                     <v-text-field
-                            :disabled="necessidadeEspecial === null || necessidadeEspecial === '' || necessidadeEspecial === undefined"
-                            label="Observações sobre a necessidade"
-                            v-model="observacaoNecessidade"
-                            data-vv-name="observacaoNecessidade"
+                            label="Cargo"
+                            v-model="cargo"
+                            data-vv-name="cargo"
                     ></v-text-field>
 
                     <v-btn :disabled="errors.any()" color="primary" @click="submit" depressed>Cadastrar</v-btn>
@@ -249,8 +239,7 @@
                 dataNascimento: "",
                 estadoCivil: null,
                 telefone: null,
-                necessidadeEspecial: null,
-                observacaoNecessidade: null,
+                cargo: null,
                 papel: null,
 
                 stepper: 1,
@@ -318,9 +307,6 @@
             estadoCivilList() {
                 return store.getters["enums/estados"];
             },
-            necessidadeEspecialList() {
-                return store.getters["enums/necessidades"];
-            },
             papeis() {
                 let aux = [];
                 this.papel && aux.push(this.papel);
@@ -350,8 +336,7 @@
                 this.dataNascimento= "";
                 this.estadoCivil= null;
                 this.telefone= null;
-                this.necessidadeEspecial= null;
-                this.observacaoNecessidade= null;
+                this.cargo= null;
                 this.$validator.reset().then(() => {
                     this.stepper = 1;
                 });
@@ -374,8 +359,7 @@
                             dataNascimento: this.dataNascimento,
                             estadoCivil: this.estadoCivil,
                             telefone: this.telefone,
-                            necessidadeEspecial: this.necessidadeEspecial,
-                            observacaoNecessidade: this.observacaoNecessidade
+                            cargo: this.cargo
                         }).then(() => {
                             this.toLogin();
                             this.$emit("notificar", {cor: "success", mensagem: "Cadastro realizado com sucesso"});

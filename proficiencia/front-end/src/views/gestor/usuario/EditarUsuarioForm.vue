@@ -97,7 +97,7 @@
                   </v-flex>
                 </v-layout>
                 <v-layout row>
-                  <v-flex md3>
+                  <v-flex md4>
                     <v-radio-group
                       :label="label('Sexo')"
                       row
@@ -146,29 +146,18 @@
                   </v-flex>
                 </v-layout>
                 <v-layout row>
+
                   <v-flex xs4>
-                    <v-select
-                      :items="necessidadeEspecialList"
-                      item-text="label"
-                      item-value="value"
-                      label="Necessidade Especial"
-                      v-model="necessidadeEspecial"
-                      data-vv-name="necessidadeEspecial"
-                      clearable
-                    ></v-select>
-                  </v-flex>
-                  <v-flex xs8>
                     <v-text-field
-                      :disabled="necessidadeEspecial === null || necessidadeEspecial === '' || necessidadeEspecial === undefined"
-                      label="Observações sobre a necessidade"
-                      v-model="observacaoNecessidade"
-                      data-vv-name="observacaoNecessidade"
+                      label="Cargo"
+                      v-model="cargo"
+                      data-vv-name="cargo"
                     ></v-text-field>
                   </v-flex>
                 </v-layout>
 
                 <v-btn :disabled="errors.any()" depressed @click="submit" color="primary">CADASTRAR</v-btn>
-                <v-btn to="/coordenador/usuarios">CANCELAR</v-btn>
+                <v-btn to="/gestor/usuarios">CANCELAR</v-btn>
           </v-form>
         </div>
         <div slot="widget-actions">
@@ -265,8 +254,7 @@ export default {
       dataNascimento: "",
       estadoCivil: null,
       telefone: null,
-      necessidadeEspecial: null,
-      observacaoNecessidade: null,
+      cargo: null,
 
 
       snackbar: false,
@@ -319,7 +307,7 @@ export default {
       },
 
       breadcrumbItems: [
-        { position: 1, text: "Usuários", disabled: false, href: "/coordenador/usuarios" },
+        { position: 1, text: "Usuários", disabled: false, href: "/gestor/usuarios" },
         { position: 3, text: "Editar Usuário", disabled: true }
       ]
     };
@@ -331,9 +319,6 @@ export default {
     },
     estadoCivilList() {
       return store.getters["enums/estados"];
-    },
-    necessidadeEspecialList() {
-      return store.getters["enums/necessidades"];
     },
     papeis() {
       let aux = [];
@@ -356,14 +341,13 @@ export default {
       this.dataNascimento = response.data.dataNascimento;
       this.estadoCivil = response.data.estadoCivil;
       this.telefone = response.data.telefone;
-      this.necessidadeEspecial = response.data.necessidadeEspecial;
-      this.observacaoNecessidade = response.data.observacaoNecessidade;
+      this.cargo = response.data.cargo;
 
       this.breadcrumbItems.push({
           position: 2,
           text: this.nome != undefined ? this.nome : "Usuário",
           disabled: false,
-          href: "/coordenador/usuarios/" + this.id
+          href: "/gestor/usuarios/" + this.id
           //text: this.titulo,
           //disabled: true
         });
@@ -393,11 +377,10 @@ export default {
               dataNascimento: this.dataNascimento,
               estadoCivil: this.estadoCivil,
               telefone: this.telefone,
-              necessidadeEspecial: this.necessidadeEspecial,
-              observacaoNecessidade: this.observacaoNecessidade,
+              cargo: this.cargo,
             })
             .then(() => {
-              this.$router.push( "/coordenador/usuarios" ,{
+              this.$router.push( "/gestor/usuarios" ,{
                 name: "CoordenadorUsuarios",
                 params: {
                   cor: "success",

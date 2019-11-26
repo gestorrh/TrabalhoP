@@ -98,7 +98,7 @@
               </v-flex>
             </v-layout>
             <v-layout row>
-              <v-flex md3>
+              <v-flex md4>
                 <v-radio-group
                   :label="label('Sexo')"
                   row
@@ -148,28 +148,16 @@
             </v-layout>
             <v-layout row>
               <v-flex xs4>
-                <v-select
-                  :items="necessidadeEspecialList"
-                  item-text="label"
-                  item-value="value"
-                  label="Necessidade Especial"
-                  v-model="necessidadeEspecial"
-                  data-vv-name="necessidadeEspecial"
-                  clearable
-                ></v-select>
-              </v-flex>
-              <v-flex xs8>
                 <v-text-field
-                  :disabled="necessidadeEspecial === null || necessidadeEspecial === '' || necessidadeEspecial === undefined"
-                  label="Observações sobre a necessidade"
-                  v-model="observacaoNecessidade"
-                  data-vv-name="observacaoNecessidade"
+                  label="Cargo"
+                  v-model="cargo"
+                  data-vv-name="cargo"
                 ></v-text-field>
               </v-flex>
             </v-layout>
 
             <v-btn :disabled="errors.any()" depressed @click="submit" color="primary">CADASTRAR</v-btn>
-            <v-btn to="/coordenador/usuarios">VOLTAR</v-btn>
+            <v-btn to="/gestor/usuarios">VOLTAR</v-btn>
           </v-form>
         </div>
         <div slot="widget-actions">
@@ -266,7 +254,7 @@ export default {
       estadoCivil: null,
       telefone: null,
       necessidadeEspecial: null,
-      observacaoNecessidade: null,
+      cargo: null,
 
       snackbar: false,
       mensagem: "",
@@ -318,7 +306,7 @@ export default {
       },
 
       breadcrumbItems: [
-        { position: 1, text: "Usuários", disabled: false, href: "/coordenador/usuarios" },
+        { position: 1, text: "Usuários", disabled: false, href: "/gestor/usuarios" },
         { position: 2, text: "Cadastrar Usuário", disabled: true }
       ]
     };
@@ -363,7 +351,7 @@ export default {
               estadoCivil: this.estadoCivil,
               telefone: this.telefone,
               necessidadeEspecial: this.necessidadeEspecial,
-              observacaoNecessidade: this.observacaoNecessidade
+              cargo: this.cargo
             })
             .then(() => {
               this.$router.push({

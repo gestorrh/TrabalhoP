@@ -45,16 +45,6 @@
 
             <v-layout row>
               <v-flex xs6>
-                <span class="font-weight-bold text-uppercase">Necessidade Especial:</span>
-                <span class="font-weight-regular text-uppercase">{{ necessidadeEspecial }}</span>
-              </v-flex>
-              <v-flex xs6>
-                <span class="font-weight-bold text-uppercase">Observação Necessidade:</span>
-                <span class="font-weight-regular">{{ usuario.observacaoNecessidade }}</span>
-              </v-flex>
-            </v-layout>
-            <v-layout row>
-              <v-flex xs6>
                 <span class="font-weight-bold text-uppercase">Endereço:</span>
                 <span class="font-weight-regular">{{ usuario.endereco }}</span>
               </v-flex>
@@ -81,6 +71,12 @@
               <v-flex xs6>
                 <span class="font-weight-bold text-uppercase">País:</span>
                 <span class="font-weight-regular">{{ usuario.pais }}</span>
+              </v-flex>
+            </v-layout>
+            <v-layout row>
+              <v-flex xs6>
+                <span class="font-weight-bold text-uppercase">Cargo:</span>
+                <span class="font-weight-regular">{{ usuario.cargo }}</span>
               </v-flex>
             </v-layout>
           </div>
@@ -128,7 +124,7 @@
                     color="cyan"
                     outline
                     round
-                    :to="'/coordenador/exames/' + usuario.id + '/candidato-inscrito/'+ inscricoes.item.id"
+                    :to="'/gestor/exames/' + usuario.id + '/candidato-inscrito/'+ inscricoes.item.id"
                   >
                     <v-icon small>search</v-icon>Detalhes
                   </v-btn>
@@ -178,13 +174,6 @@ export default {
   },
 
   computed: {
-    necessidadeEspecial() {
-      return this.usuario.necessidadeEspecial
-        ? store.getters["enums/getLabelNecessidade"](
-            this.usuario.necessidadeEspecial
-          )
-        : "";
-    },
     sexo() {
       return this.usuario.sexo
         ? store.getters["enums/getLabelSexo"](this.usuario.sexo)
@@ -210,7 +199,6 @@ export default {
         uf: null,
         dataNascimento: null,
         endereco: null,
-        necessidadeEspecial: null,
         email: null,
         nome: null,
         papel: null,
@@ -221,11 +209,11 @@ export default {
         sexo: null,
         cpf: null,
         pais: null,
-        observacaoNecessidade: null
+        cargo: null
       },
       inscricoes: [],
       breadcrumbItems: [
-        { position: 1, text: "Usuários", disabled: false, href: "/coordenador/usuarios" }
+        { position: 1, text: "Usuários", disabled: false, href: "/gestor/usuarios" }
       ],
 
       dialog: false,

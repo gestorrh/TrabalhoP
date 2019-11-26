@@ -85,8 +85,8 @@ public class UsuarioServiceImpl implements UsuarioService {
         Usuario usuario = this.usuarioRepository.findById(id).get();
         if (usuario.getId().equals(userId)) {
             throw new ProficienciaException(Messages.ERRO_AUTOEXCLUSAO);
-        } else if (!(usuario.getInscricoes().isEmpty())) {
-            throw new ProficienciaException(Messages.ERRO_USUARIO_INSCRICOES_ATIVAS);
+        /*} else if (!(usuario.getInscricoes().isEmpty())) {
+            throw new ProficienciaException(Messages.ERRO_USUARIO_INSCRICOES_ATIVAS);*/
         } else {
             this.usuarioRepository.deleteById(id);
         }
