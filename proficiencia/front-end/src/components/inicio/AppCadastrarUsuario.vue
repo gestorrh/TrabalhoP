@@ -112,6 +112,19 @@
                                  v-validate="'required'">
                     </date-picker>
 
+                    <v-flex md6>
+                        <v-select
+                                :items="papeisList"
+                                item-text="label"
+                                item-value="value"
+                                label="Papel*"
+                                v-model="papel"
+                                data-vv-name="papel"
+                                v-validate="'required'"
+                                :error-messages="errors.collect('papel')"
+                        ></v-select>
+                    </v-flex>
+
                     <v-select
                             :items="estadoCivilList"
                             item-text="label"
@@ -133,21 +146,11 @@
                         >
                     </telefone>
 
-                    <v-select
-                            :items="necessidadeEspecialList"
-                            item-text="label"
-                            item-value="value"
-                            label="Necessidade Especial"
-                            v-model="necessidadeEspecial"
-                            data-vv-name="necessidadeEspecial"
-                            clearable
-                    ></v-select>
 
                     <v-text-field
-                            :disabled="necessidadeEspecial === null || necessidadeEspecial === '' || necessidadeEspecial === undefined"
-                            label="Observações sobre a necessidade"
-                            v-model="observacaoNecessidade"
-                            data-vv-name="observacaoNecessidade"
+                            label="Cargo"
+                            v-model="cargo"
+                            data-vv-name="cargo"
                     ></v-text-field>
 
                     <v-btn :disabled="errors.any()" color="primary" @click="submit" depressed>Cadastrar</v-btn>
@@ -236,8 +239,8 @@
                 dataNascimento: "",
                 estadoCivil: null,
                 telefone: null,
-                necessidadeEspecial: null,
-                observacaoNecessidade: null,
+                cargo: null,
+                papel: null,
 
                 stepper: 1,
                 valid: true,
@@ -289,6 +292,9 @@
                         estadoCivil: {
                             required: () => "Campo obrigatório"
                         },
+                        papel: {
+                            required: () => "Campo obrigatório"
+                        },
                     }
                 }
             };
@@ -296,17 +302,22 @@
 
         computed: {
             papeisList() {
-                return store.getters["enums/papeis"]
+                return store.getters["enums/papeis"];
             },
             estadoCivilList() {
-                return store.getters["enums/estados"]
+                return store.getters["enums/estados"];
             },
-            necessidadeEspecialList() {
-                return store.getters["enums/necessidades"]
+            papeis() {
+                let aux = [];
+                this.papel && aux.push(this.papel);
+                return aux;
             }
         },
 
         methods: {
+            label(nome) {
+                return this.papel === "GESTOR" ? nome + "*" : nome;
+            },
             toLogin() {
                 this.$emit('to-login');
             },
@@ -315,6 +326,7 @@
                 this.email= null;
                 this.cpf= null;
                 this.senha= null;
+                this.papel= null;
                 this.confirmacaoSenha= null;
                 this.endereco= null;
                 this.cidade= null;
@@ -324,8 +336,7 @@
                 this.dataNascimento= "";
                 this.estadoCivil= null;
                 this.telefone= null;
-                this.necessidadeEspecial= null;
-                this.observacaoNecessidade= null;
+                this.cargo= null;
                 this.$validator.reset().then(() => {
                     this.stepper = 1;
                 });
@@ -339,7 +350,7 @@
                             email: this.email,
                             cpf: this.cpf,
                             senha: this.senha,
-                            papeis: ["CANDIDATO"],
+                            papeis: this.papeis,
                             endereco: this.endereco,
                             cidade: this.cidade,
                             uf: this.uf,
@@ -348,8 +359,7 @@
                             dataNascimento: this.dataNascimento,
                             estadoCivil: this.estadoCivil,
                             telefone: this.telefone,
-                            necessidadeEspecial: this.necessidadeEspecial,
-                            observacaoNecessidade: this.observacaoNecessidade
+                            cargo: this.cargo
                         }).then(() => {
                             this.toLogin();
                             this.$emit("notificar", {cor: "success", mensagem: "Cadastro realizado com sucesso"});

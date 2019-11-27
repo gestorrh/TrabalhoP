@@ -70,10 +70,13 @@ const getters = {
         return state.user
     },
     isCoordenador(state) {
-        return state.user.roles.includes('COORDENADOR');
+        return state.user.roles.includes('GESTOR');
     },
-    isCandidato(state) {
-        return state.user.roles.includes('CANDIDATO');
+    isColaborador(state) {
+        return state.user.roles.includes('COLABORADOR');
+    },
+    isMedico(state) {
+        return state.user.roles.includes('MEDICO');
     }
 };
 

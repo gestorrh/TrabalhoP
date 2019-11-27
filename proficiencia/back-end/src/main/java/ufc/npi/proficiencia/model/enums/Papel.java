@@ -3,7 +3,7 @@ package ufc.npi.proficiencia.model.enums;
 import org.springframework.security.core.GrantedAuthority;
 
 public enum Papel implements GrantedAuthority {
-    CANDIDATO("DadosCandidato"), COORDENADOR("Coordenador"), SECRETARIO("Secretario"), EXAMINADOR("Examinador");
+    COLABORADOR("colaborador"), GESTOR("gestor"), MEDICO("medico");
     private String descricao;
 
     Papel(String valor) {

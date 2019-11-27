@@ -71,7 +71,7 @@
                         </v-flex>
                     </v-layout>
                     <v-layout row>
-                        <v-flex md3>
+                        <v-flex md4>
                             <v-radio-group :label="label('Sexo')" row v-model="sexo" :error-messages="errors.collect('form-usuario.sexo')" v-validate="{required: isCandidato}" data-vv-name="sexo">
                                 <v-radio label="Masculino" value="MASCULINO"></v-radio>
                                 <v-radio label="Feminino" value="FEMININO"></v-radio>
@@ -113,22 +113,10 @@
                     </v-layout>
                     <v-layout row>
                         <v-flex xs4>
-                            <v-select
-                                    :items="necessidadeEspecialList"
-                                    item-text="label"
-                                    item-value="value"
-                                    label="Necessidade Especial"
-                                    v-model="necessidadeEspecial"
-                                    data-vv-name="necessidadeEspecial"
-                                    clearable
-                            ></v-select>
-                        </v-flex>
-                        <v-flex xs8>
                             <v-text-field
-                                    :disabled="necessidadeEspecial === null || necessidadeEspecial === '' || necessidadeEspecial === undefined"
-                                    label="Observações sobre a necessidade"
-                                    v-model="observacaoNecessidade"
-                                    data-vv-name="observacaoNecessidade"
+                                    label="Cargo"
+                                    v-model="cargo"
+                                    data-vv-name="cargo"
                             ></v-text-field>
                         </v-flex>
                     </v-layout>
@@ -297,8 +285,7 @@
                 dataNascimento: "",
                 estadoCivil: null,
                 telefone: null,
-                necessidadeEspecial: null,
-                observacaoNecessidade: null,
+                cargo: null,
 
                 senhaAtual: null,
                 novaSenha: null,
@@ -373,9 +360,6 @@
             estadoCivilList() {
                 return store.getters["enums/estados"]
             },
-            necessidadeEspecialList() {
-                return store.getters["enums/necessidades"]
-            }
         },
         mounted() {
             this.$validator.localize('pt', this.dictionary);
@@ -401,8 +385,7 @@
                         this.dataNascimento = res.data.dataNascimento;
                         this.estadoCivil = res.data.estadoCivil;
                         this.telefone = res.data.telefone;
-                        this.necessidadeEspecial = res.data.necessidadeEspecial;
-                        this.observacaoNecessidade = res.data.observacaoNecessidade;
+                        this.cargo = res.data.cargo;
                     });
             },
 
@@ -421,8 +404,7 @@
                             dataNascimento: this.dataNascimento,
                             estadoCivil: this.estadoCivil,
                             telefone: this.telefone,
-                            necessidadeEspecial: this.necessidadeEspecial,
-                            observacaoNecessidade: this.observacaoNecessidade
+                            cargo: this.cargo
                         }).then(() => {
                             this.mensagem = "Dados atualizados com sucesso!";
                             this.cor = "success";

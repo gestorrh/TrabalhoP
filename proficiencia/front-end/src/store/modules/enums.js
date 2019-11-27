@@ -17,50 +17,6 @@ const state = {
             label: "Viúvo(a)"
         }
     ],
-    fases: [
-        {
-            value: "INSCRICAO",
-            label: "Inscrição",
-            posicao: 0
-        },
-        {
-            value: "SELECAO",
-            label: "Seleção",
-            posicao: 1
-        },
-        {
-            value: "AVALIACAO",
-            label: "Avaliação",
-            posicao: 2
-        },
-        {
-            value: "FINALIZADO",
-            label: "Finalizado",
-            posicao: 3
-        }
-    ],
-    necessidades: [
-        {
-            value: "FISICA",
-            label: "Física"
-        },
-        {
-            value: "AUDITIVA",
-            label: "Auditiva"
-        },
-        {
-            value: "VISUAL",
-            label: "Visual"
-        },
-        {
-            value: "MENTAL",
-            label: "Mental"
-        },
-        {
-            value: "MULTIPLA",
-            label: "Múltipla"
-        }
-    ],
     statusAvaliacao: [
         {
             value: "EM_AVALIACAO",
@@ -103,12 +59,16 @@ const state = {
     ],
     papeis: [
         {
-            value: "COORDENADOR",
-            label: "Coordenador"
+            value: "GESTOR",
+            label: "Gestor"
         },
         {
-            value: "CANDIDATO",
-            label: "Candidato"
+            value: "COLABORADOR",
+            label: "Colaborador"
+        },
+        {
+            value: "MEDICO",
+            label: "Médico"
         }
     ],
     formacoes: [

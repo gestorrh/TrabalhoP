@@ -7,8 +7,13 @@
           <div slot="widget-content">
             <v-tooltip top>
               <template v-slot:activator="{ on }">
+<<<<<<< HEAD:proficiencia/front-end/src/views/coordenador/usuario/ListagemTodos.vue
                 <v-btn absolute color="#00ACC1" dark fab right to="/coordenador/usuarios/adicionar" top v-on="on">
                   <v-icon>add</v-icon>
+=======
+                <v-btn absolute color="blue" dark fab right to="/gestor/usuarios/adicionar" top v-on="on">
+                  <v-icon>person_add</v-icon>
+>>>>>>> c426de99b2dd0abab857d9955af6764fb71e8ada:proficiencia/front-end/src/views/gestor/usuario/ListagemTodos.vue
                 </v-btn>
               </template>
               <span>Adicionar Usuário</span>
@@ -37,6 +42,7 @@
                 <td class="body-1">{{usuario.item.papeis}}</td>
 
                 <td>
+<<<<<<< HEAD:proficiencia/front-end/src/views/coordenador/usuario/ListagemTodos.vue
                   <v-tooltip top>
                     <template v-slot:activator="{ on }">                 
                       <v-btn :to="'/coordenador/usuarios/'+usuario.item.id" color="amber darken-4" v-on="on" fab small outline round>
@@ -46,6 +52,11 @@
                      <span>Detalhes</span>
                  </v-tooltip>        
 
+=======
+                  <v-btn :to="'/gestor/usuarios/'+usuario.item.id" color="cyan" outline round>
+                    <v-icon dark small>search</v-icon>Detalhes
+                  </v-btn>
+>>>>>>> c426de99b2dd0abab857d9955af6764fb71e8ada:proficiencia/front-end/src/views/gestor/usuario/ListagemTodos.vue
                   <v-tooltip top>
                     <template v-slot:activator="{ on }">
                       <v-btn

@@ -29,7 +29,7 @@
               </v-flex>
             </v-layout>
             <v-layout row>
-              <v-flex md6>
+              <v-flex md4>
                 <v-text-field
                   :error-messages="errors.collect('cpf')"
                   label="CPF*"
@@ -39,7 +39,16 @@
                   data-vv-name="cpf"
                 ></v-text-field>
               </v-flex>
-              <v-flex md6>
+
+                <v-flex md4>
+                  <v-text-field
+                          label="Cargo"
+                          v-model="cargo"
+                          data-vv-name="cargo"
+                  ></v-text-field>
+                </v-flex>
+
+              <v-flex md4>
                 <v-select
                   :items="papeisList"
                   item-text="label"
@@ -61,7 +70,7 @@
                   :error-messages="errors.collect('endereco')"
                   :label="label('Endereço')"
                   v-model="endereco"
-                  v-validate="{required: papel === 'CANDIDATO'}"
+                  v-validate="{required: papel === 'GESTOR'}"
                   data-vv-name="endereco"
                 ></v-text-field>
               </v-flex>
@@ -71,7 +80,7 @@
                   :error-messages="errors.collect('cidade')"
                   :label="label('Cidade')"
                   v-model="cidade"
-                  v-validate="{required: papel === 'CANDIDATO'}"
+                  v-validate="{required: papel === 'GESTOR'}"
                   data-vv-name="cidade"
                 ></v-text-field>
               </v-flex>
@@ -82,7 +91,7 @@
                   :label="label('UF')"
                   mask="AA"
                   v-model="uf"
-                  v-validate="{required: papel === 'CANDIDATO'}"
+                  v-validate="{required: papel === 'GESTOR'}"
                   data-vv-name="uf"
                 ></v-text-field>
               </v-flex>
@@ -92,19 +101,19 @@
                   :error-messages="errors.collect('pais')"
                   :label="label('País')"
                   v-model="pais"
-                  v-validate="{required: papel === 'CANDIDATO'}"
+                  v-validate="{required: papel === 'GESTOR'}"
                   data-vv-name="pais"
                 ></v-text-field>
               </v-flex>
             </v-layout>
             <v-layout row>
-              <v-flex md3>
+              <v-flex md4>
                 <v-radio-group
                   :label="label('Sexo')"
                   row
                   v-model="sexo"
                   :error-messages="errors.collect('sexo')"
-                  v-validate="{required: papel === 'CANDIDATO'}"
+                  v-validate="{required: papel === 'GESTOR'}"
                   data-vv-name="sexo"
                 >
                   <v-radio label="Masculino" value="MASCULINO"></v-radio>
@@ -119,7 +128,7 @@
                   birthday
                   :error-messages="errors.collect('dataNascimento')"
                   data-vv-name="dataNascimento"
-                  v-validate="{required: papel === 'CANDIDATO'}"
+                  v-validate="{required: papel === 'GESTOR'}"
                 ></date-picker>
               </v-flex>
 
@@ -131,10 +140,11 @@
                   :label="label('Estado Civil')"
                   v-model="estadoCivil"
                   :error-messages="errors.collect('estadoCivil')"
-                  v-validate="{required: papel === 'CANDIDATO'}"
+                  v-validate="{required: papel === 'GESTOR'}"
                   data-vv-name="estadoCivil"
                 ></v-select>
               </v-flex>
+
 
               <v-flex md3>
                 <telefone
@@ -142,34 +152,46 @@
                   :label="label('Telefone')"
                   :error-messages="errors.collect('telefone')"
                   data-vv-name="telefone"
-                  v-validate="{required: papel === 'CANDIDATO', min: 10}"
+                  v-validate="{required: papel === 'GESTOR', min: 10}"
                 ></telefone>
               </v-flex>
             </v-layout>
+
             <v-layout row>
               <v-flex xs4>
-                <v-select
-                  :items="necessidadeEspecialList"
-                  item-text="label"
-                  item-value="value"
-                  label="Necessidade Especial"
-                  v-model="necessidadeEspecial"
-                  data-vv-name="necessidadeEspecial"
-                  clearable
-                ></v-select>
-              </v-flex>
-              <v-flex xs8>
                 <v-text-field
-                  :disabled="necessidadeEspecial === null || necessidadeEspecial === '' || necessidadeEspecial === undefined"
-                  label="Observações sobre a necessidade"
-                  v-model="observacaoNecessidade"
-                  data-vv-name="observacaoNecessidade"
+                        :counter="0"
+                        :error-messages="errors.collect('senha')"
+                        label="Senha*"
+                        data-vv-name="senha"
+                        type="password"
+                        v-model="senha"
+                        v-validate="{required: true, min: 6}"
                 ></v-text-field>
               </v-flex>
+
+              <v-flex xs4>
+                <v-text-field
+                        :counter="0"
+                        :error-messages="errors.collect('confirmacaoSenha')"
+                        label="Confirmar senha*"
+                        data-vv-name="confirmacaoSenha"
+                        type="password"
+                        v-model="confirmacaoSenha"
+                        v-validate="{required: true, confirmed:senha}"
+                ></v-text-field>
+              </v-flex>
+
             </v-layout>
 
+<<<<<<< HEAD:proficiencia/front-end/src/views/coordenador/usuario/CadastrarUsuarioForm.vue
             <v-btn :disabled="errors.any()" depressed @click="submit" color="#006064" style="color:white">CADASTRAR</v-btn>
             <v-btn to="/coordenador/usuarios">VOLTAR</v-btn>
+=======
+
+            <v-btn :disabled="errors.any()" depressed @click="submit" color="primary">CADASTRAR</v-btn>
+            <v-btn to="/gestor/usuarios">VOLTAR</v-btn>
+>>>>>>> c426de99b2dd0abab857d9955af6764fb71e8ada:proficiencia/front-end/src/views/gestor/usuario/CadastrarUsuarioForm.vue
           </v-form>
         </div>
         <div slot="widget-actions">
@@ -259,6 +281,7 @@ export default {
       papel: null,
       endereco: null,
       cidade: null,
+      senha: null,
       uf: null,
       pais: null,
       sexo: null,
@@ -266,7 +289,7 @@ export default {
       estadoCivil: null,
       telefone: null,
       necessidadeEspecial: null,
-      observacaoNecessidade: null,
+      cargo: null,
 
       snackbar: false,
       mensagem: "",
@@ -301,6 +324,10 @@ export default {
             required: () => "Campo obrigatório"
           },
 
+          senha: {
+            required: () => "Campo obrigatório",
+            min: () => "A senha deve ter ao menos 6 dígitos"
+          },
           telefone: {
             required: () => "Campo obrigatório",
             min: () => "Telefone incompleto"
@@ -318,7 +345,7 @@ export default {
       },
 
       breadcrumbItems: [
-        { position: 1, text: "Usuários", disabled: false, href: "/coordenador/usuarios" },
+        { position: 1, text: "Usuários", disabled: false, href: "/gestor/usuarios" },
         { position: 2, text: "Cadastrar Usuário", disabled: true }
       ]
     };
@@ -343,7 +370,7 @@ export default {
 
   methods: {
     label(nome) {
-      return this.papel === "CANDIDATO" ? nome + "*" : nome;
+      return this.papel === "GESTOR" ? nome + "*" : nome;
     },
     submit() {
       this.$validator.validateAll().then(result => {
@@ -363,7 +390,8 @@ export default {
               estadoCivil: this.estadoCivil,
               telefone: this.telefone,
               necessidadeEspecial: this.necessidadeEspecial,
-              observacaoNecessidade: this.observacaoNecessidade
+              cargo: this.cargo,
+              senha: this.senha
             })
             .then(() => {
               this.$router.push({
