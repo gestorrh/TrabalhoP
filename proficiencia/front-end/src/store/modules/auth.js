@@ -74,6 +74,9 @@ const getters = {
     },
     isColaborador(state) {
         return state.user.roles.includes('COLABORADOR');
+    },
+    isMedico(state) {
+        return state.user.roles.includes('MEDICO');
     }
 };
 

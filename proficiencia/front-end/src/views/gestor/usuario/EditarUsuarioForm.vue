@@ -28,7 +28,7 @@
                   </v-flex>
                 </v-layout>
                 <v-layout row>
-                  <v-flex md6>
+                  <v-flex md4>
                     <v-text-field
                       :error-messages="errors.collect('cpf')"
                       label="CPF*"
@@ -38,7 +38,16 @@
                       data-vv-name="cpf"
                     ></v-text-field>
                   </v-flex>
-                  <v-flex md6>
+
+                  <v-flex md4>
+                    <v-text-field
+                            label="Cargo"
+                            v-model="cargo"
+                            data-vv-name="cargo"
+                    ></v-text-field>
+                  </v-flex>
+
+                  <v-flex md4>
                     <v-select
                       :items="papeisList"
                       item-text="label"
@@ -145,16 +154,7 @@
                     >></telefone>
                   </v-flex>
                 </v-layout>
-                <v-layout row>
 
-                  <v-flex xs4>
-                    <v-text-field
-                      label="Cargo"
-                      v-model="cargo"
-                      data-vv-name="cargo"
-                    ></v-text-field>
-                  </v-flex>
-                </v-layout>
 
                 <v-btn :disabled="errors.any()" depressed @click="submit" color="primary">CADASTRAR</v-btn>
                 <v-btn to="/gestor/usuarios">CANCELAR</v-btn>

@@ -270,7 +270,7 @@ export default {
       position: 2,
       text: this.tituloExame != undefined ? this.tituloExame : "Exame",
       disabled: false,
-      href: "/inscricao-exame-candidato/" + this.idExame
+      href: "/inscricao-dashboard-candidato/" + this.idExame
     });
 
     axios.get("usuario/authenticated").then(res => {
