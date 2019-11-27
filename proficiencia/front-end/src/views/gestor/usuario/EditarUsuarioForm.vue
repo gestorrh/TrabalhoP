@@ -380,8 +380,7 @@ export default {
               cargo: this.cargo,
             })
             .then(() => {
-              this.$router.push( "/gestor/usuarios" ,{
-                name: "CoordenadorUsuarios",
+              this.$router.push( "/gestor/usuarios/listarUsuarios" ,{
                 params: {
                   cor: "success",
                   snackbar: true,

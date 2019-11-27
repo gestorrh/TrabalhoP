@@ -388,16 +388,15 @@ export default {
               cargo: this.cargo,
               senha: this.senha
             })
-            .then(() => {
-              this.$router.push({
-                name: "CoordenadorUsuarios",
-                params: {
-                  cor: "success",
-                  snackbar: true,
-                  mensagem: "Cadastro realizado"
-                }
-              });
-            })
+                  .then(() => {
+                    this.$router.push( "/gestor/usuarios/listarUsuarios" ,{
+                      params: {
+                        cor: "success",
+                        snackbar: true,
+                        mensagem: "Cadastro Realizado"
+                      },
+                    });
+                  })
             .catch(error => {
               this.mensagem = error.response.data;
               this.cor = "error";

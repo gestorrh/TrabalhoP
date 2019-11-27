@@ -173,7 +173,7 @@ export default [
         meta: { requiresAuth: true },
         children: [
             {
-                path: '', name: 'gestorUsuarios', component: ListagemUsuariosPage,
+                path: 'listarUsuarios', name: 'gestorUsuarios', component: ListagemUsuariosPage,
                 meta: { permissions: [{ role: "GESTOR", access: true }] }
             },
 
