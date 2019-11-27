@@ -2,7 +2,7 @@
     <v-form>
         <v-stepper v-model="stepper">
             <v-stepper-header>
-                <v-stepper-step :complete="stepper > 1" step="1">Dados de acesso</v-stepper-step>
+                <v-stepper-step :complete="stepper > 1" step="1" style="color:red">Dados de acesso</v-stepper-step>
 
                 <v-stepper-step :complete="stepper > 2" step="2">Informações Pessoais</v-stepper-step>
             </v-stepper-header>
@@ -56,7 +56,7 @@
                     ></v-text-field>
 
 
-                    <v-btn color="primary" depressed @click="stepper = 2">
+                    <v-btn color="#006064" style="color:white" depressed @click="stepper = 2">
                         Continuar
                     </v-btn>
                     <v-btn @click="toLogin" depressed>

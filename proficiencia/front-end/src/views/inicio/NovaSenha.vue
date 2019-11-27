@@ -1,7 +1,7 @@
 <template>
     <v-app id="novaSenha">
         <div class="organizarLogo">
-            <v-img alt="Logo Sistema de Proficiência" id="logo" src="/static/logo-01.png"></v-img>
+            <v-img alt="Logo Sistema de Proficiência" id="logo" src="/static/logo-02.png"></v-img>
         </div>
         <v-content>
             <v-container fill-height fluid>
@@ -105,9 +105,6 @@
     };
 </script>
 <style lang="css" scoped>
-    #logo {
-        background: #1c6eb7;
-    }
 
     @media all and (max-width: 319px) {
         #novaSenha {

@@ -2,7 +2,7 @@
     <v-app id="recuperarSenha">
         <div class="organizarLogo">
             <router-link to="/">
-                <v-img alt="Logo Sistema de Proficiência" id="logo" src="/static/logo-01.png"></v-img>
+                <v-img alt="Logo Sistema de Proficiência" id="logo" src="/static/logo-02.png"></v-img>
             </router-link>
         </div>
         <v-content>
@@ -99,9 +99,6 @@
     };
 </script>
 <style lang="css" scoped>
-    #logo {
-        background: #1c6eb7;
-    }
 
     @media all and (max-width: 319px) {
         #recuperarSenha {

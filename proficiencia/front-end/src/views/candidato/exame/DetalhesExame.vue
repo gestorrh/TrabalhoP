@@ -63,7 +63,7 @@
                   <v-btn
                     color="success"
                     flat
-                    :to="{name: 'RealizarInscricao', params:{id: this.id, titulo: this.exame.titulo}}"
+                    :to="{name: 'CU', params:{id: this.id, titulo: this.exame.titulo}}"
                   >
                     <v-icon small>note_add</v-icon>Inscreva-se
                   </v-btn>

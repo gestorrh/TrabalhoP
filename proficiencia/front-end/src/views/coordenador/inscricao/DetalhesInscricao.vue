@@ -101,7 +101,8 @@
             <v-layout row>
               <v-flex xs12>
                 <v-btn
-                  color="indigo"
+                  color="primary" 
+                  dark
                   flat
                   @click="abrirDialogAnalise()"
                   v-if="!isHidden"

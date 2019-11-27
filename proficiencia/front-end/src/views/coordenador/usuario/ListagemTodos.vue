@@ -7,8 +7,8 @@
           <div slot="widget-content">
             <v-tooltip top>
               <template v-slot:activator="{ on }">
-                <v-btn absolute color="blue" dark fab right to="/coordenador/usuarios/adicionar" top v-on="on">
-                  <v-icon>person_add</v-icon>
+                <v-btn absolute color="#00ACC1" dark fab right to="/coordenador/usuarios/adicionar" top v-on="on">
+                  <v-icon>add</v-icon>
                 </v-btn>
               </template>
               <span>Adicionar Usuário</span>
@@ -37,13 +37,20 @@
                 <td class="body-1">{{usuario.item.papeis}}</td>
 
                 <td>
-                  <v-btn :to="'/coordenador/usuarios/'+usuario.item.id" color="cyan" outline round>
-                    <v-icon dark small>search</v-icon>Detalhes
-                  </v-btn>
+                  <v-tooltip top>
+                    <template v-slot:activator="{ on }">                 
+                      <v-btn :to="'/coordenador/usuarios/'+usuario.item.id" color="amber darken-4" v-on="on" fab small outline round>
+                        <v-icon dark small>storage</v-icon>
+                      </v-btn>
+                    </template>
+                     <span>Detalhes</span>
+                 </v-tooltip>        
+
                   <v-tooltip top>
                     <template v-slot:activator="{ on }">
                       <v-btn
-                        color="indigo"
+                        color="primary" 
+                        dark
                         fab
                         outline
                         small

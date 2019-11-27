@@ -2,7 +2,7 @@
     <v-app id="telaInicial">
         <div class="organizarLogo">
             <router-link to="/">
-                <v-img alt="Logo Sistema de Proficiência" id="logo" src="/static/logo-01.png"></v-img>
+                <v-img alt="Logo Sistema de Proficiência" id="logo" src="/static/logo-02.png"></v-img>
             </router-link>
         </div>
         <v-content>
@@ -69,9 +69,7 @@
     };
 </script>
 <style lang="css" scoped>
-    #logo {
-        background: #1c6eb7;
-    }
+
 
     @media all and (max-width: 319px) {
         #telaInicial {
@@ -103,7 +101,7 @@
 
     @media all and (max-width: 1279px) and (min-width: 1024px) {
         #telaInicial {
-            background: #efefef url("/static/back-1024.png");
+            background: #efefef url("/static/back-1012.png");
             background-size: 1024px 656px;
         }
     }
@@ -111,7 +109,7 @@
     @media all and (max-width: 1561px) and (min-width: 1280px) {
         #telaInicial {
             background: #efefef url("/static/back-1280.png");
-            background-size: 1280px 819px;
+            background-size: 1280px 795px;
         }
     }
 

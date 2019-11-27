@@ -87,7 +87,7 @@
           <div slot="widget-actions">
             <v-layout row>
               <v-flex xs12>
-                <v-btn color="indigo" flat :to=" usuario.id + '/editar'">
+                <v-btn color="primary" dark flat :to=" usuario.id + '/editar'">
                   <v-icon small>edit</v-icon>Editar
                 </v-btn>
                 <v-btn color="error" flat @click="dialog = true">

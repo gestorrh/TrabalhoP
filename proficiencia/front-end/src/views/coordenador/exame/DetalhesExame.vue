@@ -58,7 +58,7 @@
           <div slot="widget-actions">
             <v-layout row>
               <v-flex xs12>
-                <v-btn :to="'/coordenador/exames/' + exameId + '/editar'" color="indigo" flat>
+                <v-btn :to="'/coordenador/exames/' + exameId + '/editar'" color="primary" dark flat>
                   <v-icon small>edit</v-icon>Editar
                 </v-btn>
                 <v-btn
@@ -226,7 +226,8 @@
                     <v-btn
                       :disabled="naoPermiteAdicionarEditarLocal"
                       @click="abrirDialogEditarLocal(locais.item)"
-                      color="indigo"
+                      color="primary" 
+                      dark
                       fab
                       outline
                       small

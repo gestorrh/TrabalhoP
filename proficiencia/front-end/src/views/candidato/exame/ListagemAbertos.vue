@@ -19,7 +19,7 @@
               <td class="body-1">{{ exame.item.inscricoes }} / {{ exame.item.numeroVagas }}</td>
               <td>
                 <v-btn
-                  color="cyan"
+                  color="#00838F"
                   outline
                   round
                   v-bind:to="'/candidato/exames-abertos/' + exame.item.id"

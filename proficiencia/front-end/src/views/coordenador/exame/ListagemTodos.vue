@@ -7,8 +7,8 @@
                     <div slot="widget-content">
                         <v-tooltip top>
                             <template v-slot:activator="{ on }">
-                                <v-btn absolute color="blue" dark fab right to="/coordenador/exames/adicionar" top v-on="on">
-                                    <v-icon>note_add</v-icon>
+                                <v-btn absolute color="#00ACC1" dark fab right to="/coordenador/exames/adicionar" top v-on="on">
+                                    <v-icon>add</v-icon>
                                 </v-btn>
                             </template>
                             <span>Adicionar Exame</span>
@@ -20,16 +20,23 @@
                                 <td class="body-1 text-uppercase">{{ getLabelFase(exames.item.fase) }}</td>
                                 <td class="body-1">{{ exames.item.inscricoes }} / {{ exames.item.numeroVagas }}</td>
 
-                                <v-btn color="cyan"
-                                       outline
-                                       round
-                                       :to="'/coordenador/exames/' + exames.item.id">
-                                    <v-icon dark small>search</v-icon>
-                                    Detalhes
-                                </v-btn>
                                 <v-tooltip top>
                                     <template v-slot:activator="{ on }">
-                                        <v-btn color="indigo" fab outline small 
+                                        <v-btn color="amber darken-4"
+                                            fab
+                                            outline
+                                            round
+                                            small
+                                            v-on="on"
+                                            :to="'/coordenador/exames/' + exames.item.id">
+                                            <v-icon dark small>storage</v-icon>
+                                        </v-btn>
+                                    </template>
+                                    <span>Detalhes</span>
+                                </v-tooltip>        
+                                <v-tooltip top>
+                                    <template v-slot:activator="{ on }">
+                                        <v-btn color="primary" dark fab outline small 
                                         v-bind:to="{name: 'EditarExame', params:{id: exames.item.id}}"
                                                v-on="on">
                                             <v-icon>edit</v-icon>
