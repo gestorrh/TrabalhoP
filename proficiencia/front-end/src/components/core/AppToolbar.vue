@@ -8,8 +8,7 @@
             <v-btn flat to="/gestor/usuarios">Usuários</v-btn>
         </v-toolbar-items>
         <v-toolbar-items class="ml-3" v-if="isColaborador">
-            <v-btn flat to="/candidato/inscricoes">Minhas Inscrições</v-btn>
-            <v-btn flat to="/candidato/exames-abertos">Seleções Abertas</v-btn>
+            <v-btn flat to="/colaborador/listarConsultas">Minhas Consultas</v-btn>
         </v-toolbar-items>
         <v-toolbar-items class="ml-3" v-if="isMedico">
             <v-btn flat to="/medico/exames/listarExames">Lista de Exames</v-btn>

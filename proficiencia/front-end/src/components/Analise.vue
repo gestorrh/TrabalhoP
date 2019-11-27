@@ -292,7 +292,7 @@ export default {
             .catch(() => {
               this.snackbar = true;
               this.mensagem =
-                "Não foi possível deferir a inscrição, pois não existe local de prova com vaga para alocar o candidato !";
+                "Não foi possível deferir a inscrição, pois não existe local de prova com vaga para alocar o colaborador !";
               this.cor = "error";
               this.dialog = false;
               this.limparCampos();
