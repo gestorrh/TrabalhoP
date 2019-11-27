@@ -1,6 +1,6 @@
 <template>
-    <v-toolbar app color="primary" dark fixed>
-        <router-link :to="{ path: '/'}"><img alt="Logo NPI" src="/static/logo-01.png"></router-link>
+    <v-toolbar app color="#006064" dark fixed>
+        <router-link :to="{ path: '/'}"><img alt="Logo NPI" src="/static/logo-03.png"></router-link>
         <v-spacer></v-spacer>
 
         <v-toolbar-items class="ml-3" v-if="isCoordenador">

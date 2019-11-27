@@ -9,7 +9,7 @@
             <v-text-field @keydown="removeError" append-icon="lock" id="password" label="Senha" name="password"
                           type="password" v-model="password"></v-text-field>
             <v-card-actions class="layout column align-center">
-                <v-btn :loading="loading" color="primary" large type="submit">Entrar</v-btn>
+                <v-btn :loading="loading" color="#006064" style="color:white" large type="submit">Entrar</v-btn>
             </v-card-actions>
             <p class="recupSenha">Esqueceu sua senha ? <a href="/recuperacao"> Recuperar senha</a></p>
         </v-card-text>

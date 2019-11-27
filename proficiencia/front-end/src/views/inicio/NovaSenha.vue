@@ -39,7 +39,8 @@
                                                 :disabled="(token.usuario.senha != conf_senha) || (token.usuario.senha.length < 6)"
                                                 :loading="loading"
                                                 @click="novaSenha"
-                                                color="primary"
+                                                color="#006064"
+                                                style="color:white"
                                                 large
                                                 type="button"
                                         >Salvar
@@ -105,9 +106,6 @@
     };
 </script>
 <style lang="css" scoped>
-    #logo {
-        background: #1c6eb7;
-    }
 
     @media all and (max-width: 319px) {
         #novaSenha {
