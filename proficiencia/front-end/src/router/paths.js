@@ -7,31 +7,25 @@ import NotFoundPage from '../views/utils/NotFoundPage'
 import AccessDeniedPage from '../views/utils/AccessDeniedPage'
 import ServerErrorPage from '../views/utils/ServerErrorPage'
 
-import RealizarInscricaoPage from '../views/candidato/inscricao/RealizarInscricaoForm'
-import MinhasInscricoesPage from '../views/candidato/inscricao/MinhasInscricoes'
-
 import RecuperarSenhaPage from '../views/inicio/RecuperarSenha'
 import MsgEnvioEmailPage from '../views/inicio/MsgEnvioEmail'
 import NovaSenhaPage from '../views/inicio/NovaSenha'
 import MsgAlteracaoSenhaPage from '../views/inicio/MsgAlteracaoSenha'
 import TelaInicialPage from '../views/inicio/TelaInicial'
 
-import DetalhesExameCandidatoPage from '../views/candidato/exame/DetalhesExame'
 
-import SelecoesAbertasPage from '../views/candidato/exame/ListagemAbertos'
-
+import ListarConsultas from "../views/colaborador/ListarConsultas";
 
 import dash from '../views/gestor/dashboard/ListagemTodos'
 import CadastrarUsuarioPage from '../views/gestor/usuario/CadastrarUsuarioForm'
 import ListagemUsuariosPage from '../views/gestor/usuario/ListagemTodos'
 import DetalhesUsuarioPage from '../views/gestor/usuario/DetalhesUsuario'
-import DetalhesInscricaoCandidatoPage from '../views/candidato/inscricao/DetalhesInscricao'
 import AtualizarUsuarioPage from '../views/gestor/usuario/EditarUsuarioForm'
 
 import CadastrarExame from "../views/medico/CadastrarExame";
 import ListagemExames from "../views/medico/ListagemExames";
-import DetalhesExame from "../views/candidato/exame/DetalhesExame";
 import EditarExame from "../views/medico/EditarExame";
+import DetalhesExame from "../views/medico/DetalhesExame";
 
 import DadosPessoaisPage from '../views/usuario/Perfil'
 
@@ -140,7 +134,7 @@ export default [
                 {
                     role: "COLABORADOR",
                     access: false,
-                    redirect: 'CandidatoInscricoes'
+                    redirect: 'ListarConsultas'
                 },
                 {
                     role: "MEDICO",
@@ -152,56 +146,11 @@ export default [
     },
 
     {
-        path: '/candidato/inscricoes', component: HomePage, redirect: { name: 'NotFound' },
+        path: '/colaborador', component: HomePage, redirect: { name: 'NotFound' },
         meta: { requiresAuth: true },
         children: [
             {
-                path: '', name: 'CandidatoInscricoes', component: MinhasInscricoesPage,
-                meta: { permissions: [{ role: "COLABORADOR", access: true }] }
-            },
-
-            {
-                path: ':id', component: DetalhesInscricaoCandidatoPage,
-                meta: { permissions: [{ role: "COLABORADOR", access: true }] }
-            },
-        ]
-    },
-    {
-        path: '/inscricao-candidato/:id',
-        meta: {
-            requiresAuth: true,
-            permissions: [
-                {
-                    role: "COLABORADOR",
-                    access: true
-                },
-                {
-                    role: "GESTOR",
-                    access: true
-                }
-            ]
-        },
-        name: 'Detalhes Inscricao Candidato',
-        component: DetalhesInscricaoCandidatoPage
-    },
-
-
-    {
-        path: '/candidato/exames', component: HomePage, redirect: { name: 'NotFound' },
-        meta: { requiresAuth: true },
-        children: [
-            {
-                path: '', name: 'CandidatoExamesAbertos', component: SelecoesAbertasPage,
-                meta: { permissions: [{ role: "COLABORADOR", access: true }] }
-            },
-
-            {
-                path: ':id', component: DetalhesExameCandidatoPage, props: true,
-                meta: { permissions: [{ role: "COLABORADOR", access: true }] }
-            },
-
-            {
-                path: ':id/inscricao', name: 'RealizarInscricao', props: true, component: RealizarInscricaoPage,
+                path: 'listarConsultas', name: 'ListarConsultas', component: ListarConsultas,
                 meta: { permissions: [{ role: "COLABORADOR", access: true }] }
             }
         ]

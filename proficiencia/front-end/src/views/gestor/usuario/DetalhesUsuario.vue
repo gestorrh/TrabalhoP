@@ -124,7 +124,7 @@
                     color="cyan"
                     outline
                     round
-                    :to="'/gestor/exames/' + usuario.id + '/candidato-inscrito/'+ inscricoes.item.id"
+                    :to="'/gestor/exames/' + usuario.id + '/colaborador-inscrito/'+ inscricoes.item.id"
                   >
                     <v-icon small>search</v-icon>Detalhes
                   </v-btn>
