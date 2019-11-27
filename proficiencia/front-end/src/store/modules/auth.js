@@ -6,7 +6,7 @@ const state = {
     token: localStorage.getItem("token"),
     token_update_date: new Date(localStorage.getItem("token_update_date")),
     user: {
-        roles: JSON.parse(localStorage.getItem("papeis")) ? JSON.parse(localStorage.getItem("papeis")) : []
+        roles: JSON.parse(localStorage.getItem("papeis") || "[]") ? JSON.parse(localStorage.getItem("papeis") || "[]") : "[]"
     }
 };
 
