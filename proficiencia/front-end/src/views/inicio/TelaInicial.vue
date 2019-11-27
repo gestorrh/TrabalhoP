@@ -2,7 +2,7 @@
     <v-app id="telaInicial">
         <div class="organizarLogo">
             <router-link to="/">
-                <v-img alt="Logo Sistema de Proficiência" id="logo" src="/static/logo-01.png"></v-img>
+                <v-img alt="Logo Sistema de Proficiência" id="logo" src="/static/logo-03.png"></v-img>
             </router-link>
         </div>
         <v-content>

@@ -7,8 +7,8 @@
                     <div slot="widget-content">
                         <v-tooltip top>
                             <template v-slot:activator="{ on }">
-                                <v-btn absolute color="blue" dark fab right to="" top v-on="on">
-                                    <v-icon>note_add</v-icon>
+                                <v-btn absolute color="#00ACC1" dark fab right to="" top v-on="on">
+                                    <v-icon>add</v-icon>
                                 </v-btn>
                             </template>
                             <span>Adicionar Exame</span>
