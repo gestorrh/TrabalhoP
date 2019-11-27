@@ -157,7 +157,7 @@
 
 
                 <v-btn :disabled="errors.any()" depressed @click="submit" color="primary">CADASTRAR</v-btn>
-                <v-btn to="/gestor/usuarios">CANCELAR</v-btn>
+                <v-btn to="/gestor/usuarios/listarUsuarios">CANCELAR</v-btn>
           </v-form>
         </div>
         <div slot="widget-actions">
