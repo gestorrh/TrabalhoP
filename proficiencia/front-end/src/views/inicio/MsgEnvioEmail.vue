@@ -46,9 +46,6 @@
     };
 </script>
 <style lang="css" scoped>
-    #logo {
-        background: #1c6eb7;
-    }
 
     @media all and (max-width: 319px) {
         #msgEmail {

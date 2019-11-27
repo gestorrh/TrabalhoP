@@ -18,7 +18,8 @@
                             <v-card-actions class="layout column align-center">
                                 <v-btn
                                         @click="login"
-                                        color="primary"
+                                        color="#006064"
+                                        style="color:white"
                                         large
                                         to="/"
                                         type="button"
@@ -42,9 +43,6 @@
     };
 </script>
 <style lang="css" scoped>
-    #logo {
-        background: #1c6eb7;
-    }
 
     @media all and (max-width: 319px) {
         #msgSenha {

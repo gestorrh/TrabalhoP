@@ -59,7 +59,7 @@
     }
 
     .disabled {
-        color: grey;
+        color: gray;
         pointer-events: none
     }
 </style>

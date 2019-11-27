@@ -69,9 +69,6 @@
     };
 </script>
 <style lang="css" scoped>
-    #logo {
-        background: #1c6eb7;
-    }
 
     @media all and (max-width: 319px) {
         #telaInicial {
@@ -111,7 +108,7 @@
     @media all and (max-width: 1561px) and (min-width: 1280px) {
         #telaInicial {
             background: #efefef url("/static/back-1280.png");
-            background-size: 1280px 819px;
+            background-size: 1280px 795px;
         }
     }
 

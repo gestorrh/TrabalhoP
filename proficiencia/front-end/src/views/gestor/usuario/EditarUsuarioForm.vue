@@ -156,7 +156,7 @@
                 </v-layout>
 
 
-                <v-btn :disabled="errors.any()" depressed @click="submit" color="primary">CADASTRAR</v-btn>
+                <v-btn :disabled="errors.any()" depressed @click="submit" color="#006064" style="color:white">CADASTRAR</v-btn>
                 <v-btn to="/gestor/usuarios/listarUsuarios">CANCELAR</v-btn>
           </v-form>
         </div>

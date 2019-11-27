@@ -184,7 +184,7 @@
             <div slot="widget-actions">
                 <v-layout row>
                     <v-flex xs12>
-                        <v-btn :disabled="errors.any('form-senha')" @click="submitSenha" color="primary" depressed>Alterar</v-btn>
+                        <v-btn :disabled="errors.any('form-senha')" @click="submitSenha" color="#006064" style="color:white" depressed>Alterar</v-btn>
                     </v-flex>
                 </v-layout>
             </div>

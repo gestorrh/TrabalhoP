@@ -56,7 +56,7 @@
                     ></v-text-field>
 
 
-                    <v-btn color="primary" depressed @click="stepper = 2">
+                    <v-btn color="#006064" style="color:white" depressed @click="stepper = 2">
                         Continuar
                     </v-btn>
                     <v-btn @click="toLogin" depressed>
@@ -153,7 +153,7 @@
                             data-vv-name="cargo"
                     ></v-text-field>
 
-                    <v-btn :disabled="errors.any()" color="primary" @click="submit" depressed>Cadastrar</v-btn>
+                    <v-btn :disabled="errors.any()" color="#006064" style="color:white" @click="submit" depressed>Cadastrar</v-btn>
                     <v-btn @click="stepper = 1" depressed>Voltar</v-btn>
                 </v-stepper-content>
             </v-stepper-items>
