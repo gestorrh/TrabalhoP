@@ -96,7 +96,7 @@
       </v-flex>
 
       <v-flex xs12>
-        <v-widget title="Inscrições do Usuário">
+        <v-widget title="Consultas do Usuário">
           <div slot="widget-content">
             <v-data-table
               :headers="headers_exames"
@@ -189,10 +189,10 @@ export default {
   data() {
     return {
       headers_exames: [
-        { text: "TÍTULO", value: "titulo", sortable: false },
-        { text: "FASE", value: "fase", sortable: false },
-        { text: "NOTA", value: "nota", sortable: false },
-        { text: "STATUS", value: "status", sortable: false },
+        { text: "Data", value: "data", sortable: false },
+        { text: "Tipo de Exame", value: "tipo", sortable: false },
+        { text: "Medico", value: "nota", sortable: false },
+        { text: "Status", value: "status", sortable: false },
         { text: "", value: "acoes", sortable: false }
       ],
       usuario: {
@@ -213,7 +213,7 @@ export default {
       },
       inscricoes: [],
       breadcrumbItems: [
-        { position: 1, text: "Usuários", disabled: false, href: "/gestor/usuarios" }
+        { position: 1, text: "Usuários", disabled: false, href: "/gestor/usuarios/listarUsuarios" }
       ],
 
       dialog: false,
@@ -267,8 +267,7 @@ export default {
       axios
         .delete("/usuario/excluir-usuario/" + this.id)
         .then(() => {
-          this.$router.push({
-            name: "CoordenadorUsuarios",
+          this.$router.push( "/gestor/usuarios/listarUsuarios", {
             params: {
               cor: "success",
               snackbar: true,
