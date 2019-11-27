@@ -16,23 +16,22 @@ import NovaSenhaPage from '../views/inicio/NovaSenha'
 import MsgAlteracaoSenhaPage from '../views/inicio/MsgAlteracaoSenha'
 import TelaInicialPage from '../views/inicio/TelaInicial'
 
-import EditarExamePage from '../views/gestor/exame/EditarExameForm'
 import DetalhesExameCandidatoPage from '../views/candidato/exame/DetalhesExame'
-import DetalhesExameCoordenadorPage from '../views/gestor/exame/DetalhesExame'
-import DetalhesLocalProvaCoordenadorPage from '../views/gestor/localProva/DetalhesLocalProva'
 
 import SelecoesAbertasPage from '../views/candidato/exame/ListagemAbertos'
-import ListagemExamesPage from '../views/gestor/exame/ListagemTodos'
 
-import CadastrarExamePage from '../views/gestor/exame/CadastrarExameForm'
 
+import dash from '../views/gestor/dashboard/ListagemTodos'
 import CadastrarUsuarioPage from '../views/gestor/usuario/CadastrarUsuarioForm'
-import DetalhesInscricaoPage from '../views/gestor/inscricao/DetalhesInscricao'
 import ListagemUsuariosPage from '../views/gestor/usuario/ListagemTodos'
-
 import DetalhesUsuarioPage from '../views/gestor/usuario/DetalhesUsuario'
 import DetalhesInscricaoCandidatoPage from '../views/candidato/inscricao/DetalhesInscricao'
 import AtualizarUsuarioPage from '../views/gestor/usuario/EditarUsuarioForm'
+
+import CadastrarExame from "../views/medico/CadastrarExame";
+import ListagemExames from "../views/medico/ListagemExames";
+import DetalhesExame from "../views/candidato/exame/DetalhesExame";
+import EditarExame from "../views/medico/EditarExame";
 
 import DadosPessoaisPage from '../views/usuario/Perfil'
 
@@ -136,12 +135,17 @@ export default [
                 {
                     role: "GESTOR",
                     access: false,
-                    redirect: 'CoordenadorExames'
+                    redirect: 'Dashboard'
                 },
                 {
-                    role: "CANDIDATO",
+                    role: "COLABORADOR",
                     access: false,
                     redirect: 'CandidatoInscricoes'
+                },
+                {
+                    role: "MEDICO",
+                    access: false,
+                    redirect: 'listarExames'
                 }
             ]
         }
@@ -153,12 +157,12 @@ export default [
         children: [
             {
                 path: '', name: 'CandidatoInscricoes', component: MinhasInscricoesPage,
-                meta: { permissions: [{ role: "CANDIDATO", access: true }] }
+                meta: { permissions: [{ role: "COLABORADOR", access: true }] }
             },
 
             {
                 path: ':id', component: DetalhesInscricaoCandidatoPage,
-                meta: { permissions: [{ role: "CANDIDATO", access: true }] }
+                meta: { permissions: [{ role: "COLABORADOR", access: true }] }
             },
         ]
     },
@@ -168,7 +172,7 @@ export default [
             requiresAuth: true,
             permissions: [
                 {
-                    role: "CANDIDATO",
+                    role: "COLABORADOR",
                     access: true
                 },
                 {
@@ -183,94 +187,44 @@ export default [
 
 
     {
-        path: '/candidato/exames-abertos', component: HomePage, redirect: { name: 'NotFound' },
+        path: '/candidato/exames', component: HomePage, redirect: { name: 'NotFound' },
         meta: { requiresAuth: true },
         children: [
             {
                 path: '', name: 'CandidatoExamesAbertos', component: SelecoesAbertasPage,
-                meta: { permissions: [{ role: "CANDIDATO", access: true }] }
+                meta: { permissions: [{ role: "COLABORADOR", access: true }] }
             },
 
             {
                 path: ':id', component: DetalhesExameCandidatoPage, props: true,
-                meta: { permissions: [{ role: "CANDIDATO", access: true }] }
+                meta: { permissions: [{ role: "COLABORADOR", access: true }] }
             },
 
             {
                 path: ':id/inscricao', name: 'RealizarInscricao', props: true, component: RealizarInscricaoPage,
-                meta: { permissions: [{ role: "CANDIDATO", access: true }] }
+                meta: { permissions: [{ role: "COLABORADOR", access: true }] }
             }
         ]
     },
+
 
     {
         path: '/gestor/dashboard', props: true, component: HomePage, redirect: { name: 'NotFound' },
         meta: { requiresAuth: true },
         children: [
             {
-                path: '', name: 'CoordenadorExames',props: true, component: ListagemExamesPage,
+                path: '', name: 'Dashboard',props: true, component: dash,
                 meta: { permissions: [{ role: "GESTOR", access: true }] }
-            },
-
-            {
-                path: 'adicionar', props: true, component: CadastrarExamePage,
-                meta: { permissions: [{ role: "GESTOR", access: true }] }
-            },
-
-            {
-                path: ':id', name: 'CoordenadorLocalProva', props: true, component: DetalhesExameCoordenadorPage,
-                meta: { permissions: [{ role: "GESTOR", access: true }] }
-            },
-
-            {
-                path: ':exameId/candidato-inscrito/:id', name: "CoordenadorInscricaoCandidato", props: true, component: DetalhesInscricaoPage,
-                meta: { permissions: [{ role: "GESTOR", access: true }] }
-            },
-
-            {
-                path: ':id/editar', name: 'EditarExame', props: true, component: EditarExamePage,
-                meta: { permissions: [{ role: "GESTOR", access: true }] }
-            },
-
-
-
-        ]
-    },
-    {
-        path: '/gestor/localprova', name: "LocalProva", component: HomePage, redirect: { name: 'NotFound' },
-        meta: { requiresAuth: true },
-        children: [
-            {
-                path: '', props: true,  component: DetalhesLocalProvaCoordenadorPage,
-                meta: { permissions: [{ role: "GESTOR", access: true }]}
-            },
-            {
-                path: ':id',props: true, component: DetalhesLocalProvaCoordenadorPage,
-                meta: { permissions: [{ role: "GESTOR", access: true }] }
-            },
-            {
-                path: ':id', props: true,  component: DetalhesLocalProvaCoordenadorPage,
-                meta: {permissions: [{role: "SECRETARIO", acess: true}]}
-
-            },
-            {
-                path: ':idExame/candidato-inscrito/:id', props: true, component: DetalhesInscricaoPage,
-                meta: { permissions: [{ role: "GESTOR", access: true }] }
-            },
-            {
-                path: ':idExame/candidato-inscrito/:id', props: true,  component: DetalhesInscricaoPage,
-                meta: { permissions: [{ role: "SECRETARIO", access: true }] }
             },
         ]
     },
-
 
     {
         path: '/gestor/usuarios', component: HomePage, redirect: { name: 'NotFound' },
         meta: { requiresAuth: true },
         children: [
             {
-                path: '', name: 'CoordenadorUsuarios', component: ListagemUsuariosPage,
+                path: '', name: 'gestorUsuarios', component: ListagemUsuariosPage,
                 meta: { permissions: [{ role: "GESTOR", access: true }] }
             },
 
@@ -287,6 +241,33 @@ export default [
             {
                 path: ':id/editar', name: 'EditarUsuario', component: AtualizarUsuarioPage, props: true,
                 meta: { permissions: [{ role: "GESTOR", access: true }] }
+            }
+
+        ]
+    },
+
+    {
+        path: '/medico/exames', component: HomePage, redirect: { name: 'NotFound' },
+        meta: { requiresAuth: true },
+        children: [
+            {
+                path: 'listarExames', name: 'examesMedico', component: ListagemExames,
+                meta: { permissions: [{ role: "MEDICO", access: true }] }
+            },
+
+            {
+                path: 'adicionarExame', component: CadastrarExame,
+                meta: { permissions: [{ role: "MEDICO", access: true }] }
+            },
+
+            {
+                path: ':id', component: DetalhesExame, props: true,
+                meta: { permissions: [{ role: "MEDICO", access: true }] }
+            },
+
+            {
+                path: ':id/editar', name: 'EditarExame', component: EditarExame, props: true,
+                meta: { permissions: [{ role: "MEDICO", access: true }] }
             }
 
         ]
@@ -310,7 +291,11 @@ export default [
                     access: true
                 },
                 {
-                    role: "CANDIDATO",
+                    role: "COLABORADOR",
+                    access: true
+                },
+                {
+                    role: "MEDICO",
                     access: true
                 }
             ]

@@ -92,7 +92,7 @@ export default {
   },
   methods: {
     initialize() {
-      axios.get("exame/todos-candidato-nao-inscrito").then(res => {
+      axios.get("dashboard/todos-candidato-nao-inscrito").then(res => {
         this.exame = res.data;
       });
     }

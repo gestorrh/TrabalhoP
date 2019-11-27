@@ -29,7 +29,7 @@
               </v-flex>
             </v-layout>
             <v-layout row>
-              <v-flex md6>
+              <v-flex md4>
                 <v-text-field
                   :error-messages="errors.collect('cpf')"
                   label="CPF*"
@@ -39,7 +39,16 @@
                   data-vv-name="cpf"
                 ></v-text-field>
               </v-flex>
-              <v-flex md6>
+
+                <v-flex md4>
+                  <v-text-field
+                          label="Cargo"
+                          v-model="cargo"
+                          data-vv-name="cargo"
+                  ></v-text-field>
+                </v-flex>
+
+              <v-flex md4>
                 <v-select
                   :items="papeisList"
                   item-text="label"
@@ -136,6 +145,7 @@
                 ></v-select>
               </v-flex>
 
+
               <v-flex md3>
                 <telefone
                   v-model="telefone"
@@ -146,15 +156,34 @@
                 ></telefone>
               </v-flex>
             </v-layout>
+
             <v-layout row>
               <v-flex xs4>
                 <v-text-field
-                  label="Cargo"
-                  v-model="cargo"
-                  data-vv-name="cargo"
+                        :counter="0"
+                        :error-messages="errors.collect('senha')"
+                        label="Senha*"
+                        data-vv-name="senha"
+                        type="password"
+                        v-model="senha"
+                        v-validate="{required: true, min: 6}"
                 ></v-text-field>
               </v-flex>
+
+              <v-flex xs4>
+                <v-text-field
+                        :counter="0"
+                        :error-messages="errors.collect('confirmacaoSenha')"
+                        label="Confirmar senha*"
+                        data-vv-name="confirmacaoSenha"
+                        type="password"
+                        v-model="confirmacaoSenha"
+                        v-validate="{required: true, confirmed:senha}"
+                ></v-text-field>
+              </v-flex>
+
             </v-layout>
+
 
             <v-btn :disabled="errors.any()" depressed @click="submit" color="primary">CADASTRAR</v-btn>
             <v-btn to="/gestor/usuarios">VOLTAR</v-btn>
@@ -247,6 +276,7 @@ export default {
       papel: null,
       endereco: null,
       cidade: null,
+      senha: null,
       uf: null,
       pais: null,
       sexo: null,
@@ -289,6 +319,10 @@ export default {
             required: () => "Campo obrigatório"
           },
 
+          senha: {
+            required: () => "Campo obrigatório",
+            min: () => "A senha deve ter ao menos 6 dígitos"
+          },
           telefone: {
             required: () => "Campo obrigatório",
             min: () => "Telefone incompleto"
@@ -351,7 +385,8 @@ export default {
               estadoCivil: this.estadoCivil,
               telefone: this.telefone,
               necessidadeEspecial: this.necessidadeEspecial,
-              cargo: this.cargo
+              cargo: this.cargo,
+              senha: this.senha
             })
             .then(() => {
               this.$router.push({

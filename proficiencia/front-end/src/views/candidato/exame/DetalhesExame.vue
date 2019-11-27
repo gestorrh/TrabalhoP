@@ -118,7 +118,7 @@ export default {
   },
   methods: {
     initialize() {
-      axios.get("exame/" + this.id).then(res => {
+      axios.get("dashboard/" + this.id).then(res => {
         this.exame = res.data;
         this.breadcrumbItems.push({
           position: 2,
