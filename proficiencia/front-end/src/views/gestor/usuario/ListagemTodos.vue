@@ -7,7 +7,7 @@
           <div slot="widget-content">
             <v-tooltip top>
               <template v-slot:activator="{ on }">
-                <v-btn absolute color="#00ACC1" dark fab right to="/gestor/usuarios/adicionar" top v-on="on">
+                <v-btn absolute color="#0097A7" dark fab right to="/gestor/usuarios/adicionar" top v-on="on">
                   <v-icon>add</v-icon>
                 </v-btn>
               </template>

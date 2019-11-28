@@ -186,7 +186,7 @@
 
 
             <v-btn :disabled="errors.any()" depressed @click="submit" color="#006064" style="color:white">CADASTRAR</v-btn>
-            <v-btn to="/gestor/usuarios">VOLTAR</v-btn>
+            <v-btn to="/gestor/usuarios/listarUsuarios">VOLTAR</v-btn>
           </v-form>
         </div>
         <div slot="widget-actions">

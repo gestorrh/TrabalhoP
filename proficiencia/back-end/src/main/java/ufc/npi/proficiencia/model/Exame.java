@@ -13,7 +13,14 @@ public class Exame {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private Integer idColaborador;
+
+    @ManyToOne
+    @JoinColumn(name = "colaborador_id")
+    private Usuario colaborador;
+
+    @ManyToOne
+    @JoinColumn(name = "medico_id")
+    private Usuario medico;
 
     private String nomeExame;
     private LocalDate dataExame;
@@ -24,8 +31,6 @@ public class Exame {
     private LocalDate diaProximoExame;
     private int diasAfastamento;
 
-
-
     @Enumerated(EnumType.STRING)
     private StatusExame statusExame;
 
@@ -35,14 +40,6 @@ public class Exame {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Integer getIdColaborador() {
-        return idColaborador;
-    }
-
-    public void setIdColaborador(Integer idColaborador) {
-        this.idColaborador = idColaborador;
     }
 
     public String getNomeExame() {
@@ -116,5 +113,22 @@ public class Exame {
     public void setStatusExame(StatusExame statusExame) {
         this.statusExame = statusExame;
     }
+
+    public Usuario getColaborador() {
+        return colaborador;
+    }
+
+    public void setColaborador(Usuario colaborador) {
+        this.colaborador = colaborador;
+    }
+
+    public Usuario getMedico() {
+        return medico;
+    }
+
+    public void setMedico(Usuario medico) {
+        this.medico = medico;
+    }
+
 
 }
