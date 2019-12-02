@@ -108,6 +108,8 @@
       </v-card>
     </v-dialog>
     <v-snackbar :color="dCor" right top v-model="dSnackbar">{{ dMensagem }}</v-snackbar>
+    {{this.exames}}
+
   </v-container>
 </template>
 <script>
@@ -150,6 +152,7 @@ export default {
       ],
       search: "",
       usuarios: [],
+      exames:[],
       usuarioAux: {},
 
       dialog: false,
@@ -177,6 +180,10 @@ export default {
       axios.get("usuario/listarUsuarios").then(res => {
         this.usuarios = res.data;
       });
+      axios.get('/exame/').then(res => {
+        this.exames = res.data;
+      });
+
     },
 
     excluirUsuario() {
