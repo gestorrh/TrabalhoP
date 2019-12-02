@@ -23,6 +23,16 @@ public class ExameServiceImpl implements ExameService {
     @Autowired
     private ExameRepository exameRepositorory;
 
+    @Override
+    public List<Exame> buscarExameMedico(Integer medicoId) {
+        return exameRepositorory.findExameByMedicoId(medicoId);
+    }
+
+    @Override
+    public List<Exame> findAll() {
+        return exameRepositorory.findAll();
+    }
+
 
 //    @Override
 //    public Map<String, Object> buscarExame(Integer id) {

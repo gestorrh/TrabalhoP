@@ -19,4 +19,6 @@ public interface ExameRepository extends JpaRepository<Exame, Integer> {
 //    @Query("SELECT e.id as id, e.idColaborador as idColaborador, e.nomeExame as nomeMedico, e.dataExame as dataExame, e.descricao as descricao, e.crmMedico as crmMedico, e.cid as cid, e.avaliacaoMedica as avaliacaoMedica, e.diaProximoExame as diaProximoExame, e.diasAfastamento as diaAfastamento FROM Exame e")
 //    List<Map<String, Object>> findAllExamesView();
 
+    List<Exame> findExameByMedicoId(@Param("id") Integer medicoId);
+
 }
