@@ -4,12 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 import ufc.npi.proficiencia.controller.ExameController;
 import ufc.npi.proficiencia.exception.ProficienciaException;
 import ufc.npi.proficiencia.model.Exame;
 import ufc.npi.proficiencia.service.ExameService;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -27,6 +29,21 @@ public class ExameControllerImpl implements ExameController {
         exameService.cadastrarExame(exame);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @Override
+    @GetMapping("/listar/{id}")
+    public ResponseEntity<List<Exame>> listarExamesMedico(@PathVariable("id") Integer medicoId) {
+        List<Exame> exameMedico = exameService.buscarExameMedico(medicoId);
+
+        return new ResponseEntity<>(exameMedico, HttpStatus.OK);
+    }
+
+    @Override
+    @GetMapping({"", "/"})
+    public ResponseEntity<Collection<Exame>> findAll(@AuthenticationPrincipal UserDetails userDetails) {
+        return ResponseEntity.ok(exameService.findAll());
+    }
+
 
 //    @Override
 //    @GetMapping("/listarExames")

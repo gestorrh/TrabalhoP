@@ -16,8 +16,10 @@ public interface ExameService {
 
     void deleteExame(Integer id, Integer userId) throws ProficienciaException;
 
+    List<Exame> findAll();
+
     void atualizarExame(Exame exame);
 
-
+    List<Exame> buscarExameMedico(Integer politicaId);
 
 }
