@@ -16,10 +16,12 @@ public interface ExameService {
 
     void deleteExame(Integer id, Integer userId) throws ProficienciaException;
 
-    List<Exame> findAll();
+    List<Map<String, Object>> findAll();
 
     void atualizarExame(Exame exame);
 
-    List<Exame> buscarExameMedico(Integer politicaId);
+    List<Map<String, Object>> buscarExameMedico(Integer medicoId);
+
+    List<Map<String, Object>> buscarExameColaborador(Integer colaboradorId);
 
 }

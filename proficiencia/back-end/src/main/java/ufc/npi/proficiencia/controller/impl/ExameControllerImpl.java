@@ -31,16 +31,24 @@ public class ExameControllerImpl implements ExameController {
     }
 
     @Override
-    @GetMapping("/listar/{id}")
-    public ResponseEntity<List<Exame>> listarExamesMedico(@PathVariable("id") Integer medicoId) {
-        List<Exame> exameMedico = exameService.buscarExameMedico(medicoId);
+    @GetMapping("/listar/medico/{id}")
+    public ResponseEntity<List<Map<String, Object>>> listarExamesMedico(@PathVariable("id") Integer medicoId) {
+        List<Map<String, Object>> exameMedico = exameService.buscarExameMedico(medicoId);
 
         return new ResponseEntity<>(exameMedico, HttpStatus.OK);
     }
 
     @Override
-    @GetMapping({"", "/"})
-    public ResponseEntity<Collection<Exame>> findAll(@AuthenticationPrincipal UserDetails userDetails) {
+    @GetMapping("/listar/colaborador/{id}")
+    public ResponseEntity<List<Map<String, Object>>> listarExamesColaborador(@PathVariable("id") Integer colaboradorId) {
+        List<Map<String, Object>> exameColaborador = exameService.buscarExameColaborador(colaboradorId);
+
+        return new ResponseEntity<>(exameColaborador, HttpStatus.OK);
+    }
+
+    @Override
+    @GetMapping
+    public ResponseEntity<List<Map<String, Object>>> findAll(@AuthenticationPrincipal UserDetails userDetails) {
         return ResponseEntity.ok(exameService.findAll());
     }
 
