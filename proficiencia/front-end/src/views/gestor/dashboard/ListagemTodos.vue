@@ -23,6 +23,15 @@
             <div>
               <section class="charts">
                 <div id="pizzaChart"></div>
+                <v-row align="center" style="margin-left:150px">
+
+                  <v-btn text small @click="showDialog('ACIDENTE DE TRABALHO')" color="primary">ACIDENTE DE TRABALHO</v-btn>
+                  <v-btn text small @click="showDialog('ADMISSIONAL')" color="primary">ADMISSIONAL</v-btn>
+                  <v-btn text small @click="showDialog('DEMISSIONAL')" color="primary">DEMISSIONAL</v-btn>
+                  <v-btn text small @click="showDialog('PERIODICO')" color="primary">PERIODICO</v-btn>
+
+                </v-row>
+              
               </section>
             </div>
             <v-flex>
@@ -31,6 +40,46 @@
           </v-card-text>
         </v-card>
       </v-flex>
+      <v-dialog v-model="detalheDialogo" fullscreen hide-overlay transition="dialog-bottom-transition">
+        <v-card>
+          <v-toolbar dark color="primary">
+            <v-btn icon dark @click="detalheDialogo = false">
+              <v-icon>mdi-close</v-icon>
+            </v-btn>
+            <v-toolbar-title>Settings</v-toolbar-title>
+            <v-spacer></v-spacer>
+            <v-toolbar-items>
+              <v-btn dark text v-on:click="dialog = false">Save</v-btn>
+            </v-toolbar-items>
+          </v-toolbar>
+          <v-data-table
+            :headers="headers"
+            :items="exames"
+            :items-per-page="5"
+            class="elevation-1"
+            no-data-text="Nenhum resultado encontrado"
+            no-results-text="Nenhum resultado encontrado"
+          >
+           <template v-slot:items="props">
+                <tr @click="props.expanded = !props.expanded">
+                  <td class="text-xs-left">{{ props.item.nomeExame }}</td>
+                  <!--<td class="text-xs-left">{{ props.item.item.dataExame }}</td>-->
+                  <td class="text-xs-left">{{ props.item.descricao }}</td>
+                  <td class="text-xs-left">{{ props.item.crmMedico }}</td>
+                  <td class="text-xs-left">{{ props.item.avaliacaoMedica }}</td>
+                  <td class="text-xs-left">{{ props.item.diaProximoExame | data}}</td>
+                  <td class="text-xs-left">{{ props.item.diasAfastamento | data}}</td>
+                  <td class="text-xs-left">{{ props.item.statusExame}}</td>
+                  <td class="text-xs-left" v-if="dataAtual <= props.item.diaProximoExame"><i class="material-icons">done_outline</i></td>
+                  <td class="text-xs-left" v-if="dataAtual > props.item.diaProximoExame"><i class="material-icons">
+                    report_problem
+                  </i></td>
+
+                </tr>
+              </template>           
+          </v-data-table>
+        </v-card>
+      </v-dialog>
     </v-layout>
   </v-container>
 </template>
@@ -49,7 +98,23 @@ export default {
   //components: { VueHighcharts },
   data() {
     return {
-      exameSelecionado: '',
+      headers: [
+          {
+            text: 'Tipo exame',
+            align: 'left',
+            sortable: false,
+            value: 'nomeExame',
+          },
+          //{ text: 'Data exame', value: 'dataExame' },
+          { text: 'Descrição', value: 'descricao' },
+          { text: 'crmMedico', value: 'crmMedico' },
+          { text: 'Avaliação Medica', value: 'avaliacaoMedica' },
+          { text: 'Dia do ProximoExame', value: 'diaProximoExame' },
+          { text: 'Dias de Afastamento', value: 'diasAfastamento' },
+          { text: 'Status do Exame', value: 'statusExame' },
+        ],
+      exameSelecionado: "",
+      exames: [],
       detalheDialogo: false,
       examesQtd: 0,
       examesAcidente: [],
@@ -103,32 +168,50 @@ export default {
     this.listarExames();
   },
   methods: {
-    perExames(){
-      let perExam = []
-
-        perExam.push({
-          name: 'ACIDENTE DE TRABALHO',
-          y: (this.examesAcidente.length / this.examesQtd) * 100
+    showDialog(tipo){
+      this.exames=[];
+      this.detalheDialogo = true
+      if(tipo === "ACIDENTE DE TRABALHO"){
+        this.examesAcidente.forEach(item => {
+          this.exames.push({
+            'nomeExame'      : item.nomeExame,
+            'dataExame'      : item.dataExame,
+            'descricao'      : item.descricao,
+            'crmMedico'      : item.crmMedico,
+            'cid'            : item.cid,
+            'avaliacaoMedica': item.avaliacaoMedica,
+            'diaProximoExame': item.diaProximoExame,
+            'diasAfastamento': item.diasAfastamento,
+            'statusExame'    : item.statusExame
+          })
         })
-
-        perExam.push({
-          name: 'ADMISSIONAL',
-          y: (this.examesAdmissional.length / this.examesQtd) * 100
-        })
-
-        perExam.push({
-          name: 'DEMISSIONAL',
-          y: (this.examesDemissional.length / this.examesQtd) * 100
-        })
-
-        perExam.push({
-          name: 'PERIODICO',
-          y: (this.examePeriodico.length / this.examesQtd) * 100
-        })
-
-      return perExam
+      }
     },
+    perExames() {
+      let perExam = [];
 
+      perExam.push({
+        name: "ACIDENTE DE TRABALHO",
+        y: (this.examesAcidente.length / this.examesQtd) * 100
+      });
+
+      perExam.push({
+        name: "ADMISSIONAL",
+        y: (this.examesAdmissional.length / this.examesQtd) * 100
+      });
+
+      perExam.push({
+        name: "DEMISSIONAL",
+        y: (this.examesDemissional.length / this.examesQtd) * 100
+      });
+
+      perExam.push({
+        name: "PERIODICO",
+        y: (this.examePeriodico.length / this.examesQtd) * 100
+      });
+
+      return perExam;
+    },
 
     async listarExames() {
       await axios.get("/exame/").then(res => {
@@ -136,7 +219,7 @@ export default {
         todosExames = res.data;
         this.examesQtd = todosExames.length;
 
-        console.log(todosExames)
+        console.log(todosExames);
 
         for (let i = 0; i < todosExames.length; i++) {
           if (todosExames[i].nomeExame === "ACIDENTE DE TRABALHO") {
@@ -149,11 +232,8 @@ export default {
             this.examePeriodico.push(todosExames[i]);
           }
         }
-        console.log(todosExames[0])
-
+        console.log(todosExames[0]);
       });
-      
-    
 
       Highcharts.chart("pizzaChart", {
         chart: {
@@ -171,31 +251,33 @@ export default {
         plotOptions: {
           pie: {
             allowPointSelect: true,
-            cursor: 'pointer',
-             point:{
-                  events:{
-                      click: function(e){
-                          this.exameSelecionado = e.point.name
-                          this.detalheDialogo = true
-                          console.log(this.exameSelecionado)
-                      } 
-                  }
-              },
+            cursor: "pointer",
+            point: {
+              events: {
+                click: function(e) {
+                  this.exameSelecionado = e.point.name;
+                  this.detalheDialogo = true;
+                  console.log(this.exameSelecionado);
+                }
+              }
+            },
             dataLabels: {
               enabled: false
             },
-            
+
             showInLegend: true
           }
         },
-        series: [{
-          name:'exames',
-          colorByPoint: true,
-          data: this.perExames()
-        }]
+        series: [
+          {
+            name: "exames",
+            colorByPoint: true,
+            data: this.perExames()
+          }
+        ]
       });
     }
-  },
+  }
 };
 </script>
 
