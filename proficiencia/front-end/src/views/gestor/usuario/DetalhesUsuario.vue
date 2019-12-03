@@ -95,40 +95,63 @@
         </v-widget>
       </v-flex>
 
-      <v-flex xs12>
-        <v-widget title="Consultas do Usuário">
+
+      <v-flex xs12 v-if="usuario.papel === 'MEDICO' || usuario.papel === 'COLABORADOR'">
+        <v-widget title="Exames/Procedimentos Realizados" v-if="usuario.papel === 'MEDICO'">
           <div slot="widget-content">
+            <v-toolbar card color="white" >
+              <v-text-field flat solo prepend-icon="search" placeholder="Buscar" v-model="search" hide-details class="hidden-sm-and-down" ></v-text-field>
+            </v-toolbar>
             <v-data-table
-              :headers="headers_exames"
-              :items="inscricoes"
-              hide-actions
-              no-data-text="Nenhuma inscrição encontrada"
+                    :search="search"
+                    :headers="headers_exames1"
+                    :items="exames"
+                    no-data-text="Nenhum resultado encontrado"
+                    no-results-text="Nenhum resultado encontrado"
             >
-              <template v-slot:items="inscricoes">
-                <td class="body-1">
-                  <b>{{ inscricoes.item.titulo }}</b>
-                </td>
-                <td class="body-1 text-uppercase">{{getLabelFase(inscricoes.item.fase)}}</td>
-                <td class="body-1">
-                  {{inscricoes.item.reavaliacaoSolicitada ? inscricoes.item.notaReavaliacao :
-                  inscricoes.item.notaAvaliacao }}
-                </td>
-                <td
-                  class="body-1 text-uppercase"
-                  v-bind:class="inscricoes.item.statusAvaliacao ? inscricoes.item.statusAvaliacao : ''"
-                >
-                  <b>{{inscricoes.item.statusAvaliacao ? getLabelStatusAvaliacao(inscricoes.item.statusAvaliacao) : ""}}</b>
-                </td>
-                <td>
-                  <v-btn
-                    color="cyan"
-                    outline
-                    round
-                    :to="'/gestor/exames/' + usuario.id + '/colaborador-inscrito/'+ inscricoes.item.id"
-                  >
-                    <v-icon small>search</v-icon>Detalhes
-                  </v-btn>
-                </td>
+
+              <template v-slot:items="props">
+                <tr @click="props.expanded = !props.expanded">
+                  <td class="text-xs-left">{{ props.item.nomeExame }}</td>
+                  <td class="text-xs-left">{{ props.item.colaborador_id }}</td>
+                  <td class="text-xs-left">{{ props.item.dataExame | data}}</td>
+                  <td class="text-xs-left">{{ props.item.diaProximoExame | data}}</td>
+                  <td class="text-xs-left" v-if="dataAtual <= props.item.diaProximoExame"><i class="material-icons">done_outline</i></td>
+                  <td class="text-xs-left" v-if="dataAtual > props.item.diaProximoExame"><i class="material-icons">
+                    report_problem
+                  </i></td>
+
+                </tr>
+              </template>
+            </v-data-table>
+          </div>
+        </v-widget>
+        <v-widget title="Exames/Procedimentos Vinculados ao Colaborador" v-if="usuario.papel === 'COLABORADOR'">
+          <div slot="widget-content">
+            <v-toolbar card color="white" >
+              <v-text-field flat solo prepend-icon="search" placeholder="Buscar" v-model="search" hide-details class="hidden-sm-and-down" ></v-text-field>
+            </v-toolbar>
+            <v-data-table
+                    :search="search"
+                    :headers="headers_exames2"
+                    :items="exames"
+                    no-data-text="Nenhum resultado encontrado"
+                    no-results-text="Nenhum resultado encontrado"
+            >
+
+              <template v-slot:items="props">
+                <tr @click="props.expanded = !props.expanded">
+                  <td class="text-xs-left">{{ props.item.nomeExame }}</td>
+                  <td class="text-xs-left">{{ props.item.medico_id }}</td>
+                  <td class="text-xs-left">{{ props.item.dataExame | data}}</td>
+                  <td class="text-xs-left">{{ props.item.diaProximoExame | data}}</td>
+                  <td class="text-xs-left" v-if="dataAtual <= props.item.diaProximoExame"><i class="material-icons">done_outline</i></td>
+                  <td class="text-xs-left" v-if="dataAtual > props.item.diaProximoExame"><i class="material-icons">
+                    report_problem
+                  </i></td>
+
+
+                </tr>
               </template>
             </v-data-table>
           </div>
@@ -163,6 +186,8 @@ import VWidget from "../../../components/core/VWidget";
 import store from "../../../store";
 import moment from "moment";
 
+import teste from "moment"
+
 export default {
   props: {
     id: String
@@ -188,13 +213,21 @@ export default {
 
   data() {
     return {
-      headers_exames: [
-        { text: "Data", value: "data", sortable: false },
-        { text: "Tipo de Exame", value: "tipo", sortable: false },
-        { text: "Medico", value: "nota", sortable: false },
-        { text: "Status", value: "status", sortable: false },
-        { text: "", value: "acoes", sortable: false }
+      search: '',
+      headers_exames1: [
+        { text: "Tipo de Exame", value: "nomeExame", sortable: false },
+        { text: "Colaborador", value: "colaborador_id", sortable: false },
+        { text: "Data Exame", value: "dataExame", sortable: false },
+        { text: "Data Retorno", value: "diaProximoExame", sortable: false },
+        { text: "Status", value: "", sortable: false },
       ],
+      headers_exames2: [
+        { text: "Tipo de Exame", value: "nomeExame", sortable: false },
+        { text: "Medico", value: "medico_id", sortable: false },
+        { text: "Data Exame", value: "dataExame", sortable: false },
+        { text: "Data Retorno", value: "diaProximoExame", sortable: false },
+        { text: "Status", value: "", sortable: false },      ],
+      dataAtual: new Date().toISOString().substr(0, 10),
       usuario: {
         uf: null,
         dataNascimento: null,
@@ -212,6 +245,8 @@ export default {
         cargo: null
       },
       inscricoes: [],
+      exames:[],
+      userId:'',
       breadcrumbItems: [
         { position: 1, text: "Usuários", disabled: false, href: "/gestor/usuarios/listarUsuarios" }
       ],
@@ -248,18 +283,34 @@ export default {
   },
   methods: {
     initialize() {
+      this.userId = this.$route.params.id;
+
       axios.get(`/usuario/${this.id}`).then(res => {
         this.usuario = res.data;
         this.breadcrumbItems.push({ text: this.usuario.nome, disabled: true });
+
+        if(this.usuario.papel === "MEDICO"){
+          axios.get(`/exame/listar/medico/${this.id}`).then(res => {
+            this.exames = res.data;
+            Console.log(this.dataAtual);
+          });
+        }
+
+        else if(this.usuario.papel === "COLABORADOR"){
+
+          axios.get(`/exame/listar/colaborador/${this.id}`).then(res => {
+            this.exames = res.data;
+            Console.log(this.dataAtual);
+
+          });
+        }
+        else{
+          console.log("OK");
+        }
       });
 
-      axios.get(`/inscricoes/${this.id}`).then(res => {
-        this.inscricoes = res.data;
-      });
     },
-    getLabelFase(fase) {
-      return store.getters["enums/getLabelFase"](fase);
-    },
+
     getLabelStatusAvaliacao(status) {
       return store.getters["enums/getLabelStatusAvaliacao"](status);
     },

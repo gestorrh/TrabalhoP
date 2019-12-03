@@ -108,8 +108,6 @@
       </v-card>
     </v-dialog>
     <v-snackbar :color="dCor" right top v-model="dSnackbar">{{ dMensagem }}</v-snackbar>
-    {{this.exames}}
-
   </v-container>
 </template>
 <script>

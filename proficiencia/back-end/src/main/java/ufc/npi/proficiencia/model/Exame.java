@@ -23,6 +23,12 @@ public class Exame {
     private Usuario medico;
 
     private String nomeExame;
+
+    /*PERIODICO
+    ACIDENTE DE TRABALHO
+    ADMISSIONAL
+    DEMISSIONAL*/
+
     private LocalDate dataExame;
     private String descricao;
     private int crmMedico;
