@@ -46,10 +46,10 @@
             <v-btn icon dark @click="detalheDialogo = false">
               <v-icon>mdi-close</v-icon>
             </v-btn>
-            <v-toolbar-title>Settings</v-toolbar-title>
+            <v-toolbar-title>Exames</v-toolbar-title>
             <v-spacer></v-spacer>
             <v-toolbar-items>
-              <v-btn dark text v-on:click="dialog = false">Save</v-btn>
+              <v-btn dark text v-on:click="dialog = false">Imprimir</v-btn>
             </v-toolbar-items>
           </v-toolbar>
           <v-data-table
@@ -173,6 +173,51 @@ export default {
       this.detalheDialogo = true
       if(tipo === "ACIDENTE DE TRABALHO"){
         this.examesAcidente.forEach(item => {
+          this.exames.push({
+            'nomeExame'      : item.nomeExame,
+            'dataExame'      : item.dataExame,
+            'descricao'      : item.descricao,
+            'crmMedico'      : item.crmMedico,
+            'cid'            : item.cid,
+            'avaliacaoMedica': item.avaliacaoMedica,
+            'diaProximoExame': item.diaProximoExame,
+            'diasAfastamento': item.diasAfastamento,
+            'statusExame'    : item.statusExame
+          })
+        })
+      }
+      else if(tipo === "ADMISSIONAL"){
+          this.examesAdmissional.forEach(item => {
+          this.exames.push({
+            'nomeExame'      : item.nomeExame,
+            'dataExame'      : item.dataExame,
+            'descricao'      : item.descricao,
+            'crmMedico'      : item.crmMedico,
+            'cid'            : item.cid,
+            'avaliacaoMedica': item.avaliacaoMedica,
+            'diaProximoExame': item.diaProximoExame,
+            'diasAfastamento': item.diasAfastamento,
+            'statusExame'    : item.statusExame
+          })
+        })
+      }
+      else if(tipo === "DEMISSIONAL"){
+          this.examesDemissional.forEach(item => {
+          this.exames.push({
+            'nomeExame'      : item.nomeExame,
+            'dataExame'      : item.dataExame,
+            'descricao'      : item.descricao,
+            'crmMedico'      : item.crmMedico,
+            'cid'            : item.cid,
+            'avaliacaoMedica': item.avaliacaoMedica,
+            'diaProximoExame': item.diaProximoExame,
+            'diasAfastamento': item.diasAfastamento,
+            'statusExame'    : item.statusExame
+          })
+        })
+      }
+      else if(tipo === "PERIODICO"){
+          this.examePeriodico.forEach(item => {
           this.exames.push({
             'nomeExame'      : item.nomeExame,
             'dataExame'      : item.dataExame,
