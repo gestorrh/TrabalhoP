@@ -16,13 +16,19 @@ public interface ExameController {
             value = "Lista todos exames de um medico",
             notes = "reponsavel por listar"
     )
-    ResponseEntity<List<Exame>> listarExamesMedico(Integer medicoId);
+    ResponseEntity<List<Map<String, Object>>> listarExamesMedico(Integer medicoId);
+
+    @ApiOperation(
+            value = "Lista todos exames de um medico",
+            notes = "reponsavel por listar"
+    )
+    ResponseEntity<List<Map<String, Object>>> listarExamesColaborador(Integer colaboradorId);
 
     @ApiOperation(
             value = "Lista todos Exames",
             notes = "reponsavel por listar"
     )
-    ResponseEntity<Collection<Exame>> findAll(UserDetails userDetails);
+    ResponseEntity<List<Map<String, Object>>> findAll(UserDetails userDetails);
 
     @ApiOperation(
             value = "Adiciona um exame",

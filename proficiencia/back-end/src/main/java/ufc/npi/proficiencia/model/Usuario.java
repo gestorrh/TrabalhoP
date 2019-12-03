@@ -60,10 +60,6 @@ public class Usuario implements UserDetails {
 
     @Enumerated(EnumType.STRING)
     private Sexo sexo;
-
-    @OneToMany(cascade =  CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "exame_id")
-    private List<Exame> examesUsuario;
     
     public Integer getId() {
         return id;
@@ -200,61 +196,6 @@ public class Usuario implements UserDetails {
 
     public void setSexo(Sexo sexo) {
         this.sexo = sexo;
-    }
-
-    public List<Exame> getExamesUsuario() {
-        return examesUsuario;
-    }
-
-    public void addExameMedico(Exame exame) {
-        if (examesUsuario == null) {
-            examesUsuario = new ArrayList<>();
-        }
-        examesUsuario.add(exame);
-        exame.setMedico(this);
-    }
-
-    public void addAllExamesMedico(List<Exame> exames) {
-        if (this.examesUsuario == null) {
-            this.examesUsuario = new ArrayList<>();
-        }
-        this.examesUsuario.addAll(exames);
-        for (Exame exame: exames) {
-            exame.setMedico(this);
-        }
-
-    }
-
-    public void removeExameMedico(Exame exame) {
-        if (examesUsuario != null) {
-            examesUsuario.remove(exame);
-        }
-    }
-
-
-    public void addExameColaborador(Exame exame) {
-        if (examesUsuario == null) {
-            examesUsuario = new ArrayList<>();
-        }
-        examesUsuario.add(exame);
-        exame.setColaborador(this);
-    }
-
-    public void addAllExamesColaborador(List<Exame> exames) {
-        if (this.examesUsuario == null) {
-            this.examesUsuario = new ArrayList<>();
-        }
-        this.examesUsuario.addAll(exames);
-        for (Exame exame: exames) {
-            exame.setColaborador(this);
-        }
-
-    }
-
-    public void removeExameColaborador(Exame exame) {
-        if (examesUsuario != null) {
-            examesUsuario.remove(exame);
-        }
     }
 
     public String getSetor() {

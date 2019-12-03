@@ -24,13 +24,18 @@ public class ExameServiceImpl implements ExameService {
     private ExameRepository exameRepositorory;
 
     @Override
-    public List<Exame> buscarExameMedico(Integer medicoId) {
-        return exameRepositorory.findExameByMedicoId(medicoId);
+    public List<Map<String, Object>> buscarExameMedico(Integer medicoId) {
+        return exameRepositorory.findAllExamesMedicoView(medicoId);
     }
 
     @Override
-    public List<Exame> findAll() {
-        return exameRepositorory.findAll();
+    public List<Map<String, Object>> buscarExameColaborador(Integer colaboradorId) {
+        return exameRepositorory.findAllExamesColaboradorView(colaboradorId);
+    }
+
+    @Override
+    public List<Map<String, Object>> findAll() {
+        return exameRepositorory.findAllExamesView();
     }
 
 

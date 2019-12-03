@@ -13,12 +13,16 @@ import java.util.Map;
 @Repository
 public interface ExameRepository extends JpaRepository<Exame, Integer> {
 
-//    @Query("SELECT e.id as id, e.idColaborador as idColaborador, e.nomeExame as nomeMedico, e.dataExame as dataExame, e.descricao as descricao, e.crmMedico as crmMedico, e.cid as cid, e.avaliacaoMedica as avaliacaoMedica, e.diaProximoExame as diaProximoExame, e.diasAfastamento as diaAfastamento FROM Exame e WHERE e.id = :id")
-//    Map<String, Object> dadosExame(@Param("id") Integer id);
+    @Query("SELECT e.id as id, e.nomeExame as nomeExame, e.dataExame as dataExame, e.statusExame as statusExame, e.descricao as descricao, e.crmMedico as crmMedico, e.cid as cid, e.cid as cid, e.avaliacaoMedica as avaliacaoMedica, e.diaProximoExame as diaProximoExame, e.diasAfastamento as diaAfastamento FROM Exame e WHERE e.id = :id")
+    Map<String, Object> dadosExame(@Param("id") Integer id);
 
-//    @Query("SELECT e.id as id, e.idColaborador as idColaborador, e.nomeExame as nomeMedico, e.dataExame as dataExame, e.descricao as descricao, e.crmMedico as crmMedico, e.cid as cid, e.avaliacaoMedica as avaliacaoMedica, e.diaProximoExame as diaProximoExame, e.diasAfastamento as diaAfastamento FROM Exame e")
-//    List<Map<String, Object>> findAllExamesView();
+    @Query("SELECT e.id as id, e.nomeExame as nomeExame, e.dataExame as dataExame, e.descricao as descricao, e.crmMedico as crmMedico, e.cid as cid, e.cid as cid, e.avaliacaoMedica as avaliacaoMedica, e.diaProximoExame as diaProximoExame, e.diasAfastamento as diaAfastamento FROM Exame e")
+    List<Map<String, Object>> findAllExamesView();
 
-    List<Exame> findExameByMedicoId(@Param("id") Integer medicoId);
+    @Query("SELECT e.id as id, e.nomeExame as nomeExame, e.dataExame as dataExame, e.descricao as descricao, e.crmMedico as crmMedico, e.cid as cid, e.cid as cid, e.avaliacaoMedica as avaliacaoMedica, e.diaProximoExame as diaProximoExame, e.diasAfastamento as diaAfastamento FROM Exame e WHERE e.medico.id = :medicoId")
+    List<Map<String, Object>> findAllExamesMedicoView(@Param("medicoId") Integer medicoId);
+
+    @Query("SELECT e.id as id, e.nomeExame as nomeExame, e.dataExame as dataExame, e.descricao as descricao, e.crmMedico as crmMedico, e.cid as cid, e.cid as cid, e.avaliacaoMedica as avaliacaoMedica, e.diaProximoExame as diaProximoExame, e.diasAfastamento as diaAfastamento FROM Exame e WHERE e.colaborador.id = :colaboradorId")
+    List<Map<String, Object>> findAllExamesColaboradorView(@Param("colaboradorId") Integer colaboradorId);
 
 }

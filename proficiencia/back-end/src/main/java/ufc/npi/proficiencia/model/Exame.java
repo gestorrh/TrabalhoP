@@ -24,10 +24,10 @@ public class Exame {
 
     private String nomeExame;
     private LocalDate dataExame;
-    private String Descricao;
+    private String descricao;
     private int crmMedico;
     private String cid;
-    private String AvaliacaoMedica;
+    private String avaliacaoMedica;
     private LocalDate diaProximoExame;
     private int diasAfastamento;
 
@@ -59,11 +59,19 @@ public class Exame {
     }
 
     public String getDescricao() {
-        return Descricao;
+        return descricao;
     }
 
     public void setDescricao(String descricao) {
-        Descricao = descricao;
+        this.descricao = descricao;
+    }
+
+    public String getAvaliacaoMedica() {
+        return avaliacaoMedica;
+    }
+
+    public void setAvaliacaoMedica(String avaliacaoMedica) {
+        this.avaliacaoMedica = avaliacaoMedica;
     }
 
     public int getCrmMedico() {
@@ -80,14 +88,6 @@ public class Exame {
 
     public void setCid(String cid) {
         this.cid = cid;
-    }
-
-    public String getAvaliacaoMedica() {
-        return AvaliacaoMedica;
-    }
-
-    public void setAvaliacaoMedica(String avaliacaoMedica) {
-        AvaliacaoMedica = avaliacaoMedica;
     }
 
     public LocalDate getDiaProximoExame() {
