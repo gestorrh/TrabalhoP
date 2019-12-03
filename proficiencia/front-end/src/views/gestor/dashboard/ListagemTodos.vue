@@ -41,7 +41,7 @@ import axios from "axios";
  */
 
 //import VueHighcharts from "vue2-highcharts";
-import Highcharts from "highcharts";
+import Highcharts, { Pointer } from "highcharts";
 
 //import * as data from "../../../assets/data.js";
 
@@ -49,6 +49,8 @@ export default {
   //components: { VueHighcharts },
   data() {
     return {
+      exameSelecionado: '',
+      detalheDialogo: false,
       examesQtd: 0,
       examesAcidente: [],
       examesAdmissional: [],
@@ -116,12 +118,12 @@ export default {
 
         perExam.push({
           name: 'DEMISSIONAL',
-          y: (this.examesAdmissional.length / this.examesQtd) * 100
+          y: (this.examesDemissional.length / this.examesQtd) * 100
         })
 
         perExam.push({
           name: 'PERIODICO',
-          y: (this.examesAdmissional.length / this.examesQtd) * 100
+          y: (this.examePeriodico.length / this.examesQtd) * 100
         })
 
       return perExam
@@ -169,10 +171,20 @@ export default {
         plotOptions: {
           pie: {
             allowPointSelect: true,
-            cursor: "pointer",
+            cursor: 'pointer',
+             point:{
+                  events:{
+                      click: function(e){
+                          this.exameSelecionado = e.point.name
+                          this.detalheDialogo = true
+                          console.log(this.exameSelecionado)
+                      } 
+                  }
+              },
             dataLabels: {
               enabled: false
             },
+            
             showInLegend: true
           }
         },
