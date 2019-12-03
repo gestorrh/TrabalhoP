@@ -94,8 +94,8 @@
           </div>
         </v-widget>
       </v-flex>
-
-
+      
+      {{exameDemissional}}
       <v-flex xs12 v-if="usuario.papel === 'MEDICO' || usuario.papel === 'COLABORADOR'">
         <v-widget title="Exames/Procedimentos Realizados" v-if="usuario.papel === 'MEDICO'">
           <div slot="widget-content">
@@ -125,6 +125,7 @@
               </template>
             </v-data-table>
           </div>
+         
         </v-widget>
         <v-widget title="Exames/Procedimentos Vinculados ao Colaborador" v-if="usuario.papel === 'COLABORADOR'">
           <div slot="widget-content">
@@ -311,6 +312,28 @@ export default {
 
     },
 
+    listarExames(){
+            axios.get('/exame/').then(res => {
+        var todosExames;
+        todosExames = res.data;
+
+            for(let i=0; i < todosExames; i++){
+            if(todosExames[i].nomeExame === "ACIDENTE DE TRABALHO"){
+                this.examesAcidente.push(todosExames[i]);
+            }
+            else if(todosExames[i].nomeExame === "ADMISSIONAL"){
+                this.examesAdmissional.push(todosExames[i]);
+            }
+            else if(todosExames[i].nomeExame === "DEMISSIONAL"){
+                this.examesDemissional.push(todosExames[i]);
+            }
+            else{
+                this.examePeriodico.push(todosExames[i]);
+            }
+            }
+            });
+      },
+
     getLabelStatusAvaliacao(status) {
       return store.getters["enums/getLabelStatusAvaliacao"](status);
     },
@@ -335,7 +358,11 @@ export default {
           }
         });
     }
+  },
+  created() {
+    listarExames();
   }
+
 };
 </script>
 
