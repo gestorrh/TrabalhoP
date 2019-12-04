@@ -4,7 +4,7 @@
       <v-flex grow pa-1>
         <v-card>
           <v-toolbar card>
-            <h3>Painel de Bordo</h3>
+            <h3>Visão Geral das Ocorrências</h3>
             <v-spacer></v-spacer>
           </v-toolbar>
         </v-card>
@@ -15,7 +15,7 @@
         <v-card>
           <v-toolbar card color="white">
             <h4>
-              <b>Visão Geral das Ocorrências</b>
+              <b>Total de Funcionarios: {{this.usuarios.length}}</b>
             </h4>
             <v-spacer></v-spacer>
           </v-toolbar>
@@ -23,13 +23,13 @@
             <div>
               <section class="charts">
                 <div id="pizzaChart"></div>
-                <v-row align="center" style="margin-left:150px">
-
+                <v-row align="center">
+                <v-flex xs12 class="text-xs-center">
                   <v-btn text small @click="showDialog('ACIDENTE DE TRABALHO')" color="primary">ACIDENTE DE TRABALHO</v-btn>
                   <v-btn text small @click="showDialog('ADMISSIONAL')" color="primary">ADMISSIONAL</v-btn>
                   <v-btn text small @click="showDialog('DEMISSIONAL')" color="primary">DEMISSIONAL</v-btn>
                   <v-btn text small @click="showDialog('PERIODICO')" color="primary">PERIODICO</v-btn>
-
+                </v-flex>
                 </v-row>
               
               </section>
@@ -63,15 +63,18 @@
            <template v-slot:items="props">
                 <tr @click="props.expanded = !props.expanded">
                   <td class="text-xs-left">{{ props.item.nomeExame }}</td>
-                  <!--<td class="text-xs-left">{{ props.item.item.dataExame }}</td>-->
                   <td class="text-xs-left">{{ props.item.descricao }}</td>
                   <td class="text-xs-left">{{ props.item.crmMedico }}</td>
                   <td class="text-xs-left">{{ props.item.avaliacaoMedica }}</td>
+                  <td class="text-xs-left">{{ props.item.dataExame | data}}</td>
                   <td class="text-xs-left">{{ props.item.diaProximoExame | data}}</td>
-                  <td class="text-xs-left">{{ props.item.diasAfastamento | data}}</td>
-                  <td class="text-xs-left">{{ props.item.statusExame}}</td>
-                  <td class="text-xs-left" v-if="dataAtual <= props.item.diaProximoExame"><i class="material-icons">done_outline</i></td>
-                  <td class="text-xs-left" v-if="dataAtual > props.item.diaProximoExame"><i class="material-icons">
+<!--
+                  <td class="text-xs-left">{{ props.item.diasAfastamento }}</td>
+-->
+                  <td class="text-xs-left" v-if="dataAtual <= props.item.diaProximoExame || props.item.diaProximoExame
+                    == props.item.dataExame "><i class="material-icons">done_outline</i></td>
+                  <td class="text-xs-left" v-if="dataAtual > props.item.diaProximoExame &&
+                    props.item.diaProximoExame != props.item.dataExame "><i class="material-icons">
                     report_problem
                   </i></td>
 
@@ -86,9 +89,7 @@
 
 <script>
 import axios from "axios";
-/*import moment from "moment";
- */
-
+import moment from "moment";
 //import VueHighcharts from "vue2-highcharts";
 import Highcharts, { Pointer } from "highcharts";
 
@@ -109,11 +110,15 @@ export default {
           { text: 'Descrição', value: 'descricao' },
           { text: 'crmMedico', value: 'crmMedico' },
           { text: 'Avaliação Medica', value: 'avaliacaoMedica' },
-          { text: 'Dia do ProximoExame', value: 'diaProximoExame' },
+          { text: 'Data Exame', value: 'dataExame' },
+          { text: 'Data do Proximo Exame', value: 'diaProximoExame' },
+/*
           { text: 'Dias de Afastamento', value: 'diasAfastamento' },
+*/
           { text: 'Status do Exame', value: 'statusExame' },
         ],
       exameSelecionado: "",
+      dataAtual: new Date().toISOString().substr(0, 10),
       exames: [],
       detalheDialogo: false,
       examesQtd: 0,
@@ -161,11 +166,26 @@ export default {
       percentualAtraso: 0,
       percentualEmDia: 0,
       percentualProximo: 0,
-      riscoAmeaca: 0
+      riscoAmeaca: 0,
+      usuarios:[]
     };
   },
   mounted() {
     this.listarExames();
+
+  },
+  created(){
+    axios.get("usuario/listarUsuarios").then(res => {
+      this.usuarios = res.data;
+    });
+  },
+  filters: {
+    data: function (data) {
+
+      return data ? moment(data).format("LL") : "";
+
+
+    },
   },
   methods: {
     showDialog(tipo){
@@ -175,11 +195,11 @@ export default {
         this.examesAcidente.forEach(item => {
           this.exames.push({
             'nomeExame'      : item.nomeExame,
-            'dataExame'      : item.dataExame,
             'descricao'      : item.descricao,
             'crmMedico'      : item.crmMedico,
             'cid'            : item.cid,
             'avaliacaoMedica': item.avaliacaoMedica,
+            'dataExame': item.dataExame,
             'diaProximoExame': item.diaProximoExame,
             'diasAfastamento': item.diasAfastamento,
             'statusExame'    : item.statusExame
@@ -190,11 +210,11 @@ export default {
           this.examesAdmissional.forEach(item => {
           this.exames.push({
             'nomeExame'      : item.nomeExame,
-            'dataExame'      : item.dataExame,
             'descricao'      : item.descricao,
             'crmMedico'      : item.crmMedico,
             'cid'            : item.cid,
             'avaliacaoMedica': item.avaliacaoMedica,
+            'dataExame': item.dataExame,
             'diaProximoExame': item.diaProximoExame,
             'diasAfastamento': item.diasAfastamento,
             'statusExame'    : item.statusExame
@@ -205,11 +225,11 @@ export default {
           this.examesDemissional.forEach(item => {
           this.exames.push({
             'nomeExame'      : item.nomeExame,
-            'dataExame'      : item.dataExame,
             'descricao'      : item.descricao,
             'crmMedico'      : item.crmMedico,
             'cid'            : item.cid,
             'avaliacaoMedica': item.avaliacaoMedica,
+            'dataExame': item.dataExame,
             'diaProximoExame': item.diaProximoExame,
             'diasAfastamento': item.diasAfastamento,
             'statusExame'    : item.statusExame
@@ -220,11 +240,11 @@ export default {
           this.examePeriodico.forEach(item => {
           this.exames.push({
             'nomeExame'      : item.nomeExame,
-            'dataExame'      : item.dataExame,
             'descricao'      : item.descricao,
             'crmMedico'      : item.crmMedico,
             'cid'            : item.cid,
             'avaliacaoMedica': item.avaliacaoMedica,
+            'dataExame': item.dataExame,
             'diaProximoExame': item.diaProximoExame,
             'diasAfastamento': item.diasAfastamento,
             'statusExame'    : item.statusExame
@@ -288,7 +308,7 @@ export default {
           type: "pie"
         },
         title: {
-          text: "Exame/Procedimentos dos funcionarios"
+          text: "Exame/Procedimentos dos Funcionários"
         },
         tooltip: {
           pointFormat: "{series.name}: <b>{point.percentage:.1f}%</b>"
@@ -315,7 +335,7 @@ export default {
         },
         series: [
           {
-            name: "exames",
+            name: "Exames",
             colorByPoint: true,
             data: this.perExames()
           }
