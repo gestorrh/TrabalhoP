@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d10c6753-bfea-4914-923e-19ea90dc52ce" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/proficiencia/back-end/src/main/java/ufc/npi/proficiencia/controller/ExameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/proficiencia/back-end/src/main/java/ufc/npi/proficiencia/controller/ExameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proficiencia/back-end/src/main/java/ufc/npi/proficiencia/controller/impl/ExameControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/proficiencia/back-end/src/main/java/ufc/npi/proficiencia/controller/impl/ExameControllerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proficiencia/back-end/src/main/java/ufc/npi/proficiencia/model/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/proficiencia/back-end/src/main/java/ufc/npi/proficiencia/model/Usuario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proficiencia/back-end/src/main/java/ufc/npi/proficiencia/repository/ExameRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/proficiencia/back-end/src/main/java/ufc/npi/proficiencia/repository/ExameRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proficiencia/back-end/src/main/java/ufc/npi/proficiencia/service/ExameService.java" beforeDir="false" afterPath="$PROJECT_DIR$/proficiencia/back-end/src/main/java/ufc/npi/proficiencia/service/ExameService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proficiencia/back-end/src/main/java/ufc/npi/proficiencia/service/impl/ExameServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/proficiencia/back-end/src/main/java/ufc/npi/proficiencia/service/impl/ExameServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Script-Gestao.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Script-Gestao.sql" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/proficiencia/back-end/target/" />
@@ -26,7 +21,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/proficiencia/back-end/src/main/java/ufc/npi/proficiencia/service/ExameService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
+            <state relative-caret-position="210">
               <caret line="18" column="37" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -38,7 +33,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/proficiencia/back-end/src/main/java/ufc/npi/proficiencia/controller/ExameController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
+            <state relative-caret-position="240">
               <caret line="24" column="45" selection-start-line="24" selection-start-column="18" selection-end-line="24" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -50,8 +45,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/proficiencia/back-end/src/main/java/ufc/npi/proficiencia/model/Exame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="49">
-              <caret line="14" column="21" lean-forward="true" selection-start-line="14" selection-end-line="15" />
+            <state relative-caret-position="150">
+              <caret line="14" column="21" selection-start-line="14" selection-end-line="15" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -62,7 +57,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/proficiencia/back-end/src/main/java/ufc/npi/proficiencia/controller/impl/ExameControllerImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="403">
+            <state relative-caret-position="4">
               <caret line="41" column="42" selection-start-line="41" selection-start-column="17" selection-end-line="41" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -75,18 +70,29 @@
         <entry file="file://$PROJECT_DIR$/proficiencia/back-end/src/main/java/ufc/npi/proficiencia/model/Usuario.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="105">
-              <caret line="7" column="45" lean-forward="true" selection-start-line="7" selection-start-column="45" selection-end-line="7" selection-end-column="45" />
+              <caret line="7" column="45" selection-start-line="7" selection-start-column="45" selection-end-line="7" selection-end-column="45" />
               <folding>
+                <element signature="e#3994#3995#0" expanded="true" />
                 <element signature="e#4022#4023#0" expanded="true" />
+                <element signature="e#4064#4065#0" expanded="true" />
                 <element signature="e#4098#4099#0" expanded="true" />
+                <element signature="e#4183#4184#0" expanded="true" />
                 <element signature="e#4217#4218#0" expanded="true" />
+                <element signature="e#4266#4267#0" expanded="true" />
                 <element signature="e#4299#4300#0" expanded="true" />
+                <element signature="e#4347#4348#0" expanded="true" />
                 <element signature="e#4384#4385#0" expanded="true" />
+                <element signature="e#4433#4434#0" expanded="true" />
                 <element signature="e#4464#4465#0" expanded="true" />
+                <element signature="e#4512#4513#0" expanded="true" />
                 <element signature="e#4547#4548#0" expanded="true" />
+                <element signature="e#4605#4606#0" expanded="true" />
                 <element signature="e#4632#4633#0" expanded="true" />
+                <element signature="e#4689#4690#0" expanded="true" />
                 <element signature="e#4716#4717#0" expanded="true" />
+                <element signature="e#4778#4779#0" expanded="true" />
                 <element signature="e#4805#4806#0" expanded="true" />
+                <element signature="e#4853#4854#0" expanded="true" />
                 <element signature="e#4880#4881#0" expanded="true" />
               </folding>
             </state>
@@ -96,14 +102,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/proficiencia/back-end/src/main/java/ufc/npi/proficiencia/repository/ExameRepository.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="47" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="47" />
+            <state relative-caret-position="180">
+              <caret line="19" column="47" selection-start-line="19" selection-start-column="47" selection-end-line="19" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#0#322#1" expanded="true" />
-                <element signature="e#0#275#1" expanded="true" />
-                <element signature="e#0#305#1" expanded="true" />
-                <element signature="e#0#315#1" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -112,12 +114,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/proficiencia/back-end/src/main/java/ufc/npi/proficiencia/service/impl/ExameServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
-              <caret line="36" column="36" lean-forward="true" selection-start-line="36" selection-start-column="11" selection-end-line="36" selection-end-column="36" />
+            <state relative-caret-position="330">
+              <caret line="36" column="36" selection-start-line="36" selection-start-column="11" selection-end-line="36" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1326#1327#0" expanded="true" />
-                <element signature="e#1376#1377#0" expanded="true" />
+                <element signature="e#1386#1387#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -218,52 +220,6 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="proficiencia" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="proficiencia-backend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="back-end" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="proficiencia" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="proficiencia-backend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="back-end" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="proficiencia" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="proficiencia-backend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="back-end" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="proficiencia" type="462c0819:PsiDirectoryNode" />
-              <item name="repository" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="proficiencia-backend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="back-end" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="proficiencia" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="proficiencia-backend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="back-end" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="proficiencia" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-              <item name="impl" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -323,16 +279,18 @@
       <updated>1574809827427</updated>
       <workItem from="1574809833388" duration="11395000" />
       <workItem from="1574827717981" duration="6152000" />
-      <workItem from="1575326563551" duration="6432000" />
+      <workItem from="1575326563551" duration="7024000" />
+      <workItem from="1575343841655" duration="729000" />
+      <workItem from="1575436690655" duration="1506000" />
+      <workItem from="1575459511645" duration="2488000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23979000" />
+    <option name="totallyTimeSpent" value="29294000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="49" y="-4" width="1317" height="772" extended-state="6" />
-    <editor active="true" />
+    <frame x="48" y="-11" width="1319" height="780" extended-state="6" />
     <layout>
       <window_info id="Image Layers" order="0" />
       <window_info id="Capture Tool" order="1" />
@@ -340,9 +298,9 @@
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Web" order="4" side_tool="true" />
       <window_info id="Designer" order="5" />
-      <window_info content_ui="combo" id="Project" order="6" visible="true" weight="0.2848151" />
+      <window_info content_ui="combo" id="Project" order="6" visible="true" weight="0.2989772" />
       <window_info id="Structure" order="7" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="0" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="0" visible="true" weight="0.32884902" />
       <window_info anchor="bottom" id="Docker" order="1" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="3" weight="0.3213752" />
@@ -352,7 +310,7 @@
       <window_info anchor="bottom" id="Spring" order="7" />
       <window_info anchor="bottom" id="Message" order="8" />
       <window_info anchor="bottom" id="Find" order="9" />
-      <window_info active="true" anchor="bottom" id="Run" order="10" visible="true" weight="0.068759345" />
+      <window_info anchor="bottom" id="Run" order="10" weight="0.18834081" />
       <window_info anchor="bottom" id="Debug" order="11" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="12" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="13" weight="0.4" />
@@ -497,52 +455,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/proficiencia/back-end/src/main/java/ufc/npi/proficiencia/repository/ExameRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="47" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#0#322#1" expanded="true" />
-            <element signature="e#0#275#1" expanded="true" />
-            <element signature="e#0#305#1" expanded="true" />
-            <element signature="e#0#315#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/proficiencia/back-end/src/main/java/ufc/npi/proficiencia/service/impl/ExameServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="36" column="36" lean-forward="true" selection-start-line="36" selection-start-column="11" selection-end-line="36" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1326#1327#0" expanded="true" />
-            <element signature="e#1376#1377#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/proficiencia/back-end/src/main/java/ufc/npi/proficiencia/service/ExameService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="37" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/proficiencia/back-end/src/main/java/ufc/npi/proficiencia/controller/ExameController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="24" column="45" selection-start-line="24" selection-start-column="18" selection-end-line="24" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/proficiencia/back-end/src/main/java/ufc/npi/proficiencia/controller/UsuarioController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="402">
@@ -553,10 +465,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/proficiencia/back-end/src/main/java/ufc/npi/proficiencia/service/ExameService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="18" column="37" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/proficiencia/back-end/src/main/java/ufc/npi/proficiencia/controller/ExameController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="24" column="45" selection-start-line="24" selection-start-column="18" selection-end-line="24" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/proficiencia/back-end/src/main/java/ufc/npi/proficiencia/model/Exame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="49">
-          <caret line="14" column="21" lean-forward="true" selection-start-line="14" selection-end-line="15" />
+        <state relative-caret-position="150">
+          <caret line="14" column="21" selection-start-line="14" selection-end-line="15" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -566,26 +498,59 @@
     <entry file="file://$PROJECT_DIR$/proficiencia/back-end/src/main/java/ufc/npi/proficiencia/model/Usuario.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
-          <caret line="7" column="45" lean-forward="true" selection-start-line="7" selection-start-column="45" selection-end-line="7" selection-end-column="45" />
+          <caret line="7" column="45" selection-start-line="7" selection-start-column="45" selection-end-line="7" selection-end-column="45" />
           <folding>
+            <element signature="e#3994#3995#0" expanded="true" />
             <element signature="e#4022#4023#0" expanded="true" />
+            <element signature="e#4064#4065#0" expanded="true" />
             <element signature="e#4098#4099#0" expanded="true" />
+            <element signature="e#4183#4184#0" expanded="true" />
             <element signature="e#4217#4218#0" expanded="true" />
+            <element signature="e#4266#4267#0" expanded="true" />
             <element signature="e#4299#4300#0" expanded="true" />
+            <element signature="e#4347#4348#0" expanded="true" />
             <element signature="e#4384#4385#0" expanded="true" />
+            <element signature="e#4433#4434#0" expanded="true" />
             <element signature="e#4464#4465#0" expanded="true" />
+            <element signature="e#4512#4513#0" expanded="true" />
             <element signature="e#4547#4548#0" expanded="true" />
+            <element signature="e#4605#4606#0" expanded="true" />
             <element signature="e#4632#4633#0" expanded="true" />
+            <element signature="e#4689#4690#0" expanded="true" />
             <element signature="e#4716#4717#0" expanded="true" />
+            <element signature="e#4778#4779#0" expanded="true" />
             <element signature="e#4805#4806#0" expanded="true" />
+            <element signature="e#4853#4854#0" expanded="true" />
             <element signature="e#4880#4881#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/proficiencia/back-end/src/main/java/ufc/npi/proficiencia/repository/ExameRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="19" column="47" selection-start-line="19" selection-start-column="47" selection-end-line="19" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/proficiencia/back-end/src/main/java/ufc/npi/proficiencia/service/impl/ExameServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="36" column="36" selection-start-line="36" selection-start-column="11" selection-end-line="36" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1326#1327#0" expanded="true" />
+            <element signature="e#1386#1387#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/proficiencia/back-end/src/main/java/ufc/npi/proficiencia/controller/impl/ExameControllerImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="403">
+        <state relative-caret-position="4">
           <caret line="41" column="42" selection-start-line="41" selection-start-column="17" selection-end-line="41" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />

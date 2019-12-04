@@ -1,5 +1,5 @@
 <template>
-    <v-toolbar app color="#006064" dark fixed>
+    <v-toolbar app color="#006064" dark fixed class="noneImprime">
         <router-link :to="{ path: '/'}"><img alt="Logo NPI" src="/static/logo-03.png"></router-link>
         <v-spacer></v-spacer>
 
@@ -68,5 +68,13 @@
     };
 </script>
 
+<style>
 
+@media print {
+  .noneImprime
+{
+    display: none;
+}
+}
+</style>
 
