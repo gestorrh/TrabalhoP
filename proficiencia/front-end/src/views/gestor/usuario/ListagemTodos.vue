@@ -203,7 +203,7 @@ export default {
             this.usuarioAux = null;
             this.dCor = "error";
             this.dSnackbar = true;
-            this.dMensagem = error.response.data;
+            this.dMensagem = "Usuário Vinculado a um Exame";
           }
         });
     },

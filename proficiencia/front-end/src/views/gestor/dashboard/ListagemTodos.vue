@@ -398,6 +398,14 @@ table.matriz {
  .noneImprime {
    display: none;
  } 
+ .page-break { 
+page-break-before: always; 
+}
+
+ @page {
+margin: -0.5cm;
+
+}
 }
 /*.cardNome{
       margin-top: 50px;

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d10c6753-bfea-4914-923e-19ea90dc52ce" name="Default Changelist" comment="" />
+    <list default="true" id="d10c6753-bfea-4914-923e-19ea90dc52ce" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Script-Gestao.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Script-Gestao.sql" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/proficiencia/back-end/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -55,7 +57,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/proficiencia/back-end/src/main/java/ufc/npi/proficiencia/controller/impl/ExameControllerImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
+            <state relative-caret-position="4">
               <caret line="41" column="42" selection-start-line="41" selection-start-column="17" selection-end-line="41" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -185,8 +187,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -205,10 +205,27 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="proficiencia-backend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="back-end" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="proficiencia-backend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="back-end" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="proficiencia" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -265,11 +282,12 @@
       <workItem from="1575326563551" duration="7024000" />
       <workItem from="1575343841655" duration="729000" />
       <workItem from="1575436690655" duration="1506000" />
+      <workItem from="1575459511645" duration="2488000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26806000" />
+    <option name="totallyTimeSpent" value="29294000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="48" y="-11" width="1319" height="780" extended-state="6" />
@@ -280,9 +298,9 @@
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Web" order="4" side_tool="true" />
       <window_info id="Designer" order="5" />
-      <window_info content_ui="combo" id="Project" order="6" visible="true" weight="0.29425648" />
+      <window_info content_ui="combo" id="Project" order="6" visible="true" weight="0.2989772" />
       <window_info id="Structure" order="7" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="0" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="0" visible="true" weight="0.32884902" />
       <window_info anchor="bottom" id="Docker" order="1" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="3" weight="0.3213752" />
@@ -292,7 +310,7 @@
       <window_info anchor="bottom" id="Spring" order="7" />
       <window_info anchor="bottom" id="Message" order="8" />
       <window_info anchor="bottom" id="Find" order="9" />
-      <window_info anchor="bottom" id="Run" order="10" weight="0.29895365" />
+      <window_info anchor="bottom" id="Run" order="10" weight="0.18834081" />
       <window_info anchor="bottom" id="Debug" order="11" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="12" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="13" weight="0.4" />
@@ -532,7 +550,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/proficiencia/back-end/src/main/java/ufc/npi/proficiencia/controller/impl/ExameControllerImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
+        <state relative-caret-position="4">
           <caret line="41" column="42" selection-start-line="41" selection-start-column="17" selection-end-line="41" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
