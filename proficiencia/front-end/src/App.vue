@@ -14,7 +14,7 @@
         <v-footer height="auto" class="white pa-3 app--footer">
           <span
             class="caption"
-          >Núcleo de Práticas em Informática &copy; {{ new Date().getFullYear() }}</span>
+          >Quality RH&copy; {{ new Date().getFullYear() }}</span>
           <v-spacer></v-spacer>
           <span class="caption">
             v1.0.0

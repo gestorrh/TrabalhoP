@@ -95,7 +95,6 @@
         </v-widget>
       </v-flex>
       
-      {{exameDemissional}}
       <v-flex xs12 v-if="usuario.papel === 'MEDICO' || usuario.papel === 'COLABORADOR'">
         <v-widget title="Exames/Procedimentos Realizados" v-if="usuario.papel === 'MEDICO'">
           <div slot="widget-content">
@@ -116,8 +115,10 @@
                   <td class="text-xs-left">{{ props.item.colaborador_id }}</td>
                   <td class="text-xs-left">{{ props.item.dataExame | data}}</td>
                   <td class="text-xs-left">{{ props.item.diaProximoExame | data}}</td>
-                  <td class="text-xs-left" v-if="dataAtual <= props.item.diaProximoExame"><i class="material-icons">done_outline</i></td>
-                  <td class="text-xs-left" v-if="dataAtual > props.item.diaProximoExame"><i class="material-icons">
+                  <td class="text-xs-left" v-if="dataAtual <= props.item.diaProximoExame || props.item.diaProximoExame
+                    == props.item.dataExame "><i class="material-icons">done_outline</i></td>
+                  <td class="text-xs-left" v-if="dataAtual > props.item.diaProximoExame &&
+                    props.item.diaProximoExame != props.item.dataExame "><i class="material-icons">
                     report_problem
                   </i></td>
 
@@ -146,8 +147,10 @@
                   <td class="text-xs-left">{{ props.item.medico_id }}</td>
                   <td class="text-xs-left">{{ props.item.dataExame | data}}</td>
                   <td class="text-xs-left">{{ props.item.diaProximoExame | data}}</td>
-                  <td class="text-xs-left" v-if="dataAtual <= props.item.diaProximoExame"><i class="material-icons">done_outline</i></td>
-                  <td class="text-xs-left" v-if="dataAtual > props.item.diaProximoExame"><i class="material-icons">
+                  <td class="text-xs-left" v-if="dataAtual <= props.item.diaProximoExame || props.item.diaProximoExame
+                    == props.item.dataExame "><i class="material-icons">done_outline</i></td>
+                  <td class="text-xs-left" v-if="dataAtual > props.item.diaProximoExame &&
+                    props.item.diaProximoExame != props.item.dataExame "><i class="material-icons">
                     report_problem
                   </i></td>
 
@@ -214,6 +217,7 @@ export default {
 
   data() {
     return {
+      dataAtual: new Date().toISOString().substr(0, 10),
       search: '',
       headers_exames1: [
         { text: "Tipo de Exame", value: "nomeExame", sortable: false },
@@ -228,7 +232,6 @@ export default {
         { text: "Data Exame", value: "dataExame", sortable: false },
         { text: "Data Retorno", value: "diaProximoExame", sortable: false },
         { text: "Status", value: "", sortable: false },      ],
-      dataAtual: new Date().toISOString().substr(0, 10),
       usuario: {
         uf: null,
         dataNascimento: null,
@@ -293,7 +296,6 @@ export default {
         if(this.usuario.papel === "MEDICO"){
           axios.get(`/exame/listar/medico/${this.id}`).then(res => {
             this.exames = res.data;
-            Console.log(this.dataAtual);
           });
         }
 
@@ -301,8 +303,6 @@ export default {
 
           axios.get(`/exame/listar/colaborador/${this.id}`).then(res => {
             this.exames = res.data;
-            Console.log(this.dataAtual);
-
           });
         }
         else{
@@ -311,28 +311,6 @@ export default {
       });
 
     },
-
-    listarExames(){
-            axios.get('/exame/').then(res => {
-        var todosExames;
-        todosExames = res.data;
-
-            for(let i=0; i < todosExames; i++){
-            if(todosExames[i].nomeExame === "ACIDENTE DE TRABALHO"){
-                this.examesAcidente.push(todosExames[i]);
-            }
-            else if(todosExames[i].nomeExame === "ADMISSIONAL"){
-                this.examesAdmissional.push(todosExames[i]);
-            }
-            else if(todosExames[i].nomeExame === "DEMISSIONAL"){
-                this.examesDemissional.push(todosExames[i]);
-            }
-            else{
-                this.examePeriodico.push(todosExames[i]);
-            }
-            }
-            });
-      },
 
     getLabelStatusAvaliacao(status) {
       return store.getters["enums/getLabelStatusAvaliacao"](status);
