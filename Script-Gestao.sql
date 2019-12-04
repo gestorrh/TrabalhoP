@@ -139,88 +139,290 @@ insert into papel( usuario_id, papel )values
 
 insert into exame(avaliacao_medica, cid, crm_medico, data_exame, descricao, dia_proximo_exame,
 	dias_afastamento, nome_exame, status_exame, colaborador_id, medico_id )values
-		( 'Muito boa', '10000', '11122233', '2017-01-01', 'Descricao aqui', '2017-01-01', 0,
+		( 'Ótimo estado', '1', '11122233', '2018-01-01', 'Avaliação completa', '2018-01-01', 0,
 		'ADMISSIONAL',
 		'ANDAMENTO', 5, 3),
 		
-		( 'Muito boa', '10000', '11122233', '2017-06-01', 'Descricao aqui', '2017-12-01', 0,
+		( 'Ótimo estado', '1', '11122233', '2018-06-01', 'Avaliação completa', '2018-11-01', 0,
 		'PERIODICO',
 		'ANDAMENTO', 5, 3),
 		
-		( 'Tensa', '10000', '11122233', '2018-01-01', 'Quebrou o braço', '2018-02-01', 30,
+		( 'Descanço e remédios', '1', '11122233', '2018-08-12', 'Braço quebrado - motivo..', '2018-09-02', 30,
 		'ACIDENTE DE TRABALHO',
 		'ANDAMENTO', 5, 3),
 		
-		( 'Muito boa', '10000', '11122233', '2018-08-11', 'Descricao aqui', '2018-08-11', 0,
+		( 'Ressalvas', '1', '11122233', '2018-10-15', 'Avaliação completa', '2018-10-15', 0,
 		'DEMISSIONAL',
 		'ANDAMENTO', 5, 3),
 		
-		( 'Muito boa', '10000', '11122233', '2019-01-01', 'Descricao aqui', '2019-01-01', 0,
+		( 'Ótimo estado', '1', '11122233', '2018-01-01', 'Avaliação completa', '2018-01-01', 0,
 		'ADMISSIONAL',
 		'ANDAMENTO', 6, 3),
 		
-		( 'Muito boa', '10000', '11122233', '2019-07-01', 'Descricao aqui', '2019-12-01', 0,
+		( 'Ótimo estado', '1', '11122233', '2018-06-01', 'Avaliação completa', '2018-11-01', 0,
+		'PERIODICO',
+		'ANDAMENTO', 6, 3),
+		
+		( 'Ressalvas', '1', '11122233', '2018-11-01', 'Avaliação completa', '2019-04-01', 0,
+		'PERIODICO',
+		'ANDAMENTO', 6, 3),
+		
+		( 'Repouso e remédios', '1', '11122233', '2018-03-01', 'Queimadura grau I', '2019-04-01', 30,
+		'ACIDENTE DE TRABALHO',
+		'ANDAMENTO', 6, 3),
+		
+		( 'Ressalvas', '1', '11122233', '2019-04-01', 'Avaliação completa', '2019-09-01', 0,
+		'PERIODICO',
+		'ANDAMENTO', 6, 3),
+		
+		( 'Ótimo estado', '1', '11122233', '2019-09-01', 'Avaliação completa', '2020-02-01', 0,
 		'PERIODICO',
 		'ANDAMENTO', 6, 3),
 	
-		( 'Muito boa', '10000', '11122233', '2019-01-01', 'Descricao aqui', '2019-01-01', 0,
+		( 'Ótimo estado', '1', '11122233', '2018-01-01', 'Avaliação completa', '2018-01-01', 0,
 		'ADMISSIONAL',
 		'ANDAMENTO', 7, 3),
 		
-		( 'Muito boa', '10000', '11122233', '2019-01-01', 'Descricao aqui', '2019-01-01', 0,
-		'ADMISSIONAL',
-		'ANDAMENTO', 8, 3),
+		( 'Ressalvas', '1', '33222111', '2018-06-01', 'Avaliação completa', '2018-11-01', 0,
+		'PERIODICO',
+		'ANDAMENTO', 7, 4),
 		
-		( 'Muito boa', '10000', '11122233', '2019-01-01', 'Descricao aqui', '2019-01-01', 0,
-		'ADMISSIONAL',
-		'ANDAMENTO', 9, 3),
+		( 'Ótimo estado', '1', '33222111', '2018-11-01', 'Avaliação completa', '2019-04-01', 0,
+		'PERIODICO',
+		'ANDAMENTO', 7, 4),
 		
-		( 'Muito boa', '10000', '11122233', '2019-01-01', 'Descricao aqui', '2019-01-01', 0,
-		'ADMISSIONAL',
-		'ANDAMENTO', 10, 3),
+		( 'Ótimo estado', '1', '33222111', '2019-04-01', 'Avaliação completa', '2019-09-01', 0,
+		'PERIODICO',
+		'ANDAMENTO', 7, 4),
 		
-		( 'Muito boa', '10000', '11122233', '2019-01-01', 'Descricao aqui', '2019-01-01', 0,
-		'ADMISSIONAL',
-		'ANDAMENTO', 11, 3),
+		( 'Ótimo estado', '1', '33222111', '2019-07-01', 'Avaliação completa', '2019-07-01', 0,
+		'DEMISSIONAL',
+		'ANDAMENTO', 7, 4),
 		
-		( 'Muito boa', '10000', '11122233', '2019-01-01', 'Descricao aqui', '2019-01-01', 0,
+		( 'Ótimo estado', '1', '33222111', '2018-01-01', 'Avaliação completa', '2018-01-01', 0,
 		'ADMISSIONAL',
-		'ANDAMENTO', 12, 3),
+		'ANDAMENTO', 8, 4),
 		
-		( 'Muito boa', '10000', '11122233', '2019-01-01', 'Descricao aqui', '2019-01-01', 0,
+		( 'Ressalvas', '1', '33222111', '2018-06-01', 'Avaliação completa', '2018-11-01', 0,
+		'PERIODICO',
+		'ANDAMENTO', 8, 4),
+		
+		( 'Ressalvas', '1', '33222111', '2018-11-01', 'Avaliação completa', '2019-04-01', 0,
+		'PERIODICO',
+		'ANDAMENTO', 8, 4),
+		
+		( 'Repouso e remédios', '1', '33222111', '2018-03-01', 'Queimadura grau I', '2018-04-01', 30,
+		'ACIDENTE DE TRABALHO',
+		'ANDAMENTO', 8, 4),
+		
+		( 'Ótimo estado', '1', '33222111', '2019-04-01', 'Avaliação completa', '2019-09-01', 0,
+		'PERIODICO',
+		'ANDAMENTO', 8, 4),
+		
+		( 'Ótimo estado', '1', '33222111', '2019-09-01', 'Avaliação completa', '2020-02-01', 0,
+		'PERIODICO',
+		'ANDAMENTO', 8, 4),
+		
+		( 'Ótimo estado', '1', '33222111', '2018-01-01', 'Avaliação completa', '2018-01-01', 0,
 		'ADMISSIONAL',
-		'ANDAMENTO', 13, 3),
+		'ANDAMENTO', 9, 4),
 		
-		( 'Muito boa', '10000', '11122233', '2019-01-01', 'Descricao aqui', '2019-01-01', 0,
+		( 'Ótimo estado', '1', '33222111', '2018-06-01', 'Avaliação completa', '2018-11-01', 0,
+		'PERIODICO',
+		'ANDAMENTO', 9, 4),
+		
+		( 'Ressalvas', '1', '33222111', '2018-11-01', 'Avaliação completa', '2019-04-01', 0,
+		'PERIODICO',
+		'ANDAMENTO', 9, 4),
+		
+		( 'Ótimo estado', '1', '33222111', '2019-02-10', 'Avaliação completa', '2019-02-10', 0,
+		'DEMISSIONAL',
+		'ANDAMENTO', 9, 4),
+		
+		( 'Ótimo estado', '1', '33222111', '2018-01-01', 'Avaliação completa', '2018-01-01', 0,
+		'ADMISSIONAL',
+		'ANDAMENTO', 10, 4),
+		
+		( 'Ótimo estado', '1', '33222111', '2018-06-01', 'Avaliação completa', '2018-11-01', 0,
+		'PERIODICO',
+		'ANDAMENTO', 10, 4),
+		
+		( 'Ressalvas', '1', '33222111', '2019-04-01', 'Avaliação completa', '2019-09-01', 0,
+		'PERIODICO',
+		'ANDAMENTO', 10, 4),
+		
+		( 'Ótimo estado', '1', '33222111', '2019-09-01', 'Avaliação completa', '2020-03-01', 0,
+		'PERIODICO',
+		'ANDAMENTO', 10, 4),
+		
+		( 'Ressalvas', '1', '33222111', '2018-01-01', 'Avaliação completa', '2018-01-01', 0,
+		'ADMISSIONAL',
+		'ANDAMENTO', 11, 4),
+	
+		( 'Ressalvas', '1', '33222111', '2018-06-01', 'Avaliação completa', '2018-11-01', 0,
+		'PERIODICO',
+		'ANDAMENTO', 11, 4),
+		
+		( 'Ótimo estado', '1', '33222111', '2018-08-07', 'Avaliação completa', '2018-08-07', 0,
+		'DEMISSIONAL',
+		'ANDAMENTO', 11, 4),
+		
+		( 'Ótimo estado', '1', '33222111', '2018-01-01', 'Avaliação completa', '2018-01-01', 0,
+		'ADMISSIONAL',
+		'ANDAMENTO', 12, 4),
+		
+		( 'Ótimo estado', '1', '33222111', '2018-06-01', 'Avaliação completa', '2018-11-01', 0,
+		'PERIODICO',
+		'ANDAMENTO', 12, 4),
+		
+		( 'Ressalvas', '1', '33222111', '2018-01-01', 'Avaliação completa', '2018-01-01', 0,
+		'ADMISSIONAL',
+		'ANDAMENTO', 13, 4),
+		
+		( 'Ótimo estado', '1', '33222111', '2018-03-07', 'Avaliação completa', '2018-03-07', 0,
+		'DEMISSIONAL',
+		'ANDAMENTO', 13, 4),
+		
+		( 'Ressalvas', '1', '11122233', '2018-01-01', 'Avaliação completa', '2018-01-01', 0,
 		'ADMISSIONAL',
 		'ANDAMENTO', 14, 3),
 		
-		( 'Muito boa', '10000', '11122233', '2019-01-01', 'Descricao aqui', '2019-01-01', 0,
+		( 'Ressalvas', '1', '11122233', '2018-06-01', 'Avaliação completa', '2018-11-01', 0,
+		'PERIODICO',
+		'ANDAMENTO', 14, 3),
+		
+		( 'Ótimo estado', '1', '11122233', '2019-04-01', 'Avaliação completa', '2019-09-01', 0,
+		'PERIODICO',
+		'ANDAMENTO', 14, 3),
+		
+		( 'Ótimo estado', '1', '11122233', '2019-09-01', 'Avaliação completa', '2020-03-01', 0,
+		'PERIODICO',
+		'ANDAMENTO', 14, 3),
+		
+		( 'Ótimo estado', '1', '11122233', '2018-01-01', 'Avaliação completa', '2018-01-01', 0,
 		'ADMISSIONAL',
 		'ANDAMENTO', 15, 3),
 		
-		( 'Muito boa', '10000', '11122233', '2019-01-01', 'Descricao aqui', '2019-01-01', 0,
+		( 'Ressalvas', '1', '33222111', '2018-06-01', 'Avaliação completa', '2018-11-01', 0,
+		'PERIODICO',
+		'ANDAMENTO', 15, 4),
+			
+		( 'Ressalvas', '1', '11122233', '2019-04-01', 'Avaliação completa', '2019-09-01', 0,
+		'PERIODICO',
+		'ANDAMENTO', 15, 3),
+		
+		( 'Ótimo estado', '1', '11122233', '2018-07-01', 'Avaliação completa', '2018-07-01', 0,
+		'DEMISSIONAL',
+		'ANDAMENTO', 15, 3),
+		
+		( 'Ótimo estado', '1', '33222111', '2018-01-01', 'Avaliação completa', '2018-01-01', 0,
 		'ADMISSIONAL',
+		'ANDAMENTO', 16, 4),
+		
+		( 'Ótimo estado', '1', '33222111', '2018-06-01', 'Avaliação completa', '2018-11-01', 0,
+		'PERIODICO',
+		'ANDAMENTO', 16, 4),
+		
+		( 'Ótimo estado', '1', '11122233', '2019-08-20', 'Avaliação completa', '2019-08-20', 0,
+		'PERIODICO',
 		'ANDAMENTO', 16, 3),
 		
-		( 'Muito boa', '10000', '11122233', '2019-01-01', 'Descricao aqui', '2019-01-01', 0,
+		( 'Ressalvas', '1', '33222111', '2018-01-01', 'Avaliação completa', '2018-01-01', 0,
 		'ADMISSIONAL',
+		'ANDAMENTO', 17, 4),
+
+		( 'Ressalvas', '1', '33222111', '2018-06-01', 'Avaliação completa', '2018-11-01', 0,
+		'PERIODICO',
+		'ANDAMENTO', 17, 4),
+		
+		( 'Ressalvas', '1', '11122233', '2018-11-01', 'Avaliação completa', '2019-04-01', 0,
+		'PERIODICO',
 		'ANDAMENTO', 17, 3),
 		
-		( 'Muito boa', '10000', '11122233', '2019-01-01', 'Descricao aqui', '2019-01-01', 0,
+		( 'Ótimo estado', '1', '11122233', '2019-04-01', 'Avaliação completa', '2019-09-01', 0,
+		'PERIODICO',
+		'ANDAMENTO', 17, 3),
+		
+		( 'Ótimo estado', '1', '33222111', '2019-09-01', 'Avaliação completa', '2020-03-01', 0,
+		'PERIODICO',
+		'ANDAMENTO', 17, 4),
+		
+		( 'Ótimo estado', '1', '11122233', '2018-01-01', 'Avaliação completa', '2018-01-01', 0,
 		'ADMISSIONAL',
 		'ANDAMENTO', 18, 3),
 		
-		( 'Muito boa', '10000', '11122233', '2019-01-01', 'Descricao aqui', '2019-01-01', 0,
+		( 'Ótimo estado', '1', '11122233', '2018-06-01', 'Avaliação completa', '2018-11-01', 0,
+		'PERIODICO',
+		'ANDAMENTO', 18, 3),
+		
+		( 'Ótimo estado', '1', '11122233', '2018-11-01', 'Avaliação completa', '2019-04-01', 0,
+		'PERIODICO',
+		'ANDAMENTO', 18, 3),
+		
+		( 'Ressalvas', '1', '33222111', '2019-04-01', 'Avaliação completa', '2019-09-01', 0,
+		'PERIODICO',
+		'ANDAMENTO', 18, 4),
+		
+		( 'Ótimo estado', '1', '11122233', '2019-09-01', 'Avaliação completa', '2020-03-01', 0,
+		'PERIODICO',
+		'ANDAMENTO', 18, 3),
+		
+		( 'Ótimo estado', '1', '33222111', '2018-01-01', 'Avaliação completa', '2018-01-01', 0,
 		'ADMISSIONAL',
+		'ANDAMENTO', 19, 4),
+		
+		( 'Ótimo estado', '1', '33222111', '2018-06-01', 'Avaliação completa', '2018-11-01', 0,
+		'PERIODICO',
+		'ANDAMENTO', 19, 4),
+		
+		( 'Ótimo estado', '1', '11122233', '2018-11-01', 'Avaliação completa', '2019-04-01', 0,
+		'PERIODICO',
 		'ANDAMENTO', 19, 3),
 		
-		( 'Muito boa', '10000', '11122233', '2019-01-01', 'Descricao aqui', '2019-01-01', 0,
+		( 'Ressalvas', '1', '33222111', '2019-04-01', 'Avaliação completa', '2019-09-01', 0,
+		'PERIODICO',
+		'ANDAMENTO', 19, 4),
+		
+		( 'Ótimo estado', '1', '11122233', '2019-09-01', 'Avaliação completa', '2020-02-01', 0,
+		'PERIODICO',
+		'ANDAMENTO', 19, 3),
+		
+		( 'Ótimo estado', '1', '11122233', '2018-01-01', 'Avaliação completa', '2018-01-01', 0,
 		'ADMISSIONAL',
 		'ANDAMENTO', 20, 3),
 		
-		( 'Muito boa', '10000', '11122233', '2019-01-01', 'Descricao aqui', '2019-01-01', 0,
-		'ADMISSIONAL',
-		'ANDAMENTO', 21, 3);
+		( 'Ótimo estado', '1', '33222111', '2018-06-01', 'Avaliação completa', '2018-11-01', 0,
+		'PERIODICO',
+		'ANDAMENTO', 20, 4),
 		
-	
+		( 'Ressalvas', '1', '11122233', '2018-11-01', 'Avaliação completa', '2019-04-01', 0,
+		'PERIODICO',
+		'ANDAMENTO', 20, 3),
+		
+		( 'Ótimo estado', '1', '11122233', '2019-04-01', 'Avaliação completa', '2019-09-01', 0,
+		'PERIODICO',
+		'ANDAMENTO', 20, 3),
+		
+		( 'Ótimo estado', '1', '11122233', '2019-09-01', 'Avaliação completa', '2020-02-01', 0,
+		'PERIODICO',
+		'ANDAMENTO', 20, 3),
+		
+		( 'Ótimo estado', '1', '11122233', '2018-01-01', 'Avaliação completa', '2018-01-01', 0,
+		'ADMISSIONAL',
+		'ANDAMENTO', 21, 3),
+		
+		( 'Ótimo estado', '1', '11122233', '2018-06-01', 'Avaliação completa', '2018-11-01', 0,
+		'PERIODICO',
+		'ANDAMENTO', 21, 3),
+		
+		( 'Ótimo estado', '1', '11122233', '2018-11-01', 'Avaliação completa', '2019-04-01', 0,
+		'PERIODICO',
+		'ANDAMENTO', 21, 3),
+		
+		( 'Ótimo estado', '1', '11122233', '2019-04-01', 'Avaliação completa', '2019-09-01', 0,
+		'PERIODICO',
+		'ANDAMENTO', 21, 3),
+		
+		( 'Ótimo estado', '1', '11122233', '2019-09-01', 'Avaliação completa', '2020-02-01', 0,
+		'PERIODICO',
+		'ANDAMENTO', 21, 3);
