@@ -29,7 +29,7 @@
                   <v-btn text small @click="showDialog('ADMISSIONAL')" color="primary">ADMISSIONAL</v-btn>
                   <v-btn text small @click="showDialog('DEMISSIONAL')" color="primary">DEMISSIONAL</v-btn>
                   <v-btn text small @click="showDialog('PERIODICO')" color="primary">PERIÓDICO</v-btn>
-                  <!-- <v-btn text small @click="showDialog('TODOSOSEXAMES')" color="primary">TODOS OS EXAMES</v-btn> -->
+                  <v-btn text small @click="showDialog('TODOSOSEXAMES')" color="primary">TODOS OS EXAMES</v-btn>
                 </v-flex>
                 </v-row>
               
@@ -53,9 +53,6 @@
               <v-btn dark text v-on:click="dialog = false" onClick="window.print()">Gerar Relatório</v-btn>
             </v-toolbar-items>
           </v-toolbar>
-          <p>
-            dsds
-          </p>
           <v-data-table
             :headers="headers"
             :items="exames"
@@ -75,12 +72,18 @@
 <!--
                   <td class="text-xs-left">{{ props.item.diasAfastamento }}</td>
 -->
-                  <td class="text-xs-left" v-if="dataAtual <= props.item.diaProximoExame || props.item.diaProximoExame
+                   <td class="text-xs-left" v-if="props.item.diaProximoExame
                     == props.item.dataExame "><i class="material-icons">done_outline</i></td>
+
                   <td class="text-xs-left" v-if="dataAtual > props.item.diaProximoExame &&
                     props.item.diaProximoExame != props.item.dataExame "><i class="material-icons">
                     report_problem
                   </i></td>
+
+                  <td class="text-xs-left" v-if="dataAtual <= props.item.diaProximoExame"><i class="material-icons">
+                    schedule
+                  </i></td>
+
 
                 </tr>
               </template>           
@@ -126,6 +129,7 @@ export default {
       exames: [],
       detalheDialogo: false,
       examesQtd: 0,
+      examesTodos:[],
       examesAcidente: [],
       examesAdmissional: [],
       examesDemissional: [],
@@ -205,7 +209,7 @@ export default {
             'avaliacaoMedica': item.avaliacaoMedica,
             'dataExame': item.dataExame,
             'diaProximoExame': item.diaProximoExame,
-            'diasAfastamento': item.diasAfastamento,
+            // 'diasAfastamento': item.diasAfastamento,
             'statusExame'    : item.statusExame
           })
         })
@@ -220,7 +224,7 @@ export default {
             'avaliacaoMedica': item.avaliacaoMedica,
             'dataExame': item.dataExame,
             'diaProximoExame': item.diaProximoExame,
-            'diasAfastamento': item.diasAfastamento,
+            // 'diasAfastamento': item.diasAfastamento,
             'statusExame'    : item.statusExame
           })
         })
@@ -235,7 +239,7 @@ export default {
             'avaliacaoMedica': item.avaliacaoMedica,
             'dataExame': item.dataExame,
             'diaProximoExame': item.diaProximoExame,
-            'diasAfastamento': item.diasAfastamento,
+            // 'diasAfastamento': item.diasAfastamento,
             'statusExame'    : item.statusExame
           })
         })
@@ -250,26 +254,26 @@ export default {
             'avaliacaoMedica': item.avaliacaoMedica,
             'dataExame': item.dataExame,
             'diaProximoExame': item.diaProximoExame,
+            // 'diasAfastamento': item.diasAfastamento,
+            'statusExame'    : item.statusExame
+          })
+        })
+      }
+      else {
+          this.examesTodos.forEach(item => {
+          this.exames.push({
+            'nomeExame'      : item.nomeExame,
+            'descricao'      : item.descricao,
+            'crmMedico'      : item.crmMedico,
+            'cid'            : item.cid,
+            'avaliacaoMedica': item.avaliacaoMedica,
+            'dataExame': item.dataExame,
+            'diaProximoExame': item.diaProximoExame,
             'diasAfastamento': item.diasAfastamento,
             'statusExame'    : item.statusExame
           })
         })
       }
-      // else {
-      //     this.exames.forEach(item => {
-      //     this.exames.push({
-      //       'nomeExame'      : item.nomeExame,
-      //       'descricao'      : item.descricao,
-      //       'crmMedico'      : item.crmMedico,
-      //       'cid'            : item.cid,
-      //       'avaliacaoMedica': item.avaliacaoMedica,
-      //       'dataExame': item.dataExame,
-      //       'diaProximoExame': item.diaProximoExame,
-      //       'diasAfastamento': item.diasAfastamento,
-      //       'statusExame'    : item.statusExame
-      //     })
-      //   })
-      // }
     },
     perExames() {
       let perExam = [];
@@ -296,7 +300,7 @@ export default {
 
       // perExam.push({
       //   name: "TODOSOSEXAMES",
-      //   y: (this.exames.length / this.examesQtd) * 100
+      //   y: (this.examesTodos.length / this.examesQtd) * 100
       // });
 
       return perExam;
@@ -313,16 +317,18 @@ export default {
         for (let i = 0; i < todosExames.length; i++) {
           if (todosExames[i].nomeExame === "ACIDENTE DE TRABALHO") {
             this.examesAcidente.push(todosExames[i]);
+            this.examesTodos.push(todosExames[i]);
           } else if (todosExames[i].nomeExame === "ADMISSIONAL") {
             this.examesAdmissional.push(todosExames[i]);
+            this.examesTodos.push(todosExames[i]);
           } else if (todosExames[i].nomeExame === "DEMISSIONAL") {
             this.examesDemissional.push(todosExames[i]);
+            this.examesTodos.push(todosExames[i]);
           } else {
             this.examePeriodico.push(todosExames[i]);
+            this.examesTodos.push(todosExames[i]);
           } 
-          // else {
-          //   this.exames.push(todosExames[i]);
-          // }
+        
         }
         console.log(todosExames[0]);
       });

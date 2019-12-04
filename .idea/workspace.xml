@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d10c6753-bfea-4914-923e-19ea90dc52ce" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proficiencia/front-end/src/components/core/AppToolbar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/proficiencia/front-end/src/components/core/AppToolbar.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proficiencia/front-end/src/views/gestor/usuario/ListagemTodos.vue" beforeDir="false" afterPath="$PROJECT_DIR$/proficiencia/front-end/src/views/gestor/usuario/ListagemTodos.vue" afterDir="false" />
-    </list>
+    <list default="true" id="d10c6753-bfea-4914-923e-19ea90dc52ce" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/proficiencia/back-end/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -268,16 +264,15 @@
       <workItem from="1574827717981" duration="6152000" />
       <workItem from="1575326563551" duration="7024000" />
       <workItem from="1575343841655" duration="729000" />
-      <workItem from="1575436690655" duration="897000" />
+      <workItem from="1575436690655" duration="1506000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26197000" />
+    <option name="totallyTimeSpent" value="26806000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="48" y="-11" width="1319" height="780" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Image Layers" order="0" />
       <window_info id="Capture Tool" order="1" />
@@ -297,7 +292,7 @@
       <window_info anchor="bottom" id="Spring" order="7" />
       <window_info anchor="bottom" id="Message" order="8" />
       <window_info anchor="bottom" id="Find" order="9" />
-      <window_info active="true" anchor="bottom" id="Run" order="10" visible="true" weight="0.29895365" />
+      <window_info anchor="bottom" id="Run" order="10" weight="0.29895365" />
       <window_info anchor="bottom" id="Debug" order="11" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="12" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="13" weight="0.4" />
