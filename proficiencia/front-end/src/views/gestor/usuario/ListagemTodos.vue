@@ -1,13 +1,13 @@
 <template xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
   <v-container fluid grid-list-xl>
-    <app-breadcrumbs :items="breadcrumbItems" icon="people" title="Usuários"></app-breadcrumbs>
+    <app-breadcrumbs :items="breadcrumbItems" class="noneImprime" icon="people" title="Usuários"></app-breadcrumbs>
     <v-layout row wrap>
       <v-flex xs12>
         <v-widget title="Lista de Usuários">
           <div slot="widget-content">
             <v-tooltip top>
               <template v-slot:activator="{ on }">
-                <v-btn absolute color="#0097A7" dark fab right to="/gestor/usuarios/adicionar" top v-on="on">
+                <v-btn absolute color="#0097A7" class="noneImprime" dark fab right to="/gestor/usuarios/adicionar" top v-on="on">
                   <v-icon>add</v-icon>
                 </v-btn>
               </template>
@@ -15,7 +15,7 @@
             </v-tooltip>
             <v-text-field
               append-icon="search"
-              class="pesquisa"
+              class="pesquisa noneImprime"
               hide-details
               label="Buscar Usuários"
               single-line
@@ -39,7 +39,7 @@
                 <td>
                   <v-tooltip top>
                     <template v-slot:activator="{ on }">
-                  <v-btn :to="'/gestor/usuarios/'+usuario.item.id" color="amber darken-4" v-on="on" fab small outline round>
+                  <v-btn :to="'/gestor/usuarios/'+usuario.item.id"  class="noneImprime" color="amber darken-4" v-on="on" fab small outline round>
                     <v-icon dark small>storage</v-icon>
                   </v-btn>
                   </template>
@@ -49,6 +49,7 @@
                   <v-tooltip top>
                     <template v-slot:activator="{ on }">
                       <v-btn
+                        class="noneImprime"
                         color="primary"
                         fab
                         outline
@@ -65,6 +66,7 @@
                   <v-tooltip top>
                     <template v-slot:activator="{ on }">
                       <v-btn
+                        class="noneImprime"
                         @click="abrirDialogExcluirUsuario(usuario.item)"
                         color="red"
                         fab
@@ -218,4 +220,12 @@ export default {
 .pesquisa {
   margin-inline: 1%;
 }
+
+@media print {
+  .noneImprime
+{
+    display: none;
+}
+}
+
 </style>
