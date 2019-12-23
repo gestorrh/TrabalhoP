@@ -115,12 +115,19 @@
                   <td class="text-xs-left">{{ props.item.colaborador_id }}</td>
                   <td class="text-xs-left">{{ props.item.dataExame | data}}</td>
                   <td class="text-xs-left">{{ props.item.diaProximoExame | data}}</td>
-                  <td class="text-xs-left" v-if="dataAtual <= props.item.diaProximoExame || props.item.diaProximoExame
+                  
+                   <td class="text-xs-left" v-if="props.item.diaProximoExame
                     == props.item.dataExame "><i class="material-icons">done_outline</i></td>
+
                   <td class="text-xs-left" v-if="dataAtual > props.item.diaProximoExame &&
                     props.item.diaProximoExame != props.item.dataExame "><i class="material-icons">
                     report_problem
                   </i></td>
+
+                  <td class="text-xs-left" v-if="dataAtual <= props.item.diaProximoExame"><i class="material-icons">
+                    schedule
+                  </i></td>0
+
 
                 </tr>
               </template>
@@ -147,12 +154,19 @@
                   <td class="text-xs-left">{{ props.item.medico_id }}</td>
                   <td class="text-xs-left">{{ props.item.dataExame | data}}</td>
                   <td class="text-xs-left">{{ props.item.diaProximoExame | data}}</td>
-                  <td class="text-xs-left" v-if="dataAtual <= props.item.diaProximoExame || props.item.diaProximoExame
+                  
+                   <td class="text-xs-left" v-if="props.item.diaProximoExame
                     == props.item.dataExame "><i class="material-icons">done_outline</i></td>
+
                   <td class="text-xs-left" v-if="dataAtual > props.item.diaProximoExame &&
                     props.item.diaProximoExame != props.item.dataExame "><i class="material-icons">
                     report_problem
                   </i></td>
+
+                  <td class="text-xs-left" v-if="dataAtual <= props.item.diaProximoExame"><i class="material-icons">
+                    schedule
+                  </i></td>0
+
 
 
                 </tr>

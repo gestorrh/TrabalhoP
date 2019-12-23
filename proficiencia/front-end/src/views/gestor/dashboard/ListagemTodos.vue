@@ -15,7 +15,7 @@
         <v-card>
           <v-toolbar card color="white">
             <h4>
-              <b>Total de Funcionarios: {{this.usuarios.length}}</b>
+              <b>Total de Funcionários: {{this.usuarios.length}}</b>
             </h4>
             <v-spacer></v-spacer>
           </v-toolbar>
@@ -28,7 +28,8 @@
                   <v-btn text small @click="showDialog('ACIDENTE DE TRABALHO')" color="primary">ACIDENTE DE TRABALHO</v-btn>
                   <v-btn text small @click="showDialog('ADMISSIONAL')" color="primary">ADMISSIONAL</v-btn>
                   <v-btn text small @click="showDialog('DEMISSIONAL')" color="primary">DEMISSIONAL</v-btn>
-                  <v-btn text small @click="showDialog('PERIODICO')" color="primary">PERIODICO</v-btn>
+                  <v-btn text small @click="showDialog('PERIODICO')" color="primary">PERIÓDICO</v-btn>
+                  <v-btn text small @click="showDialog('TODOSOSEXAMES')" color="primary">TODOS OS EXAMES</v-btn>
                 </v-flex>
                 </v-row>
               
@@ -42,14 +43,14 @@
       </v-flex>
       <v-dialog v-model="detalheDialogo" fullscreen hide-overlay transition="dialog-bottom-transition">
         <v-card>
-          <v-toolbar dark color="primary">
+          <v-toolbar dark color="primary" class="noneImprime">
             <v-btn icon dark @click="detalheDialogo = false">
               <v-icon>mdi-close</v-icon>
             </v-btn>
             <v-toolbar-title>Exames</v-toolbar-title>
             <v-spacer></v-spacer>
             <v-toolbar-items>
-              <v-btn dark text v-on:click="dialog = false">Imprimir</v-btn>
+              <v-btn dark text v-on:click="dialog = false" onClick="window.print()">Gerar Relatório</v-btn>
             </v-toolbar-items>
           </v-toolbar>
           <v-data-table
@@ -71,12 +72,18 @@
 <!--
                   <td class="text-xs-left">{{ props.item.diasAfastamento }}</td>
 -->
-                  <td class="text-xs-left" v-if="dataAtual <= props.item.diaProximoExame || props.item.diaProximoExame
+                   <td class="text-xs-left" v-if="props.item.diaProximoExame
                     == props.item.dataExame "><i class="material-icons">done_outline</i></td>
+
                   <td class="text-xs-left" v-if="dataAtual > props.item.diaProximoExame &&
                     props.item.diaProximoExame != props.item.dataExame "><i class="material-icons">
                     report_problem
                   </i></td>
+
+                  <td class="text-xs-left" v-if="dataAtual <= props.item.diaProximoExame"><i class="material-icons">
+                    schedule
+                  </i></td>
+
 
                 </tr>
               </template>           
@@ -122,6 +129,7 @@ export default {
       exames: [],
       detalheDialogo: false,
       examesQtd: 0,
+      examesTodos:[],
       examesAcidente: [],
       examesAdmissional: [],
       examesDemissional: [],
@@ -201,7 +209,7 @@ export default {
             'avaliacaoMedica': item.avaliacaoMedica,
             'dataExame': item.dataExame,
             'diaProximoExame': item.diaProximoExame,
-            'diasAfastamento': item.diasAfastamento,
+            // 'diasAfastamento': item.diasAfastamento,
             'statusExame'    : item.statusExame
           })
         })
@@ -216,7 +224,7 @@ export default {
             'avaliacaoMedica': item.avaliacaoMedica,
             'dataExame': item.dataExame,
             'diaProximoExame': item.diaProximoExame,
-            'diasAfastamento': item.diasAfastamento,
+            // 'diasAfastamento': item.diasAfastamento,
             'statusExame'    : item.statusExame
           })
         })
@@ -231,13 +239,28 @@ export default {
             'avaliacaoMedica': item.avaliacaoMedica,
             'dataExame': item.dataExame,
             'diaProximoExame': item.diaProximoExame,
-            'diasAfastamento': item.diasAfastamento,
+            // 'diasAfastamento': item.diasAfastamento,
             'statusExame'    : item.statusExame
           })
         })
       }
       else if(tipo === "PERIODICO"){
           this.examePeriodico.forEach(item => {
+          this.exames.push({
+            'nomeExame'      : item.nomeExame,
+            'descricao'      : item.descricao,
+            'crmMedico'      : item.crmMedico,
+            'cid'            : item.cid,
+            'avaliacaoMedica': item.avaliacaoMedica,
+            'dataExame': item.dataExame,
+            'diaProximoExame': item.diaProximoExame,
+            // 'diasAfastamento': item.diasAfastamento,
+            'statusExame'    : item.statusExame
+          })
+        })
+      }
+      else {
+          this.examesTodos.forEach(item => {
           this.exames.push({
             'nomeExame'      : item.nomeExame,
             'descricao'      : item.descricao,
@@ -275,6 +298,11 @@ export default {
         y: (this.examePeriodico.length / this.examesQtd) * 100
       });
 
+      // perExam.push({
+      //   name: "TODOSOSEXAMES",
+      //   y: (this.examesTodos.length / this.examesQtd) * 100
+      // });
+
       return perExam;
     },
 
@@ -289,13 +317,18 @@ export default {
         for (let i = 0; i < todosExames.length; i++) {
           if (todosExames[i].nomeExame === "ACIDENTE DE TRABALHO") {
             this.examesAcidente.push(todosExames[i]);
+            this.examesTodos.push(todosExames[i]);
           } else if (todosExames[i].nomeExame === "ADMISSIONAL") {
             this.examesAdmissional.push(todosExames[i]);
+            this.examesTodos.push(todosExames[i]);
           } else if (todosExames[i].nomeExame === "DEMISSIONAL") {
             this.examesDemissional.push(todosExames[i]);
+            this.examesTodos.push(todosExames[i]);
           } else {
             this.examePeriodico.push(todosExames[i]);
-          }
+            this.examesTodos.push(todosExames[i]);
+          } 
+        
         }
         console.log(todosExames[0]);
       });
@@ -358,6 +391,21 @@ table.matriz {
   margin-bottom: 100px;
   margin-right: 150px;
   margin-left: 100px;
+}
+
+
+@media print {
+ .noneImprime {
+   display: none;
+ } 
+ .page-break { 
+page-break-before: always; 
+}
+
+ @page {
+margin: -0.5cm;
+
+}
 }
 /*.cardNome{
       margin-top: 50px;
